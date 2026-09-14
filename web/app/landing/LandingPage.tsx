@@ -224,7 +224,7 @@ export function LandingPage() {
             { rotationX: 0, duration: 0.85, ease: "power1.inOut" },
             0.3,
           )
-          .to(".landing-heading", { y: -45, opacity: 0, duration: 0.55 }, 0.3)
+          .to(".landing-heading", { y: -45, autoAlpha: 0, duration: 0.55 }, 0.3)
           .to(".hero-bg", { opacity: 0, duration: 0.55 }, 0.3)
           .fromTo(
             ".notebook-lid, .notebook-base",
@@ -255,7 +255,8 @@ export function LandingPage() {
           .fromTo(
             ".capture-zed",
             { opacity: 1 },
-            { opacity: 0, duration: 0.5 },
+            // A saída não deve aplicar opacity: 1 antes de a entrada acontecer.
+            { opacity: 0, duration: 0.5, immediateRender: false },
             2.55,
           )
           .fromTo(

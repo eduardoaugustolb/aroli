@@ -1,16 +1,29 @@
 import Image from "next/image";
 
-const KEYS_PER_ROW = 12;
-const KEY_COUNT = 60;
+const KEY_ROWS = [
+  ["esc", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "◯"],
+  ["`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "−", "=", "delete"],
+  ["tab", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]", "\\"],
+  ["caps", "A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'", "return"],
+  ["shift", "Z", "X", "C", "V", "B", "N", "M", ",", ".", "/", "shift"],
+  ["fn", "control", "option", "⌘", "space", "⌘", "option", "←", "↕", "→"],
+];
 
 function Keyboard() {
   return (
     <div className="notebook-keyboard">
-      {Array.from({ length: KEY_COUNT }, (_, index) => {
-        const row = Math.floor(index / KEYS_PER_ROW);
-        const col = index % KEYS_PER_ROW;
-        return <i key={`kb-${row}-${col}`} />;
-      })}
+      {KEY_ROWS.map((keys, row) => (
+        <div className="notebook-key-row" key={row}>
+          {keys.map((label, col) => (
+            <i
+              key={`${row}-${col}`}
+              className={label === "space" ? "notebook-space-key" : undefined}
+            >
+              {label === "space" ? "" : label}
+            </i>
+          ))}
+        </div>
+      ))}
     </div>
   );
 }
@@ -47,7 +60,10 @@ export function Notebook() {
           </div>
         </div>
         <div className="notebook-base" aria-hidden="true">
+          <div className="notebook-hinge" />
+          <div className="notebook-speaker notebook-speaker-left" />
           <Keyboard />
+          <div className="notebook-speaker notebook-speaker-right" />
           <div className="notebook-trackpad" />
           <div className="notebook-front" />
         </div>

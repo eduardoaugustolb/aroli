@@ -48,6 +48,11 @@
   z-index: var(--z-scene);
 }
 .notebook {
+  /* Superfícies e arestas da paleta oficial Umbra (DESIGN.md). */
+  --notebook-charcoal: #101111;
+  --notebook-graphite: #191c1c;
+  --notebook-edge: #3b4242;
+  --notebook-highlight: #555b5a;
   width: min(72vw, 1050px, calc(57svh * 1.65));
   position: relative;
   transform-style: preserve-3d;
@@ -56,22 +61,36 @@
 }
 .notebook-lid {
   position: relative;
-  background: #111313;
-  border: 2px solid #555b5a;
-  border-radius: var(--radius-xl) var(--radius-xl) 5px 5px;
-  padding: 22px 12px 14px;
+  background: var(--ink);
+  border: 2px solid var(--notebook-highlight);
+  border-radius: 22px 22px 8px 8px;
+  padding: 18px 9px 12px;
+  box-shadow:
+    inset 0 0 0 1px var(--notebook-charcoal),
+    0 0 0 1px var(--notebook-charcoal);
   transform-origin: center bottom;
   backface-visibility: hidden;
   transform-style: preserve-3d;
 }
 .notebook-camera {
   position: absolute;
-  top: 8px;
+  top: 0;
+  left: 45%;
+  width: 10%;
+  height: 16px;
+  border-radius: 0 0 7px 7px;
+  background: var(--notebook-charcoal);
+}
+.notebook-camera::after {
+  content: "";
+  position: absolute;
+  top: 5px;
   left: calc(50% - 2px);
   width: 4px;
   height: 4px;
-  border-radius: var(--radius-full);
-  background: #697271;
+  border: 1px solid var(--notebook-edge);
+  border-radius: 50%;
+  background: var(--ink);
 }
 .capture-frame {
   position: relative;
@@ -86,7 +105,7 @@
 }
 .notebook-display {
   border: 0;
-  border-radius: 3px;
+  border-radius: 12px 12px 3px 3px;
 }
 .capture-zed,
 .capture-kitty {
@@ -101,48 +120,115 @@
   transform-origin: center top;
   transform: rotateX(78deg);
   transform-style: preserve-3d;
-  background: linear-gradient(180deg, #232827, #555b59 65%, #717775);
-  border: 1px solid #858a89;
-  border-radius: var(--radius-xs) var(--radius-xs) 14px 14px;
+  background: linear-gradient(
+    180deg,
+    var(--notebook-charcoal),
+    var(--notebook-graphite) 16%,
+    var(--notebook-edge) 100%
+  );
+  border: 1px solid var(--notebook-highlight);
+  border-radius: 5px 5px 22px 22px;
+  box-shadow: inset 0 0 0 1px var(--notebook-edge);
+}
+.notebook-hinge {
+  position: absolute;
+  top: 0;
+  left: 12%;
+  width: 76%;
+  height: 3%;
+  border-radius: 0 0 5px 5px;
+  background: var(--ink);
+  box-shadow: 0 1px 0 var(--notebook-highlight);
+}
+.notebook-speaker {
+  position: absolute;
+  top: 7%;
+  width: 1.8%;
+  height: 52%;
+  border-radius: 4px;
+  background: radial-gradient(var(--ink) 0.7px, transparent 1px) 0 0 / 3px 3px;
+  opacity: 0.8;
+}
+.notebook-speaker-left {
+  left: 1.6%;
+}
+.notebook-speaker-right {
+  right: 1.6%;
 }
 .notebook-keyboard {
   position: absolute;
-  inset: 8% 8% 39%;
+  inset: 5% 5% 39%;
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  gap: var(--space-1);
-  background: #171a19;
-  padding: 6px;
-  border-radius: 5px;
+  grid-template-rows: 0.65fr repeat(5, 1fr);
+  gap: clamp(2px, 0.35vw, 4px);
+  background: var(--ink);
+  padding: 2px;
+  border-radius: 8px;
+  box-shadow: 0 1px 0 var(--notebook-highlight);
+}
+.notebook-key-row {
+  display: flex;
+  gap: clamp(2px, 0.35vw, 4px);
+  min-height: 0;
 }
 .notebook-keyboard i {
-  display: block;
-  border-radius: var(--radius-xs);
-  background: #080a09;
-  border: 1px solid #555b5a;
-  box-shadow: 0 2px 0 #000;
+  display: grid;
+  place-items: center;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 3px;
+  background: var(--notebook-charcoal);
+  border: 1px solid var(--line);
+  box-shadow: 0 1px 0 var(--notebook-edge);
+  color: var(--muted);
+  font-family: inherit;
+  font-size: clamp(3px, 0.65vw, 7px);
+  font-style: normal;
+}
+.notebook-key-row:nth-child(3) i:first-child,
+.notebook-key-row:nth-child(4) i:first-child,
+.notebook-key-row:nth-child(4) i:last-child {
+  flex: 1.5;
+}
+.notebook-key-row:nth-child(5) i:first-child,
+.notebook-key-row:nth-child(5) i:last-child {
+  flex: 2;
+}
+.notebook-keyboard .notebook-space-key {
+  flex: 6;
 }
 .notebook-trackpad {
   position: absolute;
-  top: 67%;
-  left: 34%;
-  width: 32%;
-  height: 26%;
-  border: 1px solid #252727;
-  border-radius: var(--radius-sm);
-  background: #555b59;
+  top: 65%;
+  left: 29%;
+  width: 42%;
+  height: 29%;
+  border: 1px solid var(--notebook-charcoal);
+  border-radius: 8px;
+  background: var(--notebook-graphite);
+  box-shadow: 0 1px 0 var(--notebook-highlight);
 }
 .notebook-front {
   position: absolute;
   top: 100%;
   left: -1px;
   width: calc(100% + 2px);
-  height: 7px;
+  height: 6px;
   transform-origin: top;
   transform: rotateX(-90deg);
-  background: linear-gradient(#858a89, #252727);
+  background: linear-gradient(var(--notebook-highlight), var(--notebook-charcoal));
   border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+}
+.notebook-front::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 43%;
+  width: 14%;
+  height: 60%;
+  border-radius: 0 0 8px 8px;
+  background: var(--notebook-charcoal);
 }
 
 @media (max-width: 760px) {
@@ -157,18 +243,31 @@
     perspective: 950px;
   }
   .notebook-lid {
-    padding: 16px 7px 9px;
-    border-radius: 11px 11px 3px 3px;
+    padding: 12px 5px 8px;
+    border-radius: 13px 13px 5px 5px;
     border-width: 1px;
   }
   .notebook-camera {
-    top: 5px;
+    height: 10px;
+    border-radius: 0 0 4px 4px;
+  }
+  .notebook-camera::after {
+    top: 3px;
+    left: calc(50% - 1.5px);
     width: 3px;
     height: 3px;
   }
+  .notebook-display {
+    border-radius: 7px 7px 2px 2px;
+  }
+  .notebook-base {
+    border-radius: 3px 3px 13px 13px;
+  }
+  .notebook-trackpad {
+    border-radius: 5px;
+  }
   .notebook-keyboard {
     gap: 2px;
-    padding: 3px;
   }
   .continuity-surface {
     perspective: 1200px;

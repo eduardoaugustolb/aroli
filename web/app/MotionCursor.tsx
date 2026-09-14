@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
+import { getCursorTarget, getLinkTextRect } from "./cursor-target";
 
 // Círculo com morph em botões e links, sem rastro.
 // Só transform no pointermove; leituras de DOM no máximo 1x por frame.
@@ -28,19 +29,20 @@ export function MotionCursor() {
       const hide = () => {
         visible = false; setTarget(null); morphQueued = false;
         cursor.style.opacity = "0";
+        // Re-entry must start as a circle, even after leaving over a button.
+        width(36, 36); height(36, 36);
+        width.tween.pause(); height.tween.pause();
+        cursor.style.width = cursor.style.height = "36px";
+        cursor.style.borderRadius = "50%";
         document.documentElement.classList.remove("custom-cursor-active");
       };
       // Roda no máximo 1x por frame: leituras caras fora do pointermove.
       const morph = () => {
         // Measure once, before the animation writes; also refresh on scroll.
         const button = target?.matches("button, [data-cursor='button'], .more-list a");
-        let rect = target?.getBoundingClientRect();
+        let rect: Pick<DOMRect, "left" | "top" | "bottom" | "width" | "height"> | undefined = target?.getBoundingClientRect();
         if (target && !button) {
-          const range = document.createRange();
-          range.selectNodeContents(target);
-          const lines = Array.from(range.getClientRects()).filter(line => line.width > 0 && line.height > 0);
-          // The actual text line, not the stretched flex/grid link box.
-          rect = lines.sort((a, b) => Math.abs((a.top + a.bottom) / 2 - py) - Math.abs((b.top + b.bottom) / 2 - py))[0] ?? rect;
+          rect = getLinkTextRect(target) ?? rect;
         }
         const tx = rect ? rect.left : px - 18;
         const ty = rect ? (button ? rect.top : rect.bottom) : py - 18;
@@ -57,24 +59,27 @@ export function MotionCursor() {
       const move = (event: PointerEvent) => {
         if (event.pointerType !== "mouse") { hide(); return; }
         px = event.clientX; py = event.clientY;
-        const hit = event.target instanceof Element ? event.target.closest<HTMLElement>("a, button, [data-cursor]") : null;
-        setTarget(hit);
         // Só transform aqui: barato e acompanha o mouse sem atrasar o evento.
-        if (!hit) { x(px - 18); y(py - 18); }
+        if (!target) { x(px - 18); y(py - 18); }
+        morphQueued = true;
         if (!visible) {
           visible = true; cursor.style.opacity = "1";
           document.documentElement.classList.add("custom-cursor-active");
           // Estreia sem voar da origem: posiciona de imediato.
-          if (hit) { morphQueued = false; morph(); } else { gsap.set(cursor, { x: px - 18, y: py - 18 }); }
+          x(px - 18, px - 18); y(py - 18, py - 18);
         }
       };
       const frame = () => {
         if (!visible) return;
+        // Re-check even with a stationary pointer: scroll/animations can hide,
+        // replace or cover the current target without a pointermove event.
+        setTarget(getCursorTarget(document.elementFromPoint(px, py)));
         if (morphQueued) { morphQueued = false; morph(); }
       };
       const scroll = () => {
         if (!visible) return;
-        setTarget(document.elementFromPoint(px, py)?.closest<HTMLElement>("a, button, [data-cursor]") ?? null);
+        // The same target can have a new position after scrolling.
+        morphQueued = true;
       };
       const resize = () => { if (visible) morphQueued = true; };
       gsap.ticker.add(frame);
