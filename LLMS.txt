@@ -22,6 +22,8 @@ TEMAS DISPONÍVEIS
 - VS Code: themes/vscode/umbra (package.json + themes/umbra-color-theme.json + themes/umbra-ink-color-theme.json)
 - Kitty: themes/kitty/umbra/kitty.conf
 - Starship: themes/starship/umbra/starship.toml
+- Chrome Umbra: themes/chrome/umbra/manifest.json (+ images/theme_ntp_background.png)
+- Chrome Ink: themes/chrome/umbra-ink/manifest.json (+ images/theme_ntp_background.png)
 
 Cada tema tem um tutorial acessível no README.md do seu próprio diretório.
 Consulte-o quando precisar de detalhes específicos do aplicativo.
@@ -60,6 +62,7 @@ FLUXO DE INSTALAÇÃO
     - VS Code: copie a pasta da extensão para o diretório de extensões ou instale o .vsix; nunca edite settings.json além do colorTheme.
     - Kitty: adicione um include para o arquivo Umbra na configuração pessoal.
    - Starship: mescle as seções do tema e defina palette = "umbra".
+    - Chrome: carregue a pasta da variante (umbra ou umbra-ink) em chrome://extensions com o Modo do desenvolvedor; nunca edite o manifest instalado, recarregue pelo cartão do tema.
 6. Preserve configurações de fonte, atalhos, plugins, módulos e comportamento.
 7. Valide a configuração e confirme que o arquivo antigo continua recuperável.
 8. Recarregue o aplicativo ou explique como a pessoa deve fazer isso.
@@ -74,12 +77,12 @@ COMO LIDAR COM PEDIDOS CURTOS
 
 Pedido: "Quero instalar um tema"
 
-Resposta esperada: "Claro. Qual você quer instalar: Umbra para Zed, Kitty ou
-Starship? Se quiser, posso instalar mais de um."
+Resposta esperada: "Claro. Qual você quer instalar: Umbra para Zed, Kitty,
+Starship ou Chrome? Se quiser, posso instalar mais de um."
 
 Pedido: "Quero instalar o Umbra"
 
-Pergunte em qual aplicativo: Zed, Kitty ou Starship. Não instale em todos sem
+Pergunte em qual aplicativo: Zed, Kitty, Starship ou Chrome. Não instale em todos sem
 que a pessoa peça isso.
 
 Pedido: "Quero instalar temas para Zed e Kitty"
@@ -102,6 +105,7 @@ sem guardar seu conteúdo no log. Depois, valide o arquivo instalado:
 - VS Code: confirme que os dois JSONs são válidos e que o package.json declara os temas Umbra e Umbra Ink.
 - Kitty: confirme que o arquivo possui background, foreground e as cores ANSI.
 - Starship: valide o TOML com o próprio Starship quando disponível.
+- Chrome: confirme que o JSON é válido, que manifest_version é 3 e que o tema declara name, colors e a imagem NTP existente.
 
 Uma validação só pode ser marcada como bem-sucedida se o comando terminar com
 status zero e a saída esperada for observada. Não esconda falhas usando pipes
