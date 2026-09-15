@@ -33,6 +33,7 @@ Começamos com temas para desenvolvimento e terminal, mas a identidade foi pensa
 | [Kitty](themes/kitty/umbra/README.md) | Umbra | Terminal com ANSI coerente e superfícies unificadas |
 | [Starship](themes/starship/umbra/README.md) | Umbra | Prompt compacto com contexto Git e runtimes discretos |
 | [Chrome](themes/chrome/umbra/README.md) | Umbra / Umbra Ink | Tema charcoal (ou Ink na omnibox e NTP) com a mesma base do VS Code |
+| [Cursor](themes/cursor/umbra/README.md) | Umbra Cursor | Cursor para Linux: hover de mão e drag-and-drop com indicadores claros |
 
 Cada tema possui tutorial individual de instalação, changelog e arquivo de configuração próprio.
 
@@ -72,6 +73,7 @@ themes/
 ├── starship/umbra/  # prompt para o Starship
 ├── chrome/umbra/      # tema Umbra para o Chrome
 ├── chrome/umbra-ink/  # variante Ink para o Chrome
+├── cursor/umbra/      # tema de cursor XCursor para Linux
 └── desktop/         # ambientes gráficos futuros
 wallpapers/
 ├── static/          # wallpapers estáticos futuros

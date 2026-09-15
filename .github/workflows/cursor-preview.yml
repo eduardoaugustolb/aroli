@@ -1,0 +1,49 @@
+name: Cursor preview
+
+on:
+  push:
+    paths:
+      - "themes/cursor/umbra/**"
+      - ".github/workflows/cursor-preview.yml"
+  pull_request:
+    paths:
+      - "themes/cursor/umbra/**"
+      - ".github/workflows/cursor-preview.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preview:
+    name: Verify cursor integrity and publish visual review
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: oven-sh/setup-bun@v2
+      - name: Install cursor build dependencies
+        run: sudo apt-get update && sudo apt-get install -y librsvg2-bin imagemagick libxcursor-dev build-essential pkg-config
+      - name: Verify generated anatomy and compiled cursors
+        run: make -C themes/cursor/umbra check
+      - name: Generate SVG preview
+        run: bun themes/cursor/umbra/scripts/generate-preview.ts
+      - name: Render visual review
+        run: |
+          bun themes/cursor/umbra/scripts/verify-cursors.ts /tmp/umbra-cursor-sheet.svg
+          rsvg-convert /tmp/umbra-cursor-sheet.svg -o /tmp/umbra-cursor-sheet.png
+          rsvg-convert themes/cursor/umbra/preview.svg -o /tmp/umbra-cursor-preview.png
+          rsvg-convert themes/cursor/umbra/silhouettes.svg -o /tmp/umbra-silhouettes.png
+      - name: Verify generated file is committed
+        run: git diff --exit-code -- themes/cursor/umbra/preview.svg
+      - name: Publish preview artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: umbra-cursor-preview
+          path: |
+            themes/cursor/umbra/preview.svg
+            /tmp/umbra-cursor-sheet.svg
+            /tmp/umbra-cursor-sheet.png
+            /tmp/umbra-cursor-preview.png
+            themes/cursor/umbra/silhouettes.svg
+            /tmp/umbra-silhouettes.png
+          if-no-files-found: error

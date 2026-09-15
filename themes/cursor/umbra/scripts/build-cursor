@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+root="$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)"
+tmp="$(mktemp -d)"
+trap 'rm -rf "$tmp"' EXIT
+
+for command in rsvg-convert convert cc pkg-config; do
+  command -v "$command" >/dev/null || { echo "Missing dependency: $command" >&2; exit 1; }
+done
+
+mkdir -p "$root/cursors"
+cc -O2 -Wall -Wextra "$root/scripts/xcursor-write.c" -o "$tmp/xcursor-write" \
+  $(pkg-config --cflags --libs xcursor)
+
+build() {
+  local name="$1" xhot="$2" yhot="$3" source="$4"
+  local args=("$root/cursors/$name" "$xhot" "$yhot")
+  for size in 24 32 48; do
+    local png="$tmp/$name-$size.png" raw="$tmp/$name-$size.rgba"
+    rsvg-convert -w "$size" -h "$size" "$root/src/$source.svg" -o "$png"
+    convert "$png" -depth 8 "RGBA:$raw"
+    args+=("$size" "$raw")
+  done
+  "$tmp/xcursor-write" "${args[@]}"
+}
+
+build default 5 4 arrow
+build pointer 21 8 hover
+build grabbing 24 24 grabbing
+# Replace the legacy grab symlink before writing a distinct cursor.
+if [[ -L "$root/cursors/grab" ]]; then unlink "$root/cursors/grab"; fi
+build grab 24 24 grab
+build copy 5 4 copy
+build alias 5 4 alias
+build no-drop 5 4 no-drop
+
+link() { ln -sf "$1" "$root/cursors/$2"; }
+for name in left_ptr arrow top_left_arrow; do link default "$name"; done
+for name in hand hand1 hand2; do link pointer "$name"; done
+for name in openhand; do link grab "$name"; done
+for name in closedhand move dnd-move fleur; do link grabbing "$name"; done
+for name in dnd-copy plus; do link copy "$name"; done
+for name in dnd-link link; do link alias "$name"; done
+for name in not-allowed crossed_circle; do link no-drop "$name"; done
