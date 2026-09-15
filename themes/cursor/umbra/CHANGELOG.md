@@ -1,5 +1,20 @@
 # Changelog
 
+## Acabamento da família — 2026-09-15
+
+- microajustes na base do indicador, ritmo dos dedos dobrados e lateral do hover;
+- base do mindinho aberto integrada por curvas, preservando largura e afastamento;
+- mão fechada preservada nesta etapa; base anatômica e outline de 2,5 inalterados;
+- 21 frames verificados e silhuetas inspecionadas em tamanhos reduzidos.
+
+## Refinamento de caráter — 2026-09-15
+
+- hover com indicador levemente inclinado, base orgânica e nós mais definidos;
+- assimetrias discretas na mão fechada, preservando sua estrutura;
+- mindinho aberto alargado sem alterar a espessura do contorno;
+- polegar encurtado, lateral da palma mais cheia e punho suavizado nas três poses;
+- silhuetas e binários inspecionados em claro/escuro; 21 frames verificados.
+
 ## Reconstrução anatômica — 2026-09-15
 
 - palma alta, polegar curto e arredondado, punho simples e dedos articulados;

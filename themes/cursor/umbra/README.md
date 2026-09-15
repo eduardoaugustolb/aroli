@@ -18,30 +18,8 @@ A cor identifica o estado; a geometria e o espaçamento permanecem constantes.
 
 ## Instalar
 
-Primeiro gere os cursores. Na raiz deste repositório:
-
-```sh
-make -C themes/cursor/umbra build
-```
-
-O comando requer `librsvg`, ImageMagick, um compilador C e os headers de
-`libXcursor`. No Arch/Omarchy:
-
-```sh
-sudo pacman -S --needed librsvg imagemagick libxcursor base-devel
-```
-
-Depois, copie somente a pasta do tema para a sua pasta de ícones local:
-
-```sh
-mkdir -p ~/.local/share/icons
-cp -r themes/cursor/umbra ~/.local/share/icons/Umbra
-```
-
-Selecione **Umbra** nas configurações de aparência do seu ambiente gráfico e
-reinicie os aplicativos que já estavam abertos. Em Hyprland, por exemplo,
-adicione `env = XCURSOR_THEME,Umbra` e `env = XCURSOR_SIZE,32` à configuração
-e reinicie a sessão.
+O [guia de instalação](docs/installation.md) cobre geração, GNOME, KDE Plasma,
+Hyprland com e sem UWSM, Sway, XFCE/Cinnamon/MATE/X11, Flatpak e diagnóstico.
 
 ## Desenvolvimento
 

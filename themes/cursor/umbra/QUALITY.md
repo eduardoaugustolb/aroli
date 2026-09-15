@@ -97,6 +97,26 @@ anatomia gerada devem ser corrigidas na fonte.
 
 ## Registro da reconstrução
 
+### Refinamento de caráter após a reconstrução
+
+Direção de acabamento: a versão atual é a referência principal da família.
+Alterações futuras devem ser microajustes; não aproximar mais da referência
+externa nem adicionar detalhes internos. Preservar comprimento do indicador,
+largura geral, volume do mindinho e pose fechada. A região inferior compartilhada
+e o outline permanecem invariantes durante esse acabamento.
+
+- Preservar a anatomia aprovada como direção; não reconstruir a partir da referência.
+- Hover: indicador discretamente inclinado, base mais cheia e dedos dobrados
+  com alturas distintas em uma sequência curva.
+- Fechada: pequenas assimetrias nos nós dos dedos, preservando a massa compacta.
+- Aberta: compensar a largura do mindinho na geometria; nunca afinar apenas
+  seu stroke. Comparar a área clara interna em 24, 32 e 48 px.
+- Polegar mais curto, lateral da palma mais cheia e cantos do punho suavizados
+  são alterações compartilhadas pelas três poses.
+- Manter o outline único de 2,5. Verificar peso óptico além do valor numérico.
+- Reconhecimento vem da palma compacta, polegar curvo, assimetrias discretas
+  e punho simples. Não adicionar entalhes ou riscos para imitar a referência.
+
 - 21 frames verificados localmente.
 - Silhuetas, preview e pixels finais inspecionados em claro e escuro.
 - Regras anteriores de barras/gaps fixos explicitamente retiradas.

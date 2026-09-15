@@ -37,6 +37,12 @@ Começamos com temas para desenvolvimento e terminal, mas a identidade foi pensa
 
 Cada tema possui tutorial individual de instalação, changelog e arquivo de configuração próprio.
 
+## Instruções para agentes
+
+[LLMS.md](LLMS.md) contém somente navegação, segurança e privacidade. Cada
+módulo possui um `LLMS.md` próprio para evitar carregar instruções de temas
+ou aplicações fora do escopo da tarefa.
+
 ## ◌ Direção visual
 
 - **Charcoal primeiro:** superfícies escuras, consistentes e confortáveis para uso prolongado.

@@ -1,0 +1,43 @@
+# Umbra — guia de navegação para agentes
+
+## Leitura mínima
+
+Leia este arquivo primeiro. Em seguida, localize o diretório afetado e leia
+somente o `LLMS.md` mais específico dele. Não carregue documentação de outros
+temas, do site ou da identidade sem necessidade.
+
+| Escopo | Instrução |
+| --- | --- |
+| Marca e assets | `branding/LLMS.md`, depois `branding/umbra/LLMS.md` |
+| Qualquer tema | `themes/LLMS.md` |
+| Cursor Linux | `themes/cursor/LLMS.md` e, para Umbra, `themes/cursor/umbra/LLMS.md` |
+| Chrome | `themes/chrome/LLMS.md`, depois a variante |
+| Kitty | `themes/kitty/LLMS.md`, depois `umbra/LLMS.md` |
+| Starship | `themes/starship/LLMS.md`, depois `umbra/LLMS.md` |
+| VS Code | `themes/vscode/LLMS.md`, depois `umbra/LLMS.md` |
+| Zed | `themes/zed/LLMS.md`, depois `umbra/LLMS.md` |
+| Site | `web/LLMS.md`, depois `web/AGENTS.md` |
+
+## Segurança e privacidade
+
+- Nunca expor, registrar, versionar ou incluir em prompts credenciais, tokens,
+  cookies, chaves privadas, dados pessoais, arquivos `.env` ou conteúdo de
+  diretórios fora do escopo da tarefa.
+- Não copiar temas para diretórios do usuário, alterar configurações da sessão,
+  instalar dependências globais, publicar pacotes, criar releases ou fazer push
+  sem pedido explícito.
+- Antes de comandos destrutivos, resolver e mostrar o alvo exato. Não usar
+  remoção recursiva ampla, reset forçado ou sobrescrever alterações alheias.
+- Tratar artefatos binários e extensões como saída gerada: só atualizá-los
+  quando a fonte e a validação correspondente também forem atualizadas.
+
+## Regras de trabalho
+
+- Preserve mudanças não relacionadas já presentes no worktree.
+- Use `rg` para localizar conteúdo. Use Bun para runtime, scripts e pacotes.
+- Para detalhes atuais de ferramentas ou plataformas, consultar a documentação
+  oficial antes de escrever instruções versionadas.
+- Quando editar um módulo, atualize sua documentação e rode apenas a validação
+  indicada pelo respectivo `LLMS.md`.
+- Ao responder, diferencie validação local, inspeção visual e teste em software
+  real. Não alegue uma etapa que não foi executada.
