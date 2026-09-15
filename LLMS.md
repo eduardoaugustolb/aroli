@@ -31,6 +31,24 @@ temas, do site ou da identidade sem necessidade.
 - Tratar artefatos binários e extensões como saída gerada: só atualizá-los
   quando a fonte e a validação correspondente também forem atualizadas.
 
+## Mudanças em configurações de usuários
+
+Estas regras valem quando a tarefa incluir instalação, atualização, remoção ou
+diagnóstico no computador de alguém:
+
+- Antes de escrever, identificar o aplicativo, sistema, configuração exata e
+  método suportado pelo módulo. Não procurar a partir de `/` ou de uma pasta
+  pessoal inteira.
+- Fazer um backup datado do alvo antes de uma alteração e registrar somente
+  caminho, ação e resultado; não registrar conteúdo de configurações, variáveis
+  de ambiente, tokens ou senhas.
+- Preservar comentários, ordem, fonte, atalhos, plugins e preferências que não
+  pertençam ao tema. Fazer a menor alteração possível.
+- Validar a saída. Em caso de falha, restaurar o backup exato e validar a
+  restauração. Não escolher backups por curingas ou ordem alfabética.
+- Sem instrução explícita para alterar o sistema, limitar-se a explicar e
+  preparar passos reversíveis no repositório.
+
 ## Regras de trabalho
 
 - Preserve mudanças não relacionadas já presentes no worktree.

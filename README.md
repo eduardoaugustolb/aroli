@@ -67,7 +67,9 @@ O sistema de identidade da Umbra está em [`branding/umbra/`](branding/umbra/REA
 
 Leia o [guia de identidade](DESIGN.md) antes de criar novos temas, ícones ou peças da marca.
 
-Agentes de IA devem ler o [LLMS.txt](LLMS.txt) antes de instalar qualquer tema. Ele explica como perguntar o que a pessoa deseja, preservar configurações antigas, validar alterações e registrar somente o necessário.
+Agentes de IA devem ler o [LLMS.md](LLMS.md) antes de instalar qualquer tema.
+Ele encaminha ao módulo correto e define regras de segurança, privacidade,
+backup e validação.
 
 ## ⌘ Organização
 
