@@ -1,5 +1,65 @@
 # Changelog
 
+## Base do mindinho — 2026-09-16
+
+- ligação do mindinho à palma alargada na mão aberta, com espaço interdigital
+  mais raso e curva externa mais cheia;
+- contorno único de 2,5 preservado: a correção recupera área Bone na geometria,
+  sem afinar o traço nem alterar a região inferior compartilhada das mãos.
+
+## Ponta do indicador de progresso — 2026-09-16
+
+- ponta circular alinhada à tangente do arco e ao sentido horário da animação;
+- substituído o cotovelo radial por cabeça triangular dentro do envelope do selo;
+- símbolo compartilhado pela versão estática e pelos 24 quadros animados.
+
+## Carregamento animado — 2026-09-16
+
+- wait gira a ampulheta; progress gira apenas o símbolo do selo;
+- 24 quadros de 50 ms por tamanho (24/32/48 px), com hotspots fixos;
+- writer XCursor grava duração por quadro; aliases watch e left_ptr_watch;
+- prévia animada no laboratório, com movimento reduzido;
+- verificação de 234 frames: duração, variação, transição do loop, margens,
+  alpha e estabilidade da seta; leitura confirmada pela libXcursor;
+- todos os quadros inspecionados em claro/escuro; teste na sessão real pendente.
+
+
+## Coerência dos estados auxiliares — 2026-09-16
+
+- substituído núcleo Ink com halo Bone por corpo Bone e limite Charcoal;
+- direcionais reconstruídos como silhuetas preenchidas, com hastes e pontas;
+- menu e progresso reutilizam a seta limiar e os selos, com hotspot (5, 4);
+- preview ampliado de sete para todos os 32 estados;
+- corrigida a orientação invertida de nesw-resize e nwse-resize;
+- 96 frames verificados; silhuetas, preview e pixels revisados em claro/escuro;
+- laboratório interativo pendente: nenhum navegador conectado nesta sessão;
+- critérios de identidade registrados em QUALITY.md; validação de sessão
+  e reconhecimento pelo usuário permanecem pendentes.
+
+## Halo nos estados de traço — 2026-09-15
+
+- estados finos (text, resizes, crosshair, cell, wait, zoom e demais de
+  `generate-states.ts`) ganharam halo Bone sob o núcleo Ink;
+- antes, o traço único Ink ficava invisível sobre fundo escuro (0 px visíveis
+  do `text` em `#101111`); agora são 384 px visíveis no escuro e 526 no claro;
+- `make check preview` aprovado: 32 cursores × 3 tamanhos, hotspots, alpha,
+  margens e aliases; teste em sessão real pendente.
+
+## Laboratório de cursores — 2026-09-15
+
+- adicionada página test.html com CSS e JS separados;
+- catálogo dos 32 estados e aliases, filtro e playground de texto, links,
+  arraste, drop e redimensionamento;
+- documentação de qualidade passou a exigir a revisão da página além da folha
+  de contato dos binários.
+
+## Estados padrão completos — 2026-09-15
+
+- adicionados all-scroll, auto, cell, redimensionamentos, context-menu,
+  crosshair, help, progresso, texto, espera, zoom e cursor oculto;
+- `move` corrigido para all-scroll; `dnd-move` continua com a mão fechada;
+- formas auxiliares vêm de um gerador único e os 96 frames são verificados.
+
 ## Acabamento da família — 2026-09-15
 
 - microajustes na base do indicador, ritmo dos dedos dobrados e lateral do hover;

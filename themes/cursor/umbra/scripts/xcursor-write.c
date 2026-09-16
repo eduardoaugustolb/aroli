@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static int append_image(XcursorImages *images, const char *path, int size, int xhot, int yhot) {
+static int append_image(XcursorImages *images, const char *path, int size, int xhot, int yhot, int delay) {
   FILE *file = fopen(path, "rb");
   if (!file) { perror(path); return 0; }
   size_t length = (size_t)size * size * 4;
@@ -19,6 +19,7 @@ static int append_image(XcursorImages *images, const char *path, int size, int x
   image->xhot = xhot;
   image->yhot = yhot;
   image->size = size;
+  image->delay = delay;
   for (int i = 0; i < size * size; i++) {
     unsigned char *pixel = rgba + i * 4;
     /* Xcursor stores premultiplied ARGB, whereas the input is straight RGBA. */
@@ -34,18 +35,18 @@ static int append_image(XcursorImages *images, const char *path, int size, int x
 }
 
 int main(int argc, char **argv) {
-  if (argc < 6 || (argc - 4) % 2) {
-    fprintf(stderr, "Usage: %s OUTPUT XHOT YHOT SIZE RAW [SIZE RAW ...]\n", argv[0]);
+  if (argc < 7 || (argc - 4) % 3) {
+    fprintf(stderr, "Usage: %s OUTPUT XHOT YHOT SIZE RAW DELAY_MS [SIZE RAW DELAY_MS ...]\n", argv[0]);
     return 2;
   }
-  int count = (argc - 4) / 2;
+  int count = (argc - 4) / 3;
   XcursorImages *images = XcursorImagesCreate(count);
   if (!images) return 1;
-  for (int i = 4; i < argc; i += 2) {
+  for (int i = 4; i < argc; i += 3) {
     int size = atoi(argv[i]);
     int xhot = (int)((long)atoi(argv[2]) * size / 48);
     int yhot = (int)((long)atoi(argv[3]) * size / 48);
-    if (!size || !append_image(images, argv[i + 1], size, xhot, yhot)) {
+    if (!size || !append_image(images, argv[i + 1], size, xhot, yhot, atoi(argv[i + 2]))) {
       XcursorImagesDestroy(images); return 1;
     }
   }

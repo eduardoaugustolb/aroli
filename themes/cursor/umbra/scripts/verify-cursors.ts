@@ -2,17 +2,31 @@ import assert from "node:assert/strict";
 import { readdir, readlink } from "node:fs/promises";
 
 const root = new URL("../cursors/", import.meta.url);
-const names = ["default", "pointer", "grabbing", "grab", "copy", "alias", "no-drop"];
+const names = [
+  "default", "pointer", "grabbing", "grab", "copy", "alias", "no-drop",
+  "all-scroll", "cell", "col-resize", "context-menu", "crosshair",
+  "e-resize", "ew-resize", "help", "n-resize", "ne-resize", "nesw-resize",
+  "none", "ns-resize", "nw-resize", "nwse-resize", "progress", "row-resize",
+  "s-resize", "se-resize", "sw-resize", "text", "wait", "w-resize",
+  "zoom-in", "zoom-out",
+];
+const hotspots: Record<string, [number, number]> = {
+  default: [5, 4], pointer: [21, 8], grabbing: [24, 24], grab: [24, 24],
+  copy: [5, 4], alias: [5, 4], "no-drop": [5, 4], "context-menu": [5, 4],
+  progress: [5, 4], "zoom-in": [21, 21], "zoom-out": [21, 21],
+  none: [0, 0],
+};
 const frames = new Map<string, { size: number; pixels: number[] }[]>();
 
 for (const name of names) {
   const data = Buffer.from(await Bun.file(new URL(name, root)).arrayBuffer());
   const u32 = (offset: number) => data.readUInt32LE(offset);
   assert.equal(data.toString("ascii", 0, 4), "Xcur", name);
-  assert.equal(u32(12), 3, `${name}: three resolutions`);
+  const count = ["wait", "progress"].includes(name) ? 24 : 1;
+  assert.equal(u32(12), 3 * count, `${name}: frames across three resolutions`);
   const images = [];
-  for (let index = 0; index < 3; index++) {
-    const size = [24, 32, 48][index];
+  for (let index = 0; index < 3 * count; index++) {
+    const size = [24, 32, 48][Math.floor(index / count)];
     const toc = u32(4) + index * 12;
     assert.equal(u32(toc), 0xfffd0002);
     assert.equal(u32(toc + 4), size, `${name}: nominal size`);
@@ -21,12 +35,19 @@ for (const name of names) {
     assert.equal(u32(start + 8), size);
     assert.equal(u32(start + 16), size);
     assert.equal(u32(start + 20), size);
-    const [x, y] = name === "pointer" ? [21, 8] : ["grab", "grabbing"].includes(name) ? [24, 24] : [5, 4];
+    const [x, y] = hotspots[name] ?? [24, 24];
     assert.equal(u32(start + 24), Math.floor(x * size / 48), `${name}: x hotspot`);
     assert.equal(u32(start + 28), Math.floor(y * size / 48), `${name}: y hotspot`);
+    assert.equal(u32(start + 32), count > 1 ? 50 : 0, `${name}: frame delay`);
     const pixels = Array.from({ length: size * size }, (_, i) => u32(start + u32(start) + i * 4));
-    assert(pixels.some(pixel => pixel >>> 24 === 255), `${name}: visible image`);
-    assert(pixels[u32(start + 28) * size + u32(start + 24)] >>> 24 > 0, `${name}: hotspot on shape`);
+    if (name === "none") {
+      assert(pixels.every(pixel => pixel === 0), `${name}: fully transparent`);
+    } else {
+      assert(pixels.some(pixel => pixel >>> 24 > 0), `${name}: visible image`);
+      if (!["crosshair", "wait"].includes(name)) {
+        assert(pixels[u32(start + 28) * size + u32(start + 24)] >>> 24 > 0, `${name}: hotspot on shape`);
+      }
+    }
     pixels.forEach((pixel, i) => {
       const alpha = pixel >>> 24;
       for (const shift of [0, 8, 16]) {
@@ -42,13 +63,37 @@ for (const name of names) {
   frames.set(name, images);
 }
 
-for (const name of ["copy", "alias", "no-drop"]) {
+for (const name of ["copy", "alias", "no-drop", "context-menu", "progress"]) {
   frames.get(name)!.forEach((frame, index) => {
-    const normal = frames.get("default")![index];
+    const normal = frames.get("default")!.find(f => f.size === frame.size)!;
     assert.deepEqual(frame.pixels.slice(0, frame.size * Math.floor(24 * frame.size / 48)),
       normal.pixels.slice(0, frame.size * Math.floor(24 * frame.size / 48)),
       `${name}: arrow position and outline match the default cursor`);
   });
+}
+
+for (const name of ["wait", "progress"]) {
+  for (const size of [24, 32, 48]) {
+    const sequence = frames.get(name)!.filter(f => f.size === size);
+    assert.equal(new Set(sequence.map(f => JSON.stringify(f.pixels))).size, 24,
+      name + " " + size + ": 24 distinct animation frames");
+    for (let i = 0; i < sequence.length; i++) {
+      const next = sequence[(i + 1) % sequence.length];
+      const changed = sequence[i].pixels.filter((pixel, p) => pixel !== next.pixels[p]).length;
+      assert(changed > 0 && changed < size * size * 0.45,
+        name + ": bounded frame changes including loop seam");
+    }
+  }
+}
+
+// The visible center of directional shafts must remain Bone, never Ink.
+for (const name of ["all-scroll", "col-resize", "row-resize", "text", "e-resize", "w-resize", "n-resize", "s-resize", "ne-resize", "nw-resize", "se-resize", "sw-resize", "ew-resize", "ns-resize", "nesw-resize", "nwse-resize"]) {
+  for (const { size, pixels } of frames.get(name)!) {
+    const center = Math.floor(size / 2);
+    const pixel = pixels[center * size + center];
+    assert(pixel >>> 24 > 240 && ((pixel >>> 16) & 255) > 160,
+      name + " " + size + ": light Bone body at shaft center");
+  }
 }
 
 // Shared lower anatomy stays stable; upper contours articulate per pose.
@@ -91,7 +136,8 @@ for (const name of ["pointer", "grab", "grabbing"]) {
   }
 }
 for (const [alias, target] of Object.entries({
-  hand2: "pointer", openhand: "grab", closedhand: "grabbing", "dnd-move": "grabbing",
+  watch: "wait", left_ptr_watch: "progress", auto: "default", hand2: "pointer", openhand: "grab", closedhand: "grabbing",
+  "dnd-move": "grabbing", move: "all-scroll",
 })) {
   assert.equal(await readlink(new URL(alias, root)), target, `${alias}: correct interaction state`);
 }
@@ -103,9 +149,12 @@ for (const entry of await readdir(root, { withFileTypes: true })) {
 // Optional contact sheet renders the actual binary pixels over light and dark surfaces.
 if (process.argv[2]) {
   const cells: string[] = [];
-  names.forEach((name, row) => {
-    cells.push(`<text x="12" y="${row * 112 + 28}" fill="#888">${name}</text>`);
-    frames.get(name)!.forEach(({ size, pixels }, column) => {
+  const rows = process.argv[3] === "--animation"
+    ? ["wait", "progress"].flatMap(name => Array.from({length: 24}, (_, frame) => ({name, frame})))
+    : names.map(name => ({name, frame: 0}));
+  rows.forEach(({name, frame}, row) => {
+    cells.push(`<text x="12" y="${row * 112 + 28}" fill="#888">${name} ${process.argv[3] ? frame : ""}</text>`);
+    frames.get(name)!.filter((f, i, all) => all.findIndex(other => other.size === f.size) + frame === i).forEach(({ size, pixels }, column) => {
       for (let background = 0; background < 2; background++) {
         const x = 120 + column * 224 + background * 108, y = row * 112;
         cells.push(`<rect x="${x}" y="${y}" width="104" height="104" fill="${background ? "#eeeeee" : "#101111"}"/>`);
@@ -118,6 +167,6 @@ if (process.argv[2]) {
       }
     });
   });
-  await Bun.write(process.argv[2], `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="784"><rect width="800" height="784" fill="#252727"/>${cells.join("")}</svg>`);
+  await Bun.write(process.argv[2], `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="${rows.length * 112}" viewBox="0 0 800 ${rows.length * 112}"><rect width="800" height="100%" fill="#252727"/>${cells.join("")}</svg>`);
 }
-console.log("Verified 7 cursors × 3 sizes: hotspots, alpha, margins, arrow alignment and aliases.");
+console.log(`Verified ${names.length} cursors, ${[...frames.values()].reduce((sum, list) => sum + list.length, 0)} frames: animation timing, loop, hotspots, alpha, margins, arrow alignment and aliases.`);

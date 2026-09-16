@@ -10,6 +10,8 @@ for command in rsvg-convert convert cc pkg-config; do
 done
 
 mkdir -p "$root/cursors"
+bun "$root/scripts/generate-hands.ts"
+bun "$root/scripts/generate-states.ts"
 cc -O2 -Wall -Wextra "$root/scripts/xcursor-write.c" -o "$tmp/xcursor-write" \
   $(pkg-config --cflags --libs xcursor)
 
@@ -20,7 +22,7 @@ build() {
     local png="$tmp/$name-$size.png" raw="$tmp/$name-$size.rgba"
     rsvg-convert -w "$size" -h "$size" "$root/src/$source.svg" -o "$png"
     convert "$png" -depth 8 "RGBA:$raw"
-    args+=("$size" "$raw")
+    args+=("$size" "$raw" 0)
   done
   "$tmp/xcursor-write" "${args[@]}"
 }
@@ -34,12 +36,47 @@ build grab 24 24 grab
 build copy 5 4 copy
 build alias 5 4 alias
 build no-drop 5 4 no-drop
+build all-scroll 24 24 all-scroll
+build cell 24 24 cell
+build col-resize 24 24 col-resize
+build context-menu 5 4 context-menu
+build crosshair 24 24 crosshair
+build ew-resize 24 24 ew-resize
+build ns-resize 24 24 ns-resize
+build row-resize 24 24 row-resize
+build text 24 24 text
+build help 24 24 help
+build_animated() {
+  local name="$1" xhot="$2" yhot="$3"
+  local args=("$root/cursors/$name" "$xhot" "$yhot")
+  for size in 24 32 48; do
+    for frame in {00..23}; do
+      local png="$tmp/$name-$size-$frame.png" raw="$tmp/$name-$size-$frame.rgba"
+      rsvg-convert -w "$size" -h "$size" "$root/src/frames/$name-$frame.svg" -o "$png"
+      convert "$png" -depth 8 "RGBA:$raw"
+      args+=("$size" "$raw" 50)
+    done
+  done
+  "$tmp/xcursor-write" "${args[@]}"
+}
+build_animated wait 24 24
+build_animated progress 5 4
+build zoom-in 21 21 zoom-in
+build zoom-out 21 21 zoom-out
+build none 0 0 none
+for name in e-resize n-resize ne-resize nesw-resize nw-resize nwse-resize s-resize se-resize sw-resize w-resize; do
+  build "$name" 24 24 "$name"
+done
 
 link() { ln -sf "$1" "$root/cursors/$2"; }
-for name in left_ptr arrow top_left_arrow; do link default "$name"; done
+for name in left_ptr arrow top_left_arrow auto; do link default "$name"; done
 for name in hand hand1 hand2; do link pointer "$name"; done
 for name in openhand; do link grab "$name"; done
-for name in closedhand move dnd-move fleur; do link grabbing "$name"; done
+for name in closedhand dnd-move fleur; do link grabbing "$name"; done
 for name in dnd-copy plus; do link copy "$name"; done
 for name in dnd-link link; do link alias "$name"; done
 for name in not-allowed crossed_circle; do link no-drop "$name"; done
+for name in move; do link all-scroll "$name"; done
+
+link wait watch
+link progress left_ptr_watch

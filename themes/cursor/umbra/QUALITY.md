@@ -23,9 +23,10 @@ testes não devem cristalizar uma geometria que a revisão visual rejeitou.
 ## Fonte de verdade
 
 scripts/generate-hands.ts gera src/hover.svg, src/grab.svg, src/grabbing.svg e
-silhouettes.svg. Não editar os derivados isoladamente. A opção --check verifica
-os três SVGs; a prancha deve ser regenerada junto deles e conferida na CI.
-A seta e os selos permanecem nos outros arquivos de src/.
+silhouettes.svg. scripts/generate-states.ts gera os estados auxiliares,
+direcionais e de precisão. Não editar derivados isoladamente. As opções
+--check verificam todos os SVGs gerados; a prancha deve ser regenerada junto
+das mãos e conferida na CI.
 
 ## Invariantes
 
@@ -45,6 +46,13 @@ A seta e os selos permanecem nos outros arquivos de src/.
 - Seta com haste paralela e base perpendicular; mesma geometria nos selos.
 - Selos: centro (36, 35), raio 9, contorno 2, envelope radial do símbolo de
   6,25 incluindo o traço e folga interna de 1,75.
+- Estados auxiliares: corpo Bone, contorno Charcoal de 2,5 unidades; nunca
+  linhas Ink envoltas por halo Bone. Direcionais têm silhueta preenchida.
+- Menu e progresso reutilizam a seta original, hotspot (5, 4), e selos com
+  centro (36, 35), raio 9 e a mesma folga interna.
+- Espera/progresso: 24 quadros de 50 ms por tamanho, hotspot fixo; a seta
+  de progresso fica imóvel. Validar a transição do último ao primeiro quadro.
+- Preview deve mostrar todos os 32 estados, incluindo os auxiliares.
 - Preservar curva esquerda e saída diagonal do limiar Umbra, Bone e Charcoal.
 
 ## Procedimento para toda atualização
@@ -53,6 +61,7 @@ Na raiz do repositório:
 
 ```sh
 make -C themes/cursor/umbra hands
+make -C themes/cursor/umbra states
 make -C themes/cursor/umbra check preview
 bun themes/cursor/umbra/scripts/verify-cursors.ts /tmp/umbra-cursor-sheet.svg
 rsvg-convert /tmp/umbra-cursor-sheet.svg -o /tmp/umbra-cursor-sheet.png
@@ -60,6 +69,11 @@ rsvg-convert themes/cursor/umbra/silhouettes.svg -o /tmp/umbra-silhouettes.png
 rsvg-convert themes/cursor/umbra/preview.svg -o /tmp/umbra-cursor-preview.png
 git diff --check
 ```
+
+Abra também test.html. O laboratório usa os SVGs no navegador, confirma os 32
+nomes canônicos e 20 aliases, e exercita texto, links, arraste, drop, bloqueio
+e oito alças de redimensionamento. A folha de contato continua sendo a prova
+dos binários XCursor; a página é a prova de aplicação visual.
 
 1. Editar a fonte correspondente e regenerar todos os derivados.
 2. Investigar falhas: não reduzir limites apenas para obter aprovação.
@@ -76,12 +90,14 @@ git diff --check
    arraste, cópia e operação proibida. Registrar aplicativo, ambiente e tamanho.
    O aplicativo escolhe o estado; o tema não força grab depois do drop.
 7. Atualizar gerador, SVGs, binários, aliases, preview, silhuetas e changelog
-   juntos. Registrar o que foi automatizado, inspecionado e testado na sessão.
+   juntos. Atualizar o catálogo em test.js quando adicionar um estado. Registrar
+   o que foi automatizado, inspecionado e testado na sessão.
 
 ## Cobertura automática e limites
 
-make check reconstrói os binários e verifica SVGs gerados, sete cursores × três
-tamanhos, metadados, hotspots visíveis, alpha pré-multiplicado, margens livres,
+make check reconstrói os binários e verifica SVGs gerados, 32 cursores × três
+tamanhos (234 frames incluindo animações), duração, quadros distintos,
+transição do loop, metadados, hotspots visíveis, alpha pré-multiplicado, margens livres,
 alinhamento da seta e aliases de interação.
 Nas mãos verifica região inferior estável, silhueta conectada, punho contínuo
 e volume em três alturas da palma.
@@ -117,7 +133,16 @@ e o outline permanecem invariantes durante esse acabamento.
 - Reconhecimento vem da palma compacta, polegar curvo, assimetrias discretas
   e punho simples. Não adicionar entalhes ou riscos para imitar a referência.
 
-- 21 frames verificados localmente.
+- A expansão de estados verificou 96 frames localmente. `move` foi corrigido
+  para `all-scroll`; `dnd-move` mantém a mão fechada.
 - Silhuetas, preview e pixels finais inspecionados em claro e escuro.
 - Regras anteriores de barras/gaps fixos explicitamente retiradas.
 - Reconhecimento pelo usuário, sessão real e execução remota da CI pendentes.
+
+### Animação — 2026-09-16
+
+Espera e progresso são animações funcionais de atividade; não loops decorativos.
+Use a opção `--animation` após o caminho da folha de contato para inspecionar
+todos os quadros em claro/escuro e nos três tamanhos. A prévia de navegador
+respeita movimento reduzido; isso não altera os binários XCursor. Teste em
+sessão real continua pendente e não é substituído pela prévia.

@@ -1,7 +1,10 @@
-.PHONY: hands build preview check clean
+.PHONY: hands states build preview check clean
 
 hands:
 	bun scripts/generate-hands.ts
+
+states:
+	bun scripts/generate-states.ts
 
 build:
 	./scripts/build-cursor
@@ -11,6 +14,7 @@ preview:
 
 check: build
 	bun scripts/generate-hands.ts --check
+	bun scripts/generate-states.ts --check
 	bun scripts/verify-cursors.ts
 
 clean:
