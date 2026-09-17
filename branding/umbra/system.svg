@@ -1,21 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1500" viewBox="0 0 1600 1500" role="img" aria-labelledby="title desc">
-<title id="title">Umbra — sistema visual UM</title><desc id="desc">Monograma horizontal, assinatura, paleta e aplicações com e sem marca.</desc>
+<title id="title">Umbra — sistema visual limiar</title><desc id="desc">Símbolo limiar, assinatura, paleta e aplicações com e sem marca.</desc>
 <defs>
- <g id="um"><path d="M16 16V68C16 108 72 108 72 68V16L104 60L136 16V100" fill="none" stroke="currentColor" stroke-width="16" stroke-linejoin="bevel"/></g>
+ <g id="symbol"><path d="M24 20V72Q24 108 60 108H100L148 44" fill="none" stroke="currentColor" stroke-width="16" stroke-linejoin="round"/></g>
  <g id="limiar"><path d="M0 0V150Q0 270 120 270H360L480 150" fill="none" stroke="currentColor" stroke-width="32"/></g>
 </defs>
 <rect width="1600" height="1500" fill="#111111"/>
 <g font-family="DejaVu Sans, sans-serif" fill="#E6E6E6">
  <text x="64" y="64" font-size="16" letter-spacing="4">UMBRA / IDENTIDADE VISUAL</text><text x="1536" y="64" text-anchor="end" font-size="14" fill="#A8A8A8">01 — LIMIAR</text>
  <rect x="48" y="100" width="1504" height="520" fill="#000000"/>
- <use href="#um" x="0" y="0" transform="translate(140 186) scale(3.2)" color="#E6E6E6"/>
+ <use href="#symbol" x="0" y="0" transform="translate(142 184) scale(3.2)" color="#E6E6E6"/>
  <text x="840" y="315" font-size="92" letter-spacing="-4">umbra</text>
  <text x="844" y="369" font-size="17" letter-spacing="3" fill="#A8A8A8">A SOMBRA DELIMITA.</text>
  <text x="844" y="397" font-size="17" letter-spacing="3" fill="#A8A8A8">O CONTEÚDO APARECE.</text>
- <text x="100" y="576" font-size="14" fill="#8A8A8A">U À ESQUERDA / M À DIREITA / UMA HASTE COMPARTILHADA</text>
+ <text x="100" y="576" font-size="14" fill="#8A8A8A">CURVA À ESQUERDA / ABERTURA SUPERIOR / SAÍDA DIAGONAL</text>
  <text x="64" y="677" font-size="14" letter-spacing="2">02 / SISTEMA EM USO</text>
  <rect x="48" y="710" width="736" height="410" fill="#000000"/>
- <use href="#um" transform="translate(90 746) scale(.42)" color="#E6E6E6"/>
+ <use href="#symbol" transform="translate(90 746) scale(.42)" color="#E6E6E6"/>
  <text x="173" y="780" font-size="25" letter-spacing="-1">umbra</text>
  <text x="96" y="878" font-size="50" letter-spacing="-2">Menos ruído.</text><text x="96" y="930" font-size="50" letter-spacing="-2">Mais espaço.</text>
  <use href="#limiar" transform="translate(480 770) scale(.5 .9)" color="#383838"/>

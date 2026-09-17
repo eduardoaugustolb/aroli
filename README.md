@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="branding/umbra/logo/umbra-symbol.svg" alt="Monograma UM da Umbra" width="152" />
+  <img src="branding/umbra/logo/umbra-symbol.svg" alt="Símbolo limiar da Umbra" width="172" />
 
   # Umbra
 
@@ -34,6 +34,7 @@ Começamos com temas para desenvolvimento e terminal, mas a identidade foi pensa
 | [Starship](themes/starship/umbra/README.md) | Umbra | Prompt compacto com contexto Git e runtimes discretos |
 | [Chrome](themes/chrome/umbra/README.md) | Umbra / Umbra Ink | Tema charcoal (ou Ink na omnibox e NTP) com a mesma base do VS Code |
 | [Cursor](themes/cursor/umbra/README.md) | Umbra Cursor | Cursor para Linux: hover de mão e drag-and-drop com indicadores claros |
+| [IDEs JetBrains](themes/jetbrains/umbra/README.md) | Umbra | Tema charcoal para WebStorm, GoLand, IntelliJ IDEA e outras IDEs da plataforma |
 
 Cada tema possui tutorial individual de instalação, changelog e arquivo de configuração próprio.
 
@@ -48,7 +49,7 @@ ou aplicações fora do escopo da tarefa.
 - **Charcoal primeiro:** superfícies escuras, consistentes e confortáveis para uso prolongado.
 - **Neutros como base:** branco, cinza e preto formam o ambiente.
 - **Cor com função:** os acentos comunicam sintaxe, estado, diagnóstico ou ação.
-- **Memória visual:** o monograma UM e a linguagem de formas acompanham todos os produtos.
+- **Memória visual:** o limiar e sua linguagem de formas acompanham todos os produtos.
 - **Escala controlada:** cada integração preserva os mesmos tokens, relações e intenções.
 
 ## ▣ Wallpapers
@@ -82,6 +83,7 @@ themes/
 ├── chrome/umbra/      # tema Umbra para o Chrome
 ├── chrome/umbra-ink/  # variante Ink para o Chrome
 ├── cursor/umbra/      # tema de cursor XCursor para Linux
+├── jetbrains/umbra/   # plugin de tema para IDEs JetBrains
 └── desktop/         # ambientes gráficos futuros
 wallpapers/
 ├── static/          # wallpapers estáticos futuros

@@ -2,9 +2,9 @@
 
 Reconstrução de 2026-09-05, orientada pela skill `memorable-visual-identity`.
 
-O monograma agora se lê horizontalmente: U à esquerda, M à direita, com haste compartilhada. A ordem das letras determina a construção. O conceito de coruja e o empilhamento anterior foram retirados.
+O símbolo é um limiar aberto: desce à esquerda, percorre uma curva inferior, segue por uma base curta e sai em diagonal à direita. Ele representa a passagem entre sombra e conteúdo sem tentar desenhar letras. O conceito de coruja e os monogramas anteriores foram retirados.
 
-Revisão 0.4.1: um único percurso contínuo. A curva do U sobe diretamente para a entrada do M, sem o ramal vertical que engrossava a junção. O traço permanece em 16 unidades, com tangência vertical entre curva e haste.
+Revisão 0.5.0: o limiar, antes asset secundário, passa a ser o símbolo principal. O traço tem 16 unidades; a curva é a única transição arredondada e a saída diagonal permanece aberta. A forma é um percurso único, sem ramificações.
 
 ![Sistema visual](system.svg)
 
@@ -22,9 +22,9 @@ Revisão 0.4.1: um único percurso contínuo. A curva do U sobe diretamente para
 
 Os originais são SVGs editáveis, sem imagens raster embutidas ou recursos remotos. A geometria do símbolo não depende de fontes. As pranchas usam DejaVu Sans, com fallback sans-serif; a fonte não é distribuída. Os PNGs em `exports/` são derivados dos vetores.
 
-Reprodução: largura mínima recomendada de 32 px para o símbolo; margem livre de 16 unidades além do desenho, cuja caixa externa tem aproximadamente 136 × 101 unidades. Para avatares, usar o arquivo dedicado com folga para recorte circular. Preto sobre claro; Bone sobre preto. Não espelhar, empilhar, recortar ou separar as letras por cor.
+Reprodução: largura mínima recomendada de 32 px para o símbolo; margem livre de 16 unidades além do desenho, cuja caixa externa tem aproximadamente 124 × 88 unidades. Para avatares, usar o arquivo dedicado com folga para recorte circular. Preto sobre claro; Bone sobre preto. Não espelhar, fechar a abertura, recortar ou aplicar efeitos.
 
-Construção autoral assistida por Codex. Não há nova licença de distribuição estabelecida por este diretório. A nova direção está implementada; associação espontânea à marca e leitura por pessoas ainda não foram medidas.
+Construção autoral assistida por Codex. Não há nova licença de distribuição estabelecida por este diretório. A nova direção está implementada; associação espontânea à marca ainda não foi medida.
 
 ---
 

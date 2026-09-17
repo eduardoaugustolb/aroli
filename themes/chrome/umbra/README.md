@@ -47,7 +47,7 @@ Em `chrome://extensions`, clique em **Remover** no cartão Umbra. Isso volta ao 
 
 O `umbra-0.1.0.zip` ao lado do README contém só `manifest.json` e a
 imagem da NTP, pronto para upload. O ícone `store/icon-128.png` (gerado de
-`store/icon.svg`, monograma UM em Bone sobre Charcoal) vai separado, nos
+`store/icon.svg`, limiar em Bone sobre Charcoal) vai separado, nos
 campos da ficha da loja. Para regenerar o zip após mudar o tema:
 
 ```sh

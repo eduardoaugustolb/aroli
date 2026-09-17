@@ -14,8 +14,7 @@ A preferência por preto OLED e neutros permanece. A identidade deve comunicar a
 
 | Hierarquia | Asset | Regra e motivo |
 | --- | --- | --- |
-| Primário | Monograma UM horizontal | U primeiro, M depois, uma haste comum. A sequência permite leitura direta e a conexão dá unidade |
-| Primário | Limiar | Contorno aberto: descida vertical, curva inferior à esquerda, base horizontal, saída diagonal à direita. Reproduz a passagem curva/ângulo das letras |
+| Primário | Limiar aberto | Descida vertical, curva inferior à esquerda, base curta e saída diagonal à direita. A silhueta representa uma passagem, não letras |
 | Secundário | Composição | Título curto à esquerda, limiar à direita e metadados no rodapé. Repetir a distribuição ajuda a criar parentesco |
 | Secundário | Tipografia | Nome em caixa baixa; títulos próximos, rótulos pequenos espaçados |
 | Secundário | Relação tonal | Campo preto dominante, forma em cinza e conteúdo localizado em Bone |
@@ -23,15 +22,15 @@ A preferência por preto OLED e neutros permanece. A identidade deve comunicar a
 
 Sem logo, nome e slogan, devem restar o limiar assimétrico, o ritmo de títulos e a distribuição tonal. A prancha contém essa aplicação. São candidatos a associação pela repetição, não assets de exclusividade comprovada.
 
-## 3. Logo e nome
+## 3. Símbolo e nome
 
 Nome público: **Umbra**; identificadores: `umbra`; assinatura editorial em caixa baixa. Destinos usam “Umbra para Zed” e descritores equivalentes, sem criar submarcas por aplicativo.
 
-O [original](branding/umbra/logo/umbra-symbol.svg) tem viewBox 152 × 116 e traço 16. Um único percurso parte de (16,16), desce até (16,68), percorre a curva do U e chega a (72,68) com tangente vertical. Dali sobe diretamente a (72,16), entra nas diagonais do M por (104,60) e (136,16), e termina em (136,100). A subida em x=72 é simultaneamente a haste direita do U e a entrada do M; não existe prolongamento independente abaixo da junção. A curva tem pequena compensação abaixo da base reta. Terminais retos e encontros chanfrados.
+O [original](branding/umbra/logo/umbra-symbol.svg) tem viewBox 172 × 132 e traço 16. Um único percurso parte de (24,20), desce até (24,72), percorre a curva inferior e chega a (60,108), segue pela base até (100,108) e sobe em diagonal até (148,44). A curva inferior esquerda é a única transição arredondada; a abertura superior e os terminais retos preservam a sensação de passagem.
 
-A ordem é espacial: U à esquerda, M à direita. Não empilhar letras. A coruja e o antigo V sobre U deixam de orientar o sistema. Não usar olhos, orelhas ou máscaras animais.
+O símbolo não representa iniciais. A coruja, os monogramas e o antigo V sobre U deixam de orientar o sistema. Não usar olhos, orelhas, máscaras animais ou letras escondidas.
 
-Largura mínima recomendada: 32 px; abaixo disso a leitura perde definição. Área livre: pelo menos 16 unidades além da caixa do desenho. Avatar usa margem maior, já aplicada no arquivo próprio. Usar Bone sobre preto ou preto sobre claro. Não espelhar, deformar, recortar, separar por cor, aplicar efeitos ou usar contorno adicional. O símbolo é vetor; as pranchas têm textos editáveis.
+Largura mínima recomendada: 32 px; abaixo disso a curva e a diagonal perdem definição. Área livre: pelo menos 16 unidades além da caixa do desenho. Avatar usa margem maior, já aplicada no arquivo próprio. Usar Bone sobre preto ou preto sobre claro. Não espelhar, fechar a abertura, deformar, recortar, aplicar efeitos ou usar contorno adicional. O símbolo é vetor; as pranchas têm textos editáveis.
 
 ## 4. Cores fundamentais
 
@@ -130,7 +129,7 @@ Interfaces usam fonte de sistema; código preserva a escolha do usuário. Não i
 
 ## 7. Forma, composição e imagem
 
-Limiar mestre: percurso `M0 0 V150 Q0 270 120 270 H360 L480 150`, traço 32, sem preenchimento. Invariantes: abertura superior, curva só à esquerda, saída diagonal à direita e terminais retos. Variam extensão da base, altura e escala conforme suporte; manter a curva visível e a diagonal ascendente. Nunca inverter os lados. Uma forma dominante por peça, sem padrões de múltiplos símbolos.
+Limiar mestre: percurso `M24 20 V72 Q24 108 60 108 H100 L148 44`, traço 16, sem preenchimento. Invariantes: abertura superior, curva só à esquerda, base curta, saída diagonal à direita e terminais retos. Variam escala e espessura conforme suporte; manter a curva visível e a diagonal ascendente. Nunca inverter os lados. Uma forma dominante por peça, sem padrões de múltiplos símbolos.
 
 Grade de oito colunas, margens de aproximadamente 6%, título nas primeiras quatro colunas e forma no terço direito. Metadados repetem o eixo do título no rodapé. Em retrato, título vem antes da forma; em interfaces pequenas, omitir a forma se competir com a tarefa. Espaçamento em múltiplos de 4 px. Não moldar campos, textos ou botões no contorno do limiar.
 
@@ -178,9 +177,11 @@ Construção vetorial autoral assistida por Codex. Nenhum bitmap gerado é usado
 
 As provas de monocromia, redução, desfoque, oclusão e retirada da assinatura foram renderizadas e inspecionadas. A troca por Nord ainda é plausível: layout e preto têm baixa exclusividade isolados. O [relatório](branding/umbra/REVIEW.md) registra notas conservadoras e protocolo de cinco segundos, pendente de participantes.
 
-Brief: “Criar para Umbra a partir do limiar entre sombra e conteúdo. Usar UM horizontal com haste comum, limiar aberto com curva esquerda e saída diagonal direita, campo preto dominante, títulos curtos e metadados alinhados. Variar escala e extensão mantendo a direção. Demonstrar uma aplicação sem nome, logo e slogan. Preservar legibilidade e comportamento nativo.”
+Brief: “Criar para Umbra a partir do limiar entre sombra e conteúdo. Usar o limiar aberto com curva esquerda e saída diagonal direita, campo preto dominante, títulos curtos e metadados alinhados. Variar escala e extensão mantendo a direção. Demonstrar uma aplicação sem nome, logo e slogan. Preservar legibilidade e comportamento nativo.”
 
 ## Histórico
+
+- **0.5.0 — 2026-09-17:** limiar aberto promovido de asset secundário a símbolo principal. Monograma UM removido de assets oficiais, web e ícones de integrações.
 
 - **0.4.1 — 2026-09-05:** removido o ramal `M72 68V100`; a curva do U segue diretamente para a entrada do M em um único percurso, sem ramificação. Vetores e PNGs atualizados.
 - **0.6.0 — 2026-09-05:** UI do Zed consolidada em Charcoal; variações de superfície removidas de painéis, abas, menus e controles.
