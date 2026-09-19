@@ -1,0 +1,11 @@
+{
+  "name": "umbra-mono-font",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "bun build.ts"
+  },
+  "dependencies": {
+    "opentype.js": "^1.3.4"
+  }
+}

@@ -38,6 +38,10 @@ Começamos com temas para desenvolvimento e terminal, mas a identidade foi pensa
 
 Cada tema possui tutorial individual de instalação, changelog e arquivo de configuração próprio.
 
+## ◇ Fonte em desenvolvimento
+
+[Umbra Limiar Mono NF](fonts/umbra/README.md) é um protótipo de fonte para código com letras autorais, ligaduras e ícones Nerd Font creditados separadamente. O [espécime](fonts/umbra/dist/specimen.png) mostra o desenho atual. A fonte é opcional e ainda está em avaliação de legibilidade e cobertura.
+
 ## Instruções para agentes
 
 [LLMS.md](LLMS.md) contém somente navegação, segurança e privacidade. Cada
@@ -89,6 +93,7 @@ wallpapers/
 ├── static/          # wallpapers estáticos futuros
 └── animated/        # wallpapers animados futuros
 branding/umbra/      # logo, exports e sistema visual
+fonts/umbra/         # fonte autoral para código (protótipo)
 ```
 
 Cada família deve manter seu próprio `README.md`, `CHANGELOG.md` e arquivos de configuração. O tutorial individual precisa explicar requisitos, instalação, atualização e remoção ou reversão.
@@ -102,7 +107,7 @@ Cada família deve manter seu próprio `README.md`, `CHANGELOG.md` e arquivos de
 
 ## ⚖ Licença
 
-Umbra é um projeto proprietário. O uso pessoal local dos temas e wallpapers é permitido conforme os termos de [`LICENSE`](LICENSE). Cópia, redistribuição, modificação, incorporação em outros projetos e uso comercial exigem autorização prévia.
+Umbra é um projeto proprietário. O uso pessoal local dos temas e wallpapers é permitido conforme os termos de [`LICENSE`](LICENSE). Cópia, redistribuição, modificação, incorporação em outros projetos e uso comercial exigem autorização prévia. O OTF protótipo da fonte incorpora ícones Nerd Fonts de terceiros; consulte as [notas de licenciamento da fonte](fonts/umbra/README.md#licenciamento) antes de redistribuí-lo.
 
 ## #umbra
 
