@@ -1,6 +1,6 @@
 id = "umbra-charcoal-theme"
 name = "Umbra Theme"
-version = "0.7.0"
+version = "0.7.2"
 schema_version = 1
 authors = ["Eduardo Augusto Lima Bueno"]
 description = "Dark charcoal theme with semantic accents and controlled color"

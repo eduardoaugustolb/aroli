@@ -6,7 +6,7 @@ Os ícones vêm de **Symbols Nerd Font** e mantêm seus pontos de código. São 
 
 ## Construção
 
-Requisitos: Bun, `opentype.js` (instalado pelo Bun), `fonttools` e o arquivo `SymbolsNerdFont-Regular.ttf`. O script procura este último em `/usr/share/fonts/TTF/` ou no caminho indicado por `UMBRA_NERD_SYMBOLS`.
+Requisitos: Bun, `opentype.js` (instalado pelo Bun), `fonttools`, `pango-view`, Fontconfig e o arquivo `SymbolsNerdFont-Regular.ttf`. O script procura este último em `/usr/share/fonts/TTF/` ou no caminho indicado por `UMBRA_NERD_SYMBOLS`.
 
 ```sh
 cd fonts/umbra
@@ -17,6 +17,8 @@ bun run build
 Saída: [`dist/UmbraLimiarMonoNF-Regular.otf`](dist/UmbraLimiarMonoNF-Regular.otf). O arquivo `dist/*-base.otf` é intermediário. Ative *contextual alternates* (`calt`) no editor para `->`, `=>`, `!=`, `<=`, `>=` e `==`. O símbolo Umbra fica em U+100000. Veja o [espécime PNG](dist/specimen.png) ou [SVG](dist/specimen.svg).
 
 ## Estado do protótipo
+
+A prova visual é produzida com Pango/HarfBuzz a partir do OTF final, em um ambiente Fontconfig isolado sem fontes de fallback. Inclui os 37 caracteres acentuados, comparação `calt=0`/`calt=1`, i/j, ícones e tamanhos de 12, 14, 16 e 24 px. É obrigatório abrir e inspecionar o PNG após alterações; a geração do arquivo por si só não constitui aprovação visual.
 
 - Cobertura textual: ASCII 32–126 e 37 letras acentuadas comuns em português e idiomas próximos. Ainda faltam outros caracteres latinos, pesos, itálico e refinamento de espaçamento e hinting.
 - As ligaduras preservam a largura total da sequência. Seu suporte visual depende do editor/terminal.

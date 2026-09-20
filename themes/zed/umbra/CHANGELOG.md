@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.7.2] - 2026-09-14
+
+- hover de warn corrigido: `warning` clareado para `#D7BF88` sobre `warning.background` `#211A0E` (9.6:1), `warning.border` para `#8A774E`;
+- `elevated_surface.background` elevado para `#161919` para popovers se destacarem do editor;
+- sintaxe menos cinza em Go: tipos/constantes/construtores/escapes em blue `#7FB8CC`, namespaces/módulos/membros/propriedades em sage `#9AB7B0`, adicionados `namespace`, `module` e `parameter`.
+
+## [0.7.1] - 2026-09-11
+
+- botão Install/Upgrade das extensões agora usa `info.background` sage escuro em vez do azul padrão do Zed;
+- adicionados `info.border`, `hint.background/border`, `success.border` e família `warning` para evitar fallbacks azuis;
+- `panel.focused_border` alinhado de `#00A6C7` para sage `#9AB7B0`, consistente com `border.focused`.
+
 ## [0.3.0] - 2026-09-05
 
 - nova base dark charcoal com editor Ink `#050505` e painéis Charcoal `#101111`;

@@ -11,6 +11,7 @@ const out = join(root, 'dist');
 mkdirSync(out, { recursive: true });
 const S = 2.048;
 const cell = 600;
+const advance = Math.round(cell*S);
 const weight = 67;
 type Pt = [number, number];
 type Stroke = Pt[];
@@ -55,8 +56,8 @@ const G: Record<string, Stroke[]> = {
   F: [[[105,0],[105,700],[470,700]],[[105,355],[410,355]]],
   G: [[[470,610],[380,700],[190,700],[100,600],[100,100],[190,0],[385,0],[470,90],[470,330],[320,330]]],
   H: [[[105,0],[105,700]],[[475,0],[475,700]],[[105,355],[475,355]]],
-  I: [[[165,700],[435,700]],[[300,700],[300,0]],[[165,0],[435,0]]],
-  J: [[[170,90],[245,0],[375,0],[460,100],[460,700]]],
+  I: [[[100,700],[500,700]],[[300,700],[300,0]],[[100,0],[500,0]]],
+  J: [[[110,90],[185,0],[375,0],[460,100],[460,700]]],
   K: [[[105,0],[105,700]],[[470,700],[105,330],[475,0]]],
   L: [[[105,700],[105,0],[470,0]]],
   M: [[[90,0],[90,700],[300,335],[510,700],[510,0]]],
@@ -75,24 +76,24 @@ const G: Record<string, Stroke[]> = {
   Z: [[[95,700],[485,700],[95,0],[485,0]]],
   a: [[[450,385],[365,475],[190,475],[105,385],[105,90],[190,0],[365,0],[450,90]],[[450,475],[450,0]]],
   b: [[[105,700],[105,0]],[[105,385],[190,475],[365,475],[460,380],[460,95],[365,0],[190,0],[105,95]]],
-  c: [[[450,390],[365,475],[190,475],[105,380],[105,95],[190,0],[365,0],[450,85]]],
+  c: [[[465,390],[365,475],[190,475],[105,380],[105,95],[190,0],[365,0],[465,85]]],
   d: [[[475,700],[475,0]],[[475,385],[390,475],[215,475],[120,380],[120,95],[215,0],[390,0],[475,95]]],
   e: [[[105,240],[465,240],[465,380],[375,475],[195,475],[105,380],[105,95],[195,0],[390,0],[465,70]]],
-  f: [[[160,0],[160,600],[245,700],[410,700]],[[70,475],[400,475]]],
+  f: [[[160,0],[160,600],[245,700],[470,700]],[[70,475],[460,475]]],
   g: [[[455,475],[455,-110],[365,-205],[185,-205],[105,-135]],[[455,375],[365,475],[190,475],[105,380],[105,95],[190,0],[365,0],[455,95]]],
   h: [[[105,700],[105,0]],[[105,375],[200,475],[365,475],[460,375],[460,0]]],
-  i: [[[285,475],[285,0]],[[195,0],[385,0]]],
-  j: [[[390,475],[390,-105],[300,-205],[185,-205]]],
+  i: [[[300,475],[300,0]],[[210,475],[390,475]],[[210,0],[420,0]]],
+  j: [[[350,475],[350,-105],[220,-205],[90,-205]]],
   k: [[[105,700],[105,0]],[[455,475],[105,205],[460,0]]],
-  l: [[[220,700],[220,85],[305,0],[385,0]]],
+  l: [[[285,700],[285,85],[350,0],[490,0]]],
   m: [[[75,0],[75,475]],[[75,375],[155,475],[245,475],[305,375],[305,0]],[[305,375],[385,475],[465,475],[525,375],[525,0]]],
   n: [[[105,0],[105,475]],[[105,375],[200,475],[365,475],[460,375],[460,0]]],
   o: [[[190,0],[105,95],[105,380],[190,475],[380,475],[475,380],[475,95],[380,0],[190,0]]],
   p: [[[105,-205],[105,475]],[[105,380],[195,475],[370,475],[460,380],[460,95],[370,0],[195,0],[105,95]]],
   q: [[[475,-205],[475,475]],[[475,380],[385,475],[210,475],[120,380],[120,95],[210,0],[385,0],[475,95]]],
-  r: [[[105,0],[105,475]],[[105,340],[210,475],[390,475]]],
+  r: [[[105,0],[105,475]],[[105,340],[210,475],[480,475]]],
   s: [[[450,405],[370,475],[190,475],[110,405],[110,315],[190,245],[370,230],[450,155],[450,70],[370,0],[190,0],[110,70]]],
-  t: [[[210,620],[210,95],[295,0],[425,0]],[[95,475],[425,475]]],
+  t: [[[210,620],[210,95],[295,0],[460,0]],[[95,475],[460,475]]],
   u: [[[105,475],[105,95],[195,0],[365,0],[460,95]],[[460,475],[460,0]]],
   v: [[[85,475],[285,0],[485,475]]],
   w: [[[60,475],[155,0],[290,285],[425,0],[520,475]]],
@@ -109,7 +110,7 @@ const G: Record<string, Stroke[]> = {
   '7': [[[90,700],[500,700],[235,0]]],
   '8': [[[190,0],[100,95],[100,250],[190,350],[390,350],[480,250],[480,95],[390,0],[190,0]],[[190,350],[110,445],[110,605],[190,700],[390,700],[470,605],[470,445],[390,350]]],
   '9': [[[475,330],[385,420],[195,420],[105,510],[105,605],[195,700],[385,700],[475,605],[475,100],[385,0],[195,0],[120,65]]],
-  '!': [[[290,700],[290,190]]],
+  '!': [[[300,700],[300,190]]],
   '?': [[[105,590],[200,700],[385,700],[475,590],[475,460],[290,300],[290,205]]],
   '.': [], ',': [[[300,35],[250,-115]]], ':': [], ';': [[[300,35],[250,-115]]],
   '-': [[[130,250],[450,250]]], '_': [[[80,-75],[500,-75]]],
@@ -117,7 +118,7 @@ const G: Record<string, Stroke[]> = {
   '=': [[[110,355],[470,355]],[[110,140],[470,140]]],
   '<': [[[465,530],[105,255],[465,0]]], '>': [[[105,530],[465,255],[105,0]]],
   '/': [[[95,-80],[485,700]]], '\\': [[[95,700],[485,-80]]],
-  '|': [[[290,700],[290,-120]]],
+  '|': [[[300,700],[300,-120]]],
   '(': [[[405,750],[250,590],[210,350],[250,110],[405,-50]]],
   ')': [[[175,750],[330,590],[370,350],[330,110],[175,-50]]],
   '[': [[[390,750],[210,750],[210,-50],[390,-50]]],
@@ -131,18 +132,18 @@ const G: Record<string, Stroke[]> = {
   '@': [[[475,80],[390,0],[185,0],[105,95],[105,600],[185,700],[390,700],[475,600],[475,260],[390,175],[270,175],[195,255],[195,450],[270,530],[390,530],[475,450]]],
   '$': [[[465,615],[380,700],[190,700],[105,615],[105,450],[190,360],[380,340],[465,250],[465,85],[380,0],[190,0],[105,85]],[[290,760],[290,-60]]],
   '^': [[[105,350],[290,700],[475,350]]], '~': [[[90,235],[180,320],[290,260],[400,200],[490,285]]],
-  '`': [[[220,760],[340,610]]], "'": [[[290,700],[290,480]]],
-  '"': [[[200,700],[200,480]],[[380,700],[380,480]]],
+  '`': [[[240,760],[360,610]]], "'": [[[300,700],[300,480]]],
+  '"': [[[210,700],[210,480]],[[390,700],[390,480]]],
 };
 
-const glyphs: any[] = [new opentype.Glyph({name:'.notdef',advanceWidth:cell*S,path:pathOf([[[100,0],[100,700],[500,700],[500,0],[100,0]],[[100,0],[500,700]]])})];
-const add = (name:string, unicode:number|undefined, path:any, width=cell) => glyphs.push(new opentype.Glyph({name,unicode,advanceWidth:width*S,path}));
+const glyphs: any[] = [new opentype.Glyph({name:'.notdef',advanceWidth:advance,path:pathOf([[[100,0],[100,700],[500,700],[500,0],[100,0]],[[100,0],[500,700]]])})];
+const add = (name:string, unicode:number|undefined, path:any, width=cell) => glyphs.push(new opentype.Glyph({name,unicode,advanceWidth:advance*width/cell,path}));
 for (let cp=32;cp<=126;cp++) {
   const ch=String.fromCharCode(cp), path=pathOf(G[ch] || []);
   if ('!.:;?ij'.includes(ch)) {
-    if ('!.:;?'.includes(ch)) circle(path,[290,55],34);
-    if (':;'.includes(ch)) circle(path,[290,375],34);
-    if ('ij'.includes(ch)) circle(path,[285,650],34);
+    if ('!.:;?'.includes(ch)) circle(path,[300,55],40);
+    if (':;'.includes(ch)) circle(path,[300,375],40);
+    if ('ij'.includes(ch)) circle(path,[ch==='j'?350:300,625],42);
   }
   if (ch==='%') { circle(path,[155,575],80);circle(path,[425,125],80); }
   if (ch==='&') stroke(path,[[325,365],[490,0]]);
@@ -161,13 +162,13 @@ const accents: Record<string,[string,string]> = {
   'Ú':['U','acute'],'Ç':['C','cedilla'],'Ñ':['N','tilde'],
 };
 for (const [character,[base,accent]] of Object.entries(accents)) {
-  const upper=base===base.toUpperCase(), top=upper?780:605;
+  const upper=base===base.toUpperCase(), top=upper?845:605;
   const path=pathOf(G[base]);
-  if (accent==='acute') stroke(path,[[235,top-55],[345,top+25]],55);
-  if (accent==='grave') stroke(path,[[235,top+25],[345,top-55]],55);
-  if (accent==='circumflex') {stroke(path,[[190,top-50],[290,top+25],[390,top-50]],50);}
-  if (accent==='tilde') stroke(path,[[165,top-25],[235,top+20],[305,top-20],[375,top+25]],45);
-  if (accent==='diaeresis') {circle(path,[210,top],30);circle(path,[370,top],30);}
+  if (accent==='acute') stroke(path,[[225,top-70],[365,top+30]],70);
+  if (accent==='grave') stroke(path,[[225,top+30],[365,top-70]],70);
+  if (accent==='circumflex') {stroke(path,[[185,top-65],[300,top+35],[415,top-65]],65);}
+  if (accent==='tilde') stroke(path,[[150,top-30],[230,top+25],[330,top-25],[410,top+30]],60);
+  if (accent==='diaeresis') {circle(path,[200,top],38);circle(path,[400,top],38);}
   if (accent==='cedilla') stroke(path,[[310,0],[345,-95],[260,-145]],48);
   add(`uni${character.codePointAt(0)!.toString(16).padStart(4,'0').toUpperCase()}`,character.codePointAt(0),path);
 }
@@ -180,9 +181,9 @@ add('umbraLimiar',0x100000,mark);
 const ligatures: [string,string,Stroke[]][] = [
   ['->','arrowRight',[[[135,350],[1040,350]],[[800,565],[1040,350],[800,135]]]],
   ['=>','doubleArrowRight',[[[130,455],[810,455]],[[130,245],[810,245]],[[780,565],[1050,350],[780,135]]]],
-  ['!=','notEqual',[[[200,650],[350,140]],[[670,450],[1050,450]],[[670,245],[1050,245]]]],
-  ['<=','lessEqual',[[[505,600],[110,350],[505,100]],[[690,140],[1060,140]]]],
-  ['>=','greaterEqual',[[[100,600],[495,350],[100,100]],[[690,140],[1060,140]]]],
+  ['!=','notEqual',[[[730,620],[470,80]],[[145,455],[1055,455]],[[145,245],[1055,245]]]],
+  ['<=','lessEqual',[[[945,640],[255,390],[945,200]],[[255,60],[945,60]]]],
+  ['>=','greaterEqual',[[[255,640],[945,390],[255,200]],[[255,60],[945,60]]]],
   ['==','doubleEqual',[[[145,455],[1055,455]],[[145,245],[1055,245]]]],
 ];
 for (const [sequence,name,parts] of ligatures) add(name,undefined,pathOf(parts),cell*sequence.length);
@@ -217,7 +218,7 @@ for (let i=0;i<symbols.glyphs.length;i++) {
   add(`nf${cp.toString(16).toUpperCase()}`,cp,p);
   iconCount++;
 }
-const font=new opentype.Font({familyName:'Umbra Limiar Mono NF',styleName:'Regular',unitsPerEm:2048,ascender:1638,descender:-410,glyphs});
+const font=new opentype.Font({familyName:'Umbra Limiar Mono NF',styleName:'Regular',unitsPerEm:2048,ascender:1884,descender:-512,glyphs});
 for (const platform of ['windows','macintosh','unicode']) {
   if (font.names[platform]) {
     font.names[platform].copyright={en:'Umbra text outlines © 2026 Umbra contributors. Nerd Font symbols © their respective authors.'};
@@ -232,13 +233,8 @@ const result=spawnSync('fonttools',['feaLib','-o',final,feature,base],{encoding:
 if(result.status!==0) throw new Error(`fonttools feaLib failed: ${result.stderr}`);
 const licenseSource=process.env.UMBRA_NERD_LICENSE || '/usr/share/licenses/ttf-nerd-fonts-symbols-common/LICENSE';
 writeFileSync(join(out,'NERD-FONTS-LICENSE.txt'),readFileSync(licenseSource));
-const svgPath=(value:string,x:number,y:number,size:number)=>font.getPath(value,x,y,size,{kerning:false}).toPathData(2);
-const specimen=`<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="920" viewBox="0 0 1440 920">
-<rect width="1440" height="920" fill="#050505"/><rect x="48" y="48" width="1344" height="824" fill="#101111" stroke="#252727"/>
-<g fill="none" stroke="#252727"><path d="M72 210H1368M72 690H1368"/></g>
-<g fill="#858A89" font-family="sans-serif" font-size="19" letter-spacing="3"><text x="80" y="96">UMBRA / LIMIAR MONO NF — PROTÓTIPO 01</text><text x="80" y="750">GLIFOS AUTORAIS + SÍMBOLOS NERD FONT</text></g>
-<g fill="#C5C7C5"><path d="${svgPath('Umbra Limiar',80,178,74)}"/><path d="${svgPath('ABCDEFGHIJKLMNOPQRSTUVWXYZ',80,305,40)}"/><path d="${svgPath('abcdefghijklmnopqrstuvwxyz',80,390,40)}"/><path d="${svgPath('0123456789  !?{}[]()<>=+-/',80,475,40)}"/><path d="${svgPath('const limiar = (shadow) => light;',80,595,48)}"/></g>
-<path d="${svgPath(String.fromCodePoint(0x100000),1110,840,180)}" fill="#C5C7C5"/>
-</svg>`;
-writeFileSync(join(out,'specimen.svg'),specimen);
+const proof=spawnSync(process.execPath,[join(root,'proof.ts')],{stdio:'inherit'});
+if(proof.status!==0) throw new Error('Visual proof generation failed');
+const verify=spawnSync(process.execPath,[join(root,'verify.ts')],{stdio:'inherit'});
+if(verify.status!==0) throw new Error('Final font verification failed');
 console.log(`Built ${final}: ${glyphs.length} glyphs, ${iconCount} Nerd Font symbols, ${ligatures.length} ligatures`);

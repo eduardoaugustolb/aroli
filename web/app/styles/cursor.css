@@ -16,6 +16,40 @@
 .custom-cursor-active * {
   cursor: none !important;
 }
+.motion-cursor--umbra {
+  width: 0 !important;
+  height: 0 !important;
+  background: none;
+  mix-blend-mode: normal;
+  border-radius: 0;
+}
+.umbra-cursor-sprites {
+  position: absolute;
+  transform-origin: 0 0;
+}
+.umbra-cursor-sprites img {
+  position: absolute;
+  max-width: none;
+  display: none;
+}
+.motion-cursor--umbra[data-shape="arrow"] [data-shape="arrow"],
+.motion-cursor--umbra[data-shape="hover"] [data-shape="hover"],
+.motion-cursor--umbra[data-shape="text"] [data-shape="text"],
+.motion-cursor--umbra[data-shape="grab"] [data-shape="grab"],
+.motion-cursor--umbra[data-shape="grabbing"] [data-shape="grabbing"],
+.motion-cursor--umbra[data-shape="ew-resize"] [data-shape="ew-resize"],
+.motion-cursor--umbra[data-shape="ns-resize"] [data-shape="ns-resize"],
+.motion-cursor--umbra[data-shape="nwse-resize"] [data-shape="nwse-resize"],
+.motion-cursor--umbra[data-shape="crosshair"] [data-shape="crosshair"],
+.motion-cursor--umbra[data-shape="help"] [data-shape="help"],
+.motion-cursor--umbra[data-shape="no-drop"] [data-shape="no-drop"],
+.motion-cursor--umbra[data-shape="copy"] [data-shape="copy"],
+.motion-cursor--umbra[data-shape="zoom-in"] [data-shape="zoom-in"],
+.motion-cursor--umbra[data-shape="zoom-out"] [data-shape="zoom-out"],
+.motion-cursor--umbra[data-shape="wait"] [data-shape="wait"],
+.motion-cursor--umbra[data-shape="progress"] [data-shape="progress"] {
+  display: block;
+}
 
 @media (hover: none), (pointer: coarse) {
   .motion-cursor {

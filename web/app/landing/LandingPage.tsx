@@ -14,6 +14,7 @@ import { Notebook } from "./Notebook";
 import { NotebookApps } from "./NotebookApps";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
+import { ExperienceSections } from './ExperienceSections';
 
 const SlicedWaves = dynamic(() => import("../SlicedWaves"), { ssr: false });
 
@@ -25,6 +26,7 @@ export function LandingPage() {
   const bgGoneRef = useRef(false);
   const [bgOn, setBgOn] = useState(false);
   const [bgGone, setBgGone] = useState(false);
+  const [cursorMode,setCursorMode]=useState<'circle'|'umbra'>('circle');
 
   // CTA leva ao momento do Zed na sequência (não pula os temas para #mais).
   const goToThemes = (event: MouseEvent<HTMLButtonElement>) => {
@@ -339,10 +341,11 @@ export function LandingPage() {
             <div className="stage-fade" aria-hidden="true" />
           </div>
         </div>
+        <ExperienceSections mode={cursorMode} onMode={setCursorMode}/>
         <MoreSection />
       </main>
       <SiteFooter />
-      <MotionCursor />
+      <MotionCursor mode={cursorMode}/>
     </div>
   );
 }
