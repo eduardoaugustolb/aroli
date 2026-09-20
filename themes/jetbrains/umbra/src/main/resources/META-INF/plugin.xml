@@ -1,0 +1,18 @@
+<idea-plugin>
+  <id>umbra.jetbrains.theme</id>
+  <name>Umbra</name>
+  <version>0.1.3</version>
+  <vendor url="https://github.com/eduardoaugustolb/umbra">Umbra</vendor>
+  <description><![CDATA[
+    <p>A dark charcoal theme for JetBrains IDEs.</p>
+    <p>Quiet surfaces and controlled semantic color for focused work.</p>
+  ]]></description>
+
+  <idea-version since-build="241"/>
+  <depends>com.intellij.modules.platform</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <themeProvider id="6c266d3e-20a4-4a75-8f84-3e4a7c8a4501" path="/Umbra.theme.json"/>
+    <bundledColorScheme id="Umbra" path="/Umbra.xml"/>
+  </extensions>
+</idea-plugin>

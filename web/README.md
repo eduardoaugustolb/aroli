@@ -27,7 +27,29 @@ Cursor circular com `mix-blend-mode: difference` para inverter o que está atrá
 
 Favicon em `app/icon.svg` (limiar sobre preto) + apple-touch-icon em `public/umbra-avatar-512.png`. SEO em `app/layout.tsx`: título e descrição diretos, keywords, theme-color, robots, Open Graph, Twitter card e JSON-LD. Sem `og:image` absoluta nem canonical: dependem da URL de publicação, ainda indefinida. Hero com fundo `SlicedWaves` (React Bits + `ogl`) em tons da marca, opacidade 0.35, com mouse e grão; some junto com o título no scroll e não monta com movimento reduzido. Sem travessões nos textos da página.
 
-Mobile mantém o percurso por scroll. Movimento reduzido apresenta o conteúdo sem animação. A limpeza de GSAP, ticker e Lenis ocorre ao desmontar o componente ou mudar a preferência de movimento.
+Depois do notebook, a história continua em duas seções interativas: **o ambiente responde** (cursor) e **o ambiente ganha voz** (fonte). Transições GSAP ligadas ao scroll revelam o fio visual e os títulos; os laboratórios ficam no fluxo normal, sem pin ou bloqueio de rolagem. Movimento reduzido apresenta tudo sem as transições. A limpeza de GSAP, ticker e Lenis ocorre ao desmontar ou mudar a preferência de movimento.
+
+### Laboratório do cursor
+
+Em `#cursor`, o círculo muda automaticamente para Umbra na primeira chegada à área de leitura (75% do viewport). Os SVGs originais do tema são pré-carregados 800 px antes. A mudança também funciona com o mouse parado durante a rolagem; o cursor nativo só é escondido após as imagens estarem decodificadas. Depois da primeira chegada, a escolha manual prevalece inclusive ao voltar pelo scroll. Ao sair, o modo escolhido continua ativo pelo site.
+
+Os eventos e o alvo sob o ponteiro escolhem seta, mão, texto, arraste, redimensionamento, ajuda, espera ou indisponível. Os hotspots vêm do tema original. Reversões rápidas do mouse ampliam o cursor por 850 ms somente no modo Umbra. Movimento reduzido mantém Umbra sem atraso nem shake; toque conserva o comportamento nativo. O playground inclui clique, seleção de texto, peça arrastável por mouse/toque/setas e controle de largura.
+
+### Laboratório da fonte
+
+`#fonte` carrega a fonte autoral real em WOFF2, com tamanho e ligaduras controláveis. As abas oferecem texto livre, editor com realce de sintaxe/busca/arquivos/saída e terminal com histórico/autocompletar. O editor salva com Ctrl/⌘ S e executa com Ctrl/⌘ Enter. Tab indenta; Shift+Tab permite sair do campo pelo teclado.
+
+Editor e terminal compartilham arquivos em memória. `help`, `ls`, `pwd`, `cd`, `cat`, `echo` com redirecionamento, `touch`, `mkdir`, `rm`, `clear`, `whoami`, `history` e `bun hello.js` possuem comportamento simulado. A execução aceita `const`/`let`, literais, concatenação e `console.log`; código não suportado retorna um erro explícito. Não usa eval, shell do servidor nem acesso ao sistema. Recarregar descarta a sessão. Áreas internas com rolagem usam `data-lenis-prevent`.
+
+Para atualizar os assets depois de alterar a fonte ou o cursor:
+
+```sh
+bun run sync:playground
+```
+
+Requer `fonttools` com suporte a WOFF2. Os assets versionados permitem compilar o site sem essa ferramenta. A licença dos ícones da fonte acompanha os arquivos em `public/playground/NERD-FONTS-LICENSE.txt`.
+
+Validação: `bun run typecheck`, `bun run test`, `bun run build`. Revisar no navegador a troca automática e manual, o shake, a seleção, o arraste, as três abas da fonte, arquivos compartilhados e o fluxo completo até `#mais`, em desktop, toque e movimento reduzido.
 
 ## Tokens
 

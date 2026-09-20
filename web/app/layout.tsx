@@ -6,6 +6,7 @@ import "./styles/hero.css";
 import "./styles/notebook.css";
 import "./styles/sections.css";
 import "./styles/cursor.css";
+import "./styles/experience.css";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
