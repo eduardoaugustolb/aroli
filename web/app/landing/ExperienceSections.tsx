@@ -5,15 +5,15 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CursorLab } from "./CursorLab";
 import { FontLab } from "./FontLab";
-import { preloadUmbraCursors } from "../umbra-cursor";
+import { preloadAroliCursors } from "../aroli-cursor";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 export function ExperienceSections({
   mode,
   onMode,
 }: {
-  mode: "circle" | "umbra";
-  onMode: (mode: "circle" | "umbra") => void;
+  mode: "circle" | "aroli";
+  onMode: (mode: "circle" | "aroli") => void;
 }) {
   const root = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -22,18 +22,18 @@ export function ExperienceSections({
     const preload = new IntersectionObserver(
       (entries) => {
         if (entries.some((entry) => entry.isIntersecting)) {
-          void preloadUmbraCursors();
+          void preloadAroliCursors();
           preload.disconnect();
         }
       },
       { rootMargin: "800px 0px", threshold: 0 },
     );
-    // The first arrival introduces Umbra. Later manual choices remain in
+    // The first arrival introduces Aroli. Later manual choices remain in
     // charge, including when scrolling back from the font lab.
     const arrival = new IntersectionObserver(
       (entries) => {
         if (entries.some((entry) => entry.isIntersecting)) {
-          onMode("umbra");
+          onMode("aroli");
           arrival.disconnect();
         }
       },

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Sans, Manrope } from "next/font/google";
+import localFont from "next/font/local";
 import "lenis/dist/lenis.css";
 import "./styles/base.css";
 import "./styles/hero.css";
@@ -8,36 +8,29 @@ import "./styles/sections.css";
 import "./styles/cursor.css";
 import "./styles/experience.css";
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
+const switzer = localFont({
+  src: "./fonts/Switzer-Variable.woff2",
+  weight: "100 900",
   display: "swap",
-  variable: "--font-dm-sans",
+  variable: "--font-brand",
 });
 
-const manrope = Manrope({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  display: "swap",
-  variable: "--font-manrope",
-});
-
-const title = "Temas escuros e coerentes para VS Code, Zed, Kitty e Starship | Umbra";
+const title = "Temas escuros e coerentes para VS Code, Zed, Kitty e Starship | Aroli";
 const description =
-  "Umbra é um sistema visual com temas escuros para o seu fluxo de trabalho: temas para VS Code, Zed e Kitty, prompt para Starship e wallpapers. Mesmas superfícies, mesmo contraste, cor com função.";
+  "Aroli é um sistema visual com temas escuros para o seu fluxo de trabalho: temas para VS Code, Zed e Kitty, prompt para Starship e wallpapers. Mesmas superfícies, mesmo contraste, cor com função.";
 
 export const metadata: Metadata = {
   title,
   description,
-  keywords: ["umbra", "tema escuro", "dark theme", "zed", "kitty", "starship", "terminal", "wallpapers", "sistema visual"],
-  authors: [{ name: "Umbra", url: "https://github.com/eduardoaugustolb/umbra" }],
+  keywords: ["aroli", "tema escuro", "dark theme", "zed", "kitty", "starship", "terminal", "wallpapers", "sistema visual"],
+  authors: [{ name: "Aroli", url: "https://github.com/eduardoaugustolb/umbra" }],
   robots: { index: true, follow: true },
   openGraph: {
     title,
     description,
     type: "website",
     locale: "pt_BR",
-    siteName: "Umbra",
+    siteName: "Aroli",
   },
   twitter: {
     card: "summary",
@@ -46,7 +39,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
-    apple: [{ url: "/umbra-avatar-512.png" }],
+    apple: [{ url: "/aroli-avatar-512.png" }],
   },
 };
 
@@ -57,7 +50,7 @@ export const viewport: Viewport = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Umbra",
+  name: "Aroli",
   description,
   url: "https://github.com/eduardoaugustolb/umbra",
   inLanguage: "pt-BR",
@@ -65,7 +58,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className={`${dmSans.variable} ${manrope.variable}`}>
+    <html lang="pt-BR" className={switzer.variable}>
       <body>
         {children}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

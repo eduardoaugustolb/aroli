@@ -10,11 +10,15 @@ type HeroHeadingProps = {
 export function HeroHeading({ onExplore }: HeroHeadingProps) {
   return (
     <div className="landing-heading">
-      <h1>As suas ferramentas, no mesmo ambiente visual.</h1>
+      <span className="hero-kicker">Aroli Themes</span>
+      <h1>
+        Tudo encontra
+        <br />
+        seu lugar.
+      </h1>
       <p>
-        Umbra é um sistema visual com temas escuros e coerentes para o seu
-        fluxo de trabalho: mesmas superfícies, mesmo contraste e cor com
-        função.
+        Suas ferramentas, em sintonia. Temas, tipografia e pequenos gestos que
+        fazem do seu espaço um ambiente só seu.
       </p>
       <button type="button" className="cta" onClick={onExplore}>
         Explorar os temas{" "}

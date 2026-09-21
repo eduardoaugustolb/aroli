@@ -25,7 +25,7 @@ for (const name of [
   "progress",
 ]) {
   await copyFile(
-    `${root}/themes/cursor/umbra/src/${name}.svg`,
+    `${root}/themes/cursor/aroli/src/${name}.svg`,
     `${output}/cursors/${name}.svg`,
   );
 }
@@ -34,15 +34,15 @@ const result = spawnSync(
   [
     "ttLib.woff2",
     "compress",
-    `${root}/fonts/umbra/dist/UmbraLimiarMonoNF-Regular.otf`,
+    `${root}/fonts/aroli/dist/AroliMonoNF-Regular.otf`,
     "-o",
-    `${output}/UmbraLimiarMonoNF.woff2`,
+    `${output}/AroliMonoNF.woff2`,
   ],
   { stdio: "inherit" },
 );
 if (result.status !== 0) throw new Error("WOFF2 conversion failed");
 await copyFile(
-  `${root}/fonts/umbra/dist/NERD-FONTS-LICENSE.txt`,
+  `${root}/fonts/aroli/dist/NERD-FONTS-LICENSE.txt`,
   `${output}/NERD-FONTS-LICENSE.txt`,
 );
-console.log("Playground assets synchronized from Umbra sources.");
+console.log("Playground assets synchronized from Aroli sources.");

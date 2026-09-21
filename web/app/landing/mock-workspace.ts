@@ -4,16 +4,16 @@ export type Workspace = {
   cwd: string;
 };
 export const INITIAL_WORKSPACE: Workspace = {
-  cwd: "/umbra",
-  directories: ["/", "/umbra", "/umbra/docs"],
+  cwd: "/aroli",
+  directories: ["/", "/aroli", "/aroli/docs"],
   files: {
-    "/umbra/hello.js":
-      '// Um ambiente que responde a você.\n// Experimente os sinais: -> => != <= >= ==\nconst nome = "Umbra";\nconst mensagem = "Olá, " + nome;\nconsole.log(mensagem);\nconsole.log("Menos ruído. Mais espaço.");',
-    "/umbra/theme.json":
-      '{\n  "name": "Umbra",\n  "background": "#050505",\n  "foreground": "#C5C7C5",\n  "font": "Umbra Limiar Mono NF"\n}',
-    "/umbra/README.md":
+    "/aroli/hello.js":
+      '// Um ambiente que responde a você.\n// Experimente os sinais: -> => != <= >= ==\nconst nome = "Aroli";\nconst mensagem = "Olá, " + nome;\nconsole.log(mensagem);\nconsole.log("Menos ruído. Mais espaço.");',
+    "/aroli/theme.json":
+      '{\n  "name": "Aroli",\n  "background": "#050505",\n  "foreground": "#C5C7C5",\n  "font": "Aroli Mono NF"\n}',
+    "/aroli/README.md":
       "# Um lugar para experimentar\n\nEdite hello.js e execute com bun hello.js.\nOs arquivos são compartilhados entre o editor e o terminal.\n\nAcentos: ação, coração, funções, útil, variável.\nLigaduras: -> => != <= >= ==\n",
-    "/umbra/docs/guia.md":
+    "/aroli/docs/guia.md":
       "Use help para conhecer os comandos.\nUse Tab para completar comandos e caminhos.\nUse as setas para percorrer o histórico.\n",
   },
 };
@@ -150,7 +150,7 @@ export function execute(
         output = [next.cwd];
         break;
       case "whoami":
-        output = ["visitante@umbra"];
+        output = ["visitante@aroli"];
         break;
       case "clear":
         return { workspace: next, output: [], clear: true };
@@ -181,7 +181,7 @@ export function execute(
         break;
       }
       case "cd": {
-        const dest = args.length ? path : "/umbra";
+        const dest = args.length ? path : "/aroli";
         if (!next.directories.includes(dest))
           throw new Error("Pasta não encontrada.");
         next.cwd = dest;

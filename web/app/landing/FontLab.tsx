@@ -59,7 +59,7 @@ export function FontLab() {
   const [ligatures, setLigatures] = useState(true);
   const [fontStatus, setFontStatus] = useState("Carregando fonte…");
   const [workspace, setWorkspace] = useState(INITIAL_WORKSPACE);
-  const [activeFile, setActiveFile] = useState("/umbra/hello.js");
+  const [activeFile, setActiveFile] = useState("/aroli/hello.js");
   const [drafts, setDrafts] = useState<Record<string, string>>({});
   const [notice, setNotice] = useState("Abra um arquivo. Faça dele o seu.");
   const [runOutput, setRunOutput] = useState<string[]>([]);
@@ -69,7 +69,7 @@ export function FontLab() {
   const [history, setHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [lines, setLines] = useState<string[]>([
-    "Umbra Shell / sessão de demonstração",
+    "Aroli Shell / sessão de demonstração",
     "Arquivos compartilhados com o editor. Digite help.",
   ]);
   const editor = useRef<HTMLTextAreaElement>(null);
@@ -90,11 +90,11 @@ export function FontLab() {
   useEffect(() => {
     let mounted = true;
     document.fonts
-      .load('16px "Umbra Limiar"')
+      .load('16px "Aroli Mono"')
       .then((fonts) => {
         if (mounted)
           setFontStatus(
-            fonts.length ? "Umbra Limiar Mono NF" : "Fonte indisponível",
+            fonts.length ? "Aroli Mono NF" : "Fonte indisponível",
           );
       })
       .catch(() => {
@@ -249,7 +249,7 @@ export function FontLab() {
           <em>Uma intenção.</em>
         </h2>
         <p>
-          Do primeiro gesto à primeira linha. Experimente a Umbra Limiar:
+          Do primeiro gesto à primeira linha. Experimente a Aroli Mono:
           desenho autoral, acentos, ligaduras e símbolos no mesmo ritmo.
         </p>
       </div>
@@ -322,7 +322,7 @@ export function FontLab() {
           hidden={tab !== "text"}
         >
           <textarea
-            className="type-specimen umbra-font"
+            className="type-specimen aroli-font"
             aria-label="Texto livre para testar a fonte"
             data-lenis-prevent
             value={text}
@@ -404,11 +404,11 @@ export function FontLab() {
                     setNotice("Arquivo aberto.");
                   }}
                 >
-                  {path.replace("/umbra/", "")}
+                  {path.replace("/aroli/", "")}
                 </button>
               ))}
             </nav>
-            <div className="editor-surface umbra-font" style={fontStyle}>
+            <div className="editor-surface aroli-font" style={fontStyle}>
               <div ref={gutter} className="line-numbers" aria-hidden="true">
                 {source.split("\n").map((_, i) => (
                   <div key={i}>{i + 1}</div>
@@ -460,7 +460,7 @@ export function FontLab() {
             </div>
           </div>
           <div
-            className="run-output umbra-font"
+            className="run-output aroli-font"
             style={fontStyle}
             data-lenis-prevent
             role="log"
@@ -482,14 +482,14 @@ export function FontLab() {
           hidden={tab !== "terminal"}
         >
           <div className="editor-toolbar">
-            <span>umbra / shell</span>
+            <span>aroli / shell</span>
             <button type="button" onClick={() => setLines([])}>
               Limpar terminal
             </button>
           </div>
           <div
             ref={terminal}
-            className="terminal-screen umbra-font"
+            className="terminal-screen aroli-font"
             style={fontStyle}
             data-lenis-prevent
             onClick={(event) => {
@@ -504,7 +504,7 @@ export function FontLab() {
               {lines.map((line, index) => (
                 <div
                   className={
-                    line.startsWith("/umbra") ? "terminal-command" : undefined
+                    line.startsWith("/aroli") ? "terminal-command" : undefined
                   }
                   key={index}
                 >
@@ -558,7 +558,7 @@ export function FontLab() {
         </p>
       </div>
       <p className="font-disclaimer">
-        Umbra Limiar está em desenvolvimento. Você está experimentando o desenho
+        Aroli Mono está em desenvolvimento. Você está experimentando o desenho
         real da fonte, incluindo os glifos Nerd Font.
       </p>
     </section>

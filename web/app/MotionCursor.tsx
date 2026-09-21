@@ -9,14 +9,14 @@ import {
   CursorShake,
   cursorShape,
   type CursorShape,
-} from "./umbra-cursor";
+} from "./aroli-cursor";
 
 // Círculo com morph em botões e links, sem rastro.
 // Só transform no pointermove; leituras de DOM no máximo 1x por frame.
 export function MotionCursor({
   mode = "circle",
 }: {
-  mode?: "circle" | "umbra";
+  mode?: "circle" | "aroli";
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const lastPointer = useRef<{ x: number; y: number } | null>(null);
@@ -42,7 +42,7 @@ export function MotionCursor({
   useGSAP(
     () => {
       const mm = gsap.matchMedia();
-      if (mode === "umbra") {
+      if (mode === "aroli") {
         mm.add(
           {
             fine: "(hover: hover) and (pointer: fine)",
@@ -53,7 +53,7 @@ export function MotionCursor({
             const reduce = !!context.conditions.reduce;
             const cursor = ref.current!;
             const sprite = cursor.querySelector<HTMLElement>(
-              ".umbra-cursor-sprites",
+              ".aroli-cursor-sprites",
             )!;
             const x = gsap.quickTo(cursor, "x", {
               duration: reduce ? 0 : 0.12,
@@ -157,7 +157,7 @@ export function MotionCursor({
             };
             const down = (e: PointerEvent) => {
               dragging = !!(e.target as Element)?.closest(
-                '[data-umbra-cursor="grab"],[data-umbra-cursor="grabbing"]',
+                '[data-aroli-cursor="grab"],[data-aroli-cursor="grabbing"]',
               );
             };
             const up = () => {
@@ -349,11 +349,11 @@ export function MotionCursor({
   return (
     <div
       ref={ref}
-      className={`motion-cursor${mode === "umbra" ? " motion-cursor--umbra" : ""}`}
+      className={`motion-cursor${mode === "aroli" ? " motion-cursor--aroli" : ""}`}
       aria-hidden="true"
     >
-      {mode === "umbra" && (
-        <div className="umbra-cursor-sprites">
+      {mode === "aroli" && (
+        <div className="aroli-cursor-sprites">
           {Object.entries(CURSORS).map(([name, [hx, hy]]) => (
             <img
               key={name}

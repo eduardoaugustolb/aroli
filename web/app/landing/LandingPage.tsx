@@ -5,7 +5,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import Lenis from "lenis";
-import dynamic from "next/dynamic";
 import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { MotionCursor } from "../MotionCursor";
 import { HeroHeading } from "./HeroHeading";
@@ -14,25 +13,24 @@ import { Notebook } from "./Notebook";
 import { NotebookApps } from "./NotebookApps";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
-import { ExperienceSections } from './ExperienceSections';
-
-const SlicedWaves = dynamic(() => import("../SlicedWaves"), { ssr: false });
+import { ExperienceSections } from "./ExperienceSections";
 
 gsap.registerPlugin(ScrollTrigger, SplitText, useGSAP);
 
 export function LandingPage() {
   const root = useRef<HTMLDivElement>(null);
   const lenisRef = useRef<Lenis | null>(null);
-  const bgGoneRef = useRef(false);
-  const [bgOn, setBgOn] = useState(false);
-  const [bgGone, setBgGone] = useState(false);
-  const [cursorMode,setCursorMode]=useState<'circle'|'umbra'>('circle');
+  const [cursorMode, setCursorMode] = useState<"circle" | "aroli">("circle");
 
   // CTA leva ao momento do Zed na sequência (não pula os temas para #mais).
   const goToThemes = (event: MouseEvent<HTMLButtonElement>) => {
     const lenis = lenisRef.current;
     const runway = root.current?.querySelector<HTMLElement>(".landing-runway");
-    if (!lenis || !runway) return;
+    if (!runway) return;
+    if (!lenis) {
+      document.getElementById("mais")?.scrollIntoView({ behavior: "instant" });
+      return;
+    }
     event.preventDefault();
     const start = runway.offsetTop;
     const end = start + runway.offsetHeight - window.innerHeight + 160;
@@ -46,14 +44,7 @@ export function LandingPage() {
       () => root.current?.classList.add("landing-settled"),
       1400,
     );
-    const media = window.matchMedia("(prefers-reduced-motion: no-preference)");
-    const update = () => setBgOn(media.matches);
-    update();
-    media.addEventListener("change", update);
-    return () => {
-      window.clearTimeout(settled);
-      media.removeEventListener("change", update);
-    };
+    return () => window.clearTimeout(settled);
   }, []);
 
   useGSAP(
@@ -180,12 +171,6 @@ export function LandingPage() {
             invalidateOnRefresh: true,
             onUpdate(self) {
               const p = self.progress;
-              // WebGL do fundo desmonta após a hero: GPU parada no resto da história.
-              const gone = p > 0.35;
-              if (gone !== bgGoneRef.current) {
-                bgGoneRef.current = gone;
-                setBgGone(gone);
-              }
               // VS Code entra com o notebook por um triz de terminar de abrir.
               if (p > 0.45 && !firstShown) {
                 firstShown = true;
@@ -307,30 +292,8 @@ export function LandingPage() {
         <div className="landing-runway">
           <div className="landing-stage">
             <div className="hero-bg" aria-hidden="true">
-              {bgOn && !bgGone && (
-                <SlicedWaves
-                  color1="#3B4242"
-                  color2="#101111"
-                  color3="#858A89"
-                  columns={14}
-                  rows={8}
-                  barThickness={0.1}
-                  speed={0.35}
-                  travel={0.7}
-                  waveSpread={0.9}
-                  rowOffset={1.0}
-                  softness={0.05}
-                  glow={0}
-                  brightness={1.0}
-                  contrast={1.0}
-                  opacity={0.35}
-                  mouseInteraction={true}
-                  mouseStrength={1}
-                  mouseRadius={0.3}
-                  grain={true}
-                  grainIntensity={0.05}
-                />
-              )}
+              <div className="encaixe-plane encaixe-plane--upper" />
+              <div className="encaixe-plane encaixe-plane--lower" />
             </div>
             <HeroHeading onExplore={goToThemes} />
             <NotebookApps />
@@ -341,11 +304,11 @@ export function LandingPage() {
             <div className="stage-fade" aria-hidden="true" />
           </div>
         </div>
-        <ExperienceSections mode={cursorMode} onMode={setCursorMode}/>
+        <ExperienceSections mode={cursorMode} onMode={setCursorMode} />
         <MoreSection />
       </main>
       <SiteFooter />
-      <MotionCursor mode={cursorMode}/>
+      <MotionCursor mode={cursorMode} />
     </div>
   );
 }

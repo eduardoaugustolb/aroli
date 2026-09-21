@@ -13,5 +13,5 @@ O nome do arquivo JSON deve ser estável depois da primeira publicação. Varian
 
 ---
 
-Umbra no GitHub: https://github.com/eduardoaugustolb/umbra
+Aroli no GitHub: https://github.com/eduardoaugustolb/umbra
 

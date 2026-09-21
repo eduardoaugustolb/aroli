@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "Umbra Limiar";
-  src: url("/playground/UmbraLimiarMonoNF.woff2") format("woff2");
+  font-family: "Aroli Mono";
+  src: url("/playground/AroliMonoNF.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -48,7 +48,7 @@
   color: var(--bone);
 }
 .story-caret {
-  font-family: "Umbra Limiar", monospace;
+  font-family: "Aroli Mono", monospace;
   font-size: 40px;
   margin-top: 24px;
   color: var(--muted);
@@ -345,8 +345,8 @@
   width: 32px;
   white-space: nowrap;
 }
-.umbra-font {
-  font-family: "Umbra Limiar", monospace !important;
+.aroli-font {
+  font-family: "Aroli Mono", monospace !important;
   font-weight: 400;
   font-synthesis: none;
   line-height: 1.65;

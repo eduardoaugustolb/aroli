@@ -1,9 +1,0 @@
-{
-  "name": "umbra-jetbrains-theme",
-  "version": "0.1.3",
-  "private": true,
-  "scripts": {
-    "verify": "bun scripts/verify.ts",
-    "package": "bun scripts/package.ts"
-  }
-}

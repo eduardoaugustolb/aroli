@@ -11,11 +11,11 @@ export function SiteFooter() {
   return (
     <footer>
       <a className="wordmark" href="#inicio">
-        umbra
+        <img src="/aroli-lockup.svg" width="140" height="40" alt="Aroli" />
       </a>
       <p>
-        Temas escuros e coerentes para VS Code, Zed, Kitty e Starship, além
-        de wallpapers.
+        Tudo encontra seu lugar. Temas, tipografia, ponteiros e fundos
+        para um ambiente que se adapta a você.
       </p>
       <nav aria-label="Links do projeto">
         {PROJECT_LINKS.map((link) => (

@@ -1,191 +1,93 @@
-# Umbra — identidade visual
+# Aroli — identidade visual
 
-Versão **0.4.1**, 2026-09-05. Junção UM contínua; reconhecimento com público ainda não medido.
+Versão 1.0 · 2026-09-20. Direção aprovada no storyboard; vetores de produção redesenhados a partir dele. Método: skill memorable-visual-identity. [Prancha aprovada](output/imagegen/aroli-study-01/storyboard.png) · [Sistema vetorial](branding/aroli/system.svg) · [Migração](docs/migrations/2026-09-20-aroli.md).
 
-Fonte metodológica: skill [memorable-visual-identity](/home/eduardoaugustolb/.agents/skills/memorable-visual-identity/SKILL.md). Este guia traduz seus princípios em regras específicas para Umbra. [Prancha](branding/umbra/system.svg) · [Assets](branding/umbra/README.md) · [Avaliação](branding/umbra/REVIEW.md).
+## Conceito e posicionamento
 
-## 1. Conceito e posição
+**Tudo encontra seu lugar.** Aroli organiza ferramentas digitais em um ambiente coerente. Duas peças diferentes preservam um intervalo e pertencem ao mesmo conjunto. Público inicial: pessoas que personalizam ferramentas de desenvolvimento; a identidade comporta outros produtos digitais.
 
-**Limiar: a sombra delimita, o conteúdo aparece.** Umbra cria ambientes de trabalho escuros em que limites, espaço e contraste organizam a atenção. Público inicial: pessoas que personalizam ferramentas de desenvolvimento. Pontos de contato: temas, avatares, documentação, wallpapers e interfaces próprias.
+Apple Friendly orienta proporções, legibilidade e cuidado tipográfico. Não copiar símbolos Apple, ícones de sistema ou efeitos de vidro. A paleta permanece; a comunicação tipográfica muda; o Encaixe substitui o limiar.
 
-A preferência por preto OLED e neutros permanece. A identidade deve comunicar atenção e continuidade. Evitar metáforas de terror, mascotes noturnos e cor como principal sinal de reconhecimento. A auditoria de categoria e seus limites estão no relatório.
+## Arquitetura de nomes
 
-## 2. Assets e reconhecimento
-
-| Hierarquia | Asset | Regra e motivo |
-| --- | --- | --- |
-| Primário | Limiar aberto | Descida vertical, curva inferior à esquerda, base curta e saída diagonal à direita. A silhueta representa uma passagem, não letras |
-| Secundário | Composição | Título curto à esquerda, limiar à direita e metadados no rodapé. Repetir a distribuição ajuda a criar parentesco |
-| Secundário | Tipografia | Nome em caixa baixa; títulos próximos, rótulos pequenos espaçados |
-| Secundário | Relação tonal | Campo preto dominante, forma em cinza e conteúdo localizado em Bone |
-| Secundário | Revelação | Imagem imóvel revelada seguindo o contorno; nunca reordenar conteúdo |
-
-Sem logo, nome e slogan, devem restar o limiar assimétrico, o ritmo de títulos e a distribuição tonal. A prancha contém essa aplicação. São candidatos a associação pela repetição, não assets de exclusividade comprovada.
-
-## 3. Símbolo e nome
-
-Nome público: **Umbra**; identificadores: `umbra`; assinatura editorial em caixa baixa. Destinos usam “Umbra para Zed” e descritores equivalentes, sem criar submarcas por aplicativo.
-
-O [original](branding/umbra/logo/umbra-symbol.svg) tem viewBox 172 × 132 e traço 16. Um único percurso parte de (24,20), desce até (24,72), percorre a curva inferior e chega a (60,108), segue pela base até (100,108) e sobe em diagonal até (148,44). A curva inferior esquerda é a única transição arredondada; a abertura superior e os terminais retos preservam a sensação de passagem.
-
-O símbolo não representa iniciais. A coruja, os monogramas e o antigo V sobre U deixam de orientar o sistema. Não usar olhos, orelhas, máscaras animais ou letras escondidas.
-
-Largura mínima recomendada: 32 px; abaixo disso a curva e a diagonal perdem definição. Área livre: pelo menos 16 unidades além da caixa do desenho. Avatar usa margem maior, já aplicada no arquivo próprio. Usar Bone sobre preto ou preto sobre claro. Não espelhar, fechar a abertura, deformar, recortar, aplicar efeitos ou usar contorno adicional. O símbolo é vetor; as pranchas têm textos editáveis.
-
-## 4. Cores fundamentais
-
-Os nomes de tokens abaixo são uma convenção semântica do guia, ainda sem um pacote de tokens ou gerador implementado. Novas integrações devem mapear essas funções para as propriedades do aplicativo.
-
-### Superfícies e texto
-
-| Token | Valor | Função |
-| --- | --- | --- |
-| `surface.canvas` | `#050505` | Fundo principal, editor e terminal; Ink |
-| `surface.base` | `#101111` | Painéis, barras e abas inativas; Charcoal |
-| `surface.subtle` | `#0E1010` | Destaque discreto de região |
-| `surface.raised` | `#161919` | Menus, popovers e diálogos |
-| `surface.control` | `#191C1C` | Controles e divisões suaves; Graphite |
-| `surface.hover` | `#202424` | Hover de controle |
-| `surface.selected` | `#29252F` | Seleção e estado pressionado |
-| `border.default` | `#252727` | Separação comum |
-| `border.strong` | `#3B4242` | Separação reforçada e guias ativas |
-| `text.disabled` | `#555B5A` | Conteúdo indisponível |
-| `text.quiet` | `#697271` | Informação de baixa ênfase; revisar contraste no destino |
-| `text.muted` | `#858A89` | Texto secundário; Ash |
-| `icon.default` | `#AEB9BC` | Ícones e pontuação |
-| `text.emphasis` | `#AEB9BC` | Ênfase intermediária |
-| `text.primary` | `#C5C7C5` | Texto principal; Bone |
-| `text.maximum` | `#FFFFFF` | Marca e realces pontuais |
-
-Preto absoluto deixa de ser requisito. A variante atual usa Ink `#050505` no editor e Charcoal `#101111` nos painéis para evitar blocos pretos indistintos e criar uma hierarquia tonal confortável. Superfícies auxiliares devem ser distinguíveis sem parecerem cartões soltos. Componentes de UI usam Charcoal como base única; Graphite fica reservado a hover e estados ativos, enquanto bordas e acentos comunicam foco.
-
-Preferir Bone a branco puro em grandes blocos de texto. Não usar `text.disabled` em informação necessária à tarefa. Linhas divisórias decorativas podem ser discretas; limites essenciais de controles precisam de contraste próprio.
-
-### Acentos funcionais
-
-| Token | Valor | Função principal |
-| --- | --- | --- |
-| `accent.cyan` | `#00A6C7` | Informação, links e foco |
-| `accent.violet` | `#9D7FD1` | Variáveis especiais e seleção especial |
-| `accent.rose` | `#C78995` | Keywords e operadores |
-| `accent.amber` | `#CDA27C` | Strings, tags, avisos e literais |
-| `accent.blue` | `#7FB8CC` | Tipos, constantes e construtores |
-| `accent.sage` | `#83B89A` | Booleanos, sucesso e adições |
-
-Essas cores são acentos semânticos de baixa frequência. A regra padrão é uma experiência predominantemente neutra, com aproximadamente 85–90% de preto e cinzas; Violet, Blue, Cyan e Sage aparecem em papéis definidos de sintaxe, foco, informação e sucesso. Não usar os cinco acentos ao mesmo tempo em uma mesma superfície.
-
-Em peças de marca, usar aproximadamente 80–90% de campo preto/quase preto e o restante em texto e formas neutras. Acentos cromáticos ocupam áreas pequenas e têm função clara. O logo permanece monocromático. Em código e gráficos, a semântica determina a distribuição de cor; não introduzir cor apenas para tornar uma peça mais chamativa.
-
-Fundos semânticos já usados no Zed: erro `#2A1414`, sucesso `#102319` e modificação `#211A0E`. Novos fundos devem permanecer escuros e ser testados com o texto sobreposto. Cor de sintaxe não implica estado: uma tag coral não representa um erro.
-
-## 5. Sintaxe e terminais
-
-### Mapeamento de sintaxe
-
-| Categoria | Tratamento |
+| Papel | Nome |
 | --- | --- |
-| Keywords | Violet; peso 600 quando suportado |
-| Tipos e constantes | Blue |
-| Funções e métodos | Lilac |
-| Strings, tags e atributos | Amber |
-| Números | Gold |
-| Booleanos | Sage |
-| Propriedades e variáveis membro | Mist |
-| Variáveis comuns e conteúdo embutido | Bone |
-| Operadores e escapes | Violet e Blue conforme a função |
-| Pontuação | `#697271` |
-| Comentários | Slate; itálico opcional conforme fonte e aplicativo |
-| Títulos e links no conteúdo | Bone e Cyan em links; títulos podem usar peso 600 |
+| Marca / workspace | Aroli |
+| Temas | Aroli Themes |
+| Variante padrão | Aroli Dark |
+| Variante mais profunda | Aroli Black |
+| Fonte | Aroli Mono; NF identifica o pacote com Nerd Fonts |
+| Cursores | Aroli Pointer |
+| Wallpapers | Aroli Backdrops |
 
-Manter essa correspondência entre linguagens sempre que houver categorias equivalentes. Parsers e escopos diferentes podem exigir adaptações. Documentar os mapeamentos específicos; evitar criar uma paleta independente por linguagem. A sintaxe deve parecer um código organizado, não um arco-íris: cada cor tem poucos papéis e as variáveis comuns permanecem neutras.
+Usar “Aroli for Zed” ou “Aroli para Zed” conforme o idioma. Não criar logos por integração. IDs históricos são detalhados no registro de migração.
 
-O tema Umbra usa `#697271` em comentários e `#858A89` em comentários de documentação. Strings, números e funções recebem cor suave para facilitar a varredura; variáveis comuns permanecem em Bone para evitar ruído.
+## Assets distintivos
 
-### Terminal integrado e terminais externos
+1. **Encaixe:** corpo orgânico compacto com reentrância no alto à direita e peça curva separada. Duas massas, uma cor, sem contorno.
+2. **Intervalo:** superfícies com curvas complementares mantêm espaço negativo legível. Aparece em fundos sem repetir literalmente o logo.
+3. **Acomodação:** deslocamento curto da peça até seu alinhamento, seguido de repouso.
 
-Manter fundo preto e texto Bone. Preservar a semântica de erro, sucesso e aviso das aplicações de terminal. Verificar cores normais, brilhantes, texto invertido, seleção, cursor e sequências com fundo explícito.
+Apoios: assinatura proporcional Switzer, hierarquia por tamanho/peso, margens constantes e neutros dominantes. Associação espontânea ainda não foi medida.
 
-| ANSI | Normal atual | Brilhante atual |
-| --- | --- | --- |
-| Black | `#000000` | `#4E4E4E` |
-| Red | `#8A8A8A` | `#B8B8B8` |
-| Green | `#A0A0A0` | `#D0D0D0` |
-| Yellow | `#989898` | `#C8C8C8` |
-| Blue | `#808080` | `#B0B0B0` |
-| Magenta | `#909090` | `#C0C0C0` |
-| Cyan | `#A8A8A8` | `#E0E0E0` |
-| White | `#B0B0B0` | `#FFFFFF` |
+## Construção e reprodução
 
-Esta tabela registra uma implementação dark charcoal inicial, não uma paleta terminal já validada em todos os usos. Os acentos ANSI são suaves e devem aparecer em baixa frequência. ANSI Black sobre o fundo Ink pode desaparecer; usar texto e indicadores da aplicação para preservar contexto. Testar aplicações reais antes de publicar uma adaptação de terminal.
+`branding/aroli/geometry.ts` é a fonte de verdade. ViewBox 192 × 192; BODY e PIECE são compartilhados com o glifo U+100000 da Mono. `build.ts` gera SVGs, PNGs, ícones e provas.
 
+- Preservar posição da peça, abertura, assimetria e base orgânica; não espelhar.
+- Margem livre mínima: 24 unidades além da silhueta, ampliada perto de texto.
+- Símbolo isolado: 24 px recomendado; em 16 px usar somente favicon, sem wordmark.
+- Assinatura completa: largura recomendada de 140 px ou mais na web.
+- Avatar utiliza área livre própria. Símbolo transparente não recebe fundo automático.
+- Monocromia em `#C5C7C5` sobre escuro ou `#050505` sobre claro. Sem metal, brilho, textura, perspectiva ou degradê no logo.
 
-## 6. Tipografia
+A assinatura usa Switzer Medium convertida em curvas. Não é uma fonte exclusiva da Aroli. A autoria específica está no símbolo, na composição e no sistema.
 
-A assinatura escrita usa caixa baixa, sem espaçamento expandido. Ela apoia a apresentação do UM e não é um wordmark proprietário. Fonte de execução nas pranchas: DejaVu Sans; fallback sans-serif. Nenhum arquivo de fonte é distribuído.
+## Tipografia
 
-Títulos: até duas linhas, alinhados à esquerda, entrelinha 1–1,05, tracking entre -0,02 e -0,04 em. Corpo: 16 px / 1,5, 45–70 caracteres por linha. Metadados: 13–14 px, caixa alta e tracking de 0,12 em. Relação título/corpo de aproximadamente 3:1 em peças editoriais. Evitar condensar artificialmente os glifos.
+Switzer variável para comunicação/interface: 400 para texto, 500–600 para títulos e 700 para ênfase. Arquivos oficiais não modificados, servidos localmente. O Git inclui instruções e a licença FFL recebida, não os binários. Preparar com `cd web && bun run setup:fonts`.
 
-Interfaces usam fonte de sistema; código preserva a escolha do usuário. Não impor fonte, zoom ou ligaduras em temas externos.
+Títulos em caixa normal, até duas linhas, entrelinha 1,08–1,15 e tracking de -0,025 a -0,035 em em tamanhos grandes. Corpo 16–18 px, entrelinha 1,5–1,65, 45–70 caracteres por linha. Rótulos 13–16 px, sem tracking extremo.
 
-## 7. Forma, composição e imagem
+Aroli Mono permanece um protótipo autoral independente para código. Esta migração altera família, metadados, espécime e glifo da marca; não redesenha o alfabeto inteiro. Não impor fontes às configurações de editores externos.
 
-Limiar mestre: percurso `M24 20 V72 Q24 108 60 108 H100 L148 44`, traço 16, sem preenchimento. Invariantes: abertura superior, curva só à esquerda, base curta, saída diagonal à direita e terminais retos. Variam escala e espessura conforme suporte; manter a curva visível e a diagonal ascendente. Nunca inverter os lados. Uma forma dominante por peça, sem padrões de múltiplos símbolos.
+## Cor: valores preservados
 
-Grade de oito colunas, margens de aproximadamente 6%, título nas primeiras quatro colunas e forma no terço direito. Metadados repetem o eixo do título no rodapé. Em retrato, título vem antes da forma; em interfaces pequenas, omitir a forma se competir com a tarefa. Espaçamento em múltiplos de 4 px. Não moldar campos, textos ou botões no contorno do limiar.
+| Função | Valores existentes |
+| --- | --- |
+| Fundo profundo / base | `#050505` / `#101111` |
+| Superfícies auxiliares | `#0E1010`, `#161919`, `#191C1C`, `#202424` |
+| Seleção / bordas | `#29252F`, `#252727`, `#3B4242` |
+| Texto | `#C5C7C5`, `#AEB9BC`, `#858A89`, `#697271`, `#555B5A` |
+| Acentos | `#00A6C7`, `#9D7FD1`, `#C78995`, `#CDA27C`, `#7FB8CC`, `#83B89A` |
+| Tokens de integrações | `#9AB7B0`, `#B79BDD`, `#A9B4C8`, `#D0B07C`, `#B4BEC0` |
 
-Marca: aproximadamente 80–90% de campo preto/quase preto, restante dividido entre forma cinza e texto claro; não é proporção obrigatória em telas funcionais. A paleta isolada não distingue Umbra.
+Cada configuração de tema é sua fonte de verdade: não normalizar cores entre plataformas nesta migração. Antigos nomes de pigmentos podem aparecer em código/tabelas; não nomeiam produtos.
 
-Imagery: abstrações de contorno e sombra com um assunto dominante. Fotografias, quando usadas, recebem tratamento acromático e oclusão lateral seguindo a mesma curva/diagonal; preservar detalhes necessários à interpretação. Sem neon, efeitos metálicos ou brilhos decorativos.
+Em marca, 85–90% de neutros escuros; restante em texto/formas, acentos pontuais. Em sintaxe, preservar o mapeamento anterior. Contraste de foco, leitura e estados prevalece; não depender só de cor.
 
-O [wallpaper](branding/umbra/applications/wallpaper.svg) mantém mais da metade esquerda livre e revela o limiar em cinza muito escuro. O baixo contraste dessa forma é intencional e apenas decorativo. Os vídeos preexistentes em `wallpapers/` são coleção anterior; não implicam autoria ou autorização de redistribuição.
+## Forma, composição e imagens
 
-## 8. Movimento e comportamento
+Uma relação dominante entre duas superfícies. Título à esquerda, forma/intervalo à direita; margens de 6–7%, espaçamento em múltiplos de 4 px. No mobile, deslocar a forma para fora da leitura.
 
-Assinatura proposta: imagem imóvel revelada por máscara ao longo do limiar, da curva esquerda para a saída direita, em 280–360 ms, com desaceleração `cubic-bezier(0.2,0,0,1)`. Uma execução por entrada explícita; sem loops decorativos. Com `prefers-reduced-motion: reduce`, mostrar o estado final imediatamente. Movimento descrito, ainda sem protótipo implementado.
+Wallpapers sem assinatura usam planos curvos e campo livre para ícones/janelas. Capturas legadas documentam a paleta, não demonstram instalação do rebranding. Não editar screenshots para simular testes em aplicativos.
 
-Texto essencial e controles ficam disponíveis durante a revelação. Estados de hover podem mudar luminância em 120–160 ms. Foco usa indicador visível, seleção usa marcador estável e carregamento inclui descrição textual. Manter cursor nativo e anatomia dos controles. Não tentar introduzir animação em formatos de tema que não a suportam.
+## Movimento e interação
 
-## 9. Acessibilidade e anti-padrões
+Acomodação em 280 ms, `cubic-bezier(0.2,0,0,1)`: deslocamento curto, sem quique ou loop decorativo. Site implementa acomodação de um plano do fundo. Três frames documentam o gesto do símbolo; não são um arquivo animado.
 
-Texto funcional usa Bone ou Ash sobre preto; cinzas baixos ficam em decoração ou estados realmente indisponíveis. Contraste de textos, limites essenciais e foco deve ser verificado no destino. Não confiar apenas em cor para comunicar erro, sucesso ou seleção.
+Movimento reduzido mostra estado final. Texto, foco e controles ficam disponíveis sem animação. Notebook e laboratórios existentes são preservados. Cursores mantêm formas funcionais e hotspots; não transformar seta em logo.
 
-Enfraquecem o sistema: M sobre U, coruja imposta às letras, paletas por integração, preto com monoespaçada sem o limiar, gradientes decorativos, cartões arbitrariamente recortados, títulos ilegíveis, movimento contínuo e formas sobre texto. O nome sozinho não torna uma composição exclusiva.
+## Provas e reconhecimento
 
-## 10. Adaptação para aplicativos externos
+`system.svg` inclui uma aplicação sem logo, nome ou slogan no painel 05; o rótulo é editorial. `stress.svg` mostra 16/24/32/64/128 px, inversão e desfoque. `applications/competitor-swap.svg` testa Nord e não representa colaboração.
 
-Para cada novo tema:
+Inspeção interna avalia silhueta/parentesco, não exclusividade. A troca de nome ainda pode parecer plausível sem exposição anterior: paleta e Switzer não são exclusivas. Repetir intervalo e acomodação para construir associação.
 
-1. Consultar o formato e as propriedades suportadas pelo aplicativo na versão alvo.
-2. Mapear superfícies, texto, estados, sintaxe e terminal para as funções deste guia.
-3. Documentar campos sem equivalente e cores herdadas do aplicativo.
-4. Validar o arquivo com as ferramentas apropriadas ao formato.
-5. Inspecionar o tema no aplicativo, com conteúdo real, incluindo menus, busca, seleção, erros, diffs e painéis.
-6. Registrar versão testada, instalação, limitações, capturas reais e changelog.
+Teste humano a executar: mostrar por cinco segundos a 5–8 pessoas, ocultar, pedir desenho/descrição e depois associação de peça sem assinatura. Não realizado nesta migração.
 
-A [implementação do Zed](themes/zed/umbra/themes/umbra.json) é a primeira referência concreta. Ela ainda não representa cobertura completa de todos os estados ou validação visual em todos os contextos. Um JSON sintaticamente válido não comprova conformidade com o schema nem qualidade visual no aplicativo.
+Notas internas de potencial (0–10): distintividade 6; reconhecimento 7; coerência 8; forma 7; propriedade tipográfica 4; composição 6; movimento 6; flexibilidade 8; consistência 8; acessibilidade 7; longevidade 7. Não são métricas de público.
 
-Quando uma plataforma exigir ajustes, manter as funções das cores e documentar a diferença. Não prometer compatibilidade com versões que não foram verificadas.
+## Antipadrões
 
-
-## 11. Entregáveis e manutenção
-
-`branding/umbra/logo/` contém os vetores do símbolo e avatar; `applications/` contém wallpaper e teste de troca de nome; `exports/` reúne PNGs derivados. `system.svg` apresenta a direção e a peça sem marca; `stress.svg` reúne as provas de reprodução. [README dos assets](branding/umbra/README.md).
-
-Construção vetorial autoral assistida por Codex. Nenhum bitmap gerado é usado como original. As fontes não são empacotadas. Não presumir licença geral de distribuição para o repositório. Caminhos publicados são estáveis, versões do tema são independentes do branding.
-
-## 12. Validação e brief
-
-As provas de monocromia, redução, desfoque, oclusão e retirada da assinatura foram renderizadas e inspecionadas. A troca por Nord ainda é plausível: layout e preto têm baixa exclusividade isolados. O [relatório](branding/umbra/REVIEW.md) registra notas conservadoras e protocolo de cinco segundos, pendente de participantes.
-
-Brief: “Criar para Umbra a partir do limiar entre sombra e conteúdo. Usar o limiar aberto com curva esquerda e saída diagonal direita, campo preto dominante, títulos curtos e metadados alinhados. Variar escala e extensão mantendo a direção. Demonstrar uma aplicação sem nome, logo e slogan. Preservar legibilidade e comportamento nativo.”
-
-## Histórico
-
-- **0.5.0 — 2026-09-17:** limiar aberto promovido de asset secundário a símbolo principal. Monograma UM removido de assets oficiais, web e ícones de integrações.
-
-- **0.4.1 — 2026-09-05:** removido o ramal `M72 68V100`; a curva do U segue diretamente para a entrada do M em um único percurso, sem ramificação. Vetores e PNGs atualizados.
-- **0.6.0 — 2026-09-05:** UI do Zed consolidada em Charcoal; variações de superfície removidas de painéis, abas, menus e controles.
-- **0.4.0 — 2026-09-05:** reconstrução da pasta branding; UM horizontal substitui símbolo empilhado e coruja; limiar assimétrico substitui V central. Novos vetores, aplicações, provas e avaliação. JSON dos temas preservado.
-- **0.3.0 — 2026-09-05:** tema Zed acromático, sintaxe por luminância, peso e itálico.
-- **0.2.0 — 2026-09-05:** primeira revisão pela skill; direção empilhada posteriormente substituída.
-- **0.1.0 — 2026-09-05:** consolidação inicial da identidade.
+Evitar marcas Apple, botão de energia, anel de loading, letras escondidas, paletas/logos por integração, Switzer renomeada como fonte autoral, texto essencial em cinza decorativo, loops constantes e dependência exclusiva do preto. O arquivo histórico não orienta novos assets.
