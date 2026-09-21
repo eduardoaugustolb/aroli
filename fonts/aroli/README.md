@@ -16,7 +16,7 @@ bun install
 bun run build
 ```
 
-Saída: [`dist/AroliMonoNF-Regular.otf`](dist/AroliMonoNF-Regular.otf). O arquivo `dist/*-base.otf` é intermediário. Ative *contextual alternates* (`calt`) no editor para `->`, `=>`, `!=`, `<=`, `>=` e `==`. O símbolo Aroli fica em U+100000. Veja o [espécime PNG](dist/specimen.png) ou [SVG](dist/specimen.svg).
+Saída: [`dist/AroliMonoNF-Regular.otf`](dist/AroliMonoNF-Regular.otf). Há também pesos de leitura para interfaces: [`Medium`](dist/AroliMonoNF-Medium.otf) e [`SemiBold`](dist/AroliMonoNF-SemiBold.otf), gerados pelo mesmo desenho com contorno mais robusto. O arquivo `dist/*-base.otf` é intermediário. Ative *contextual alternates* (`calt`) no editor para `->`, `=>`, `!=`, `<=`, `>=` e `==`. O símbolo Aroli fica em U+100000. Veja o [espécime PNG](dist/specimen.png) ou [SVG](dist/specimen.svg).
 
 ## Estado do protótipo
 

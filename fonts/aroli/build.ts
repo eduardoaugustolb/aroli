@@ -13,7 +13,9 @@ mkdirSync(out, { recursive: true });
 const S = 2.048;
 const cell = 600;
 const advance = Math.round(cell*S);
-const weight = 67;
+const weight = Number(process.env.AROLI_WEIGHT || 67);
+const style = process.env.AROLI_STYLE || 'Regular';
+const outputName = process.env.AROLI_OUTPUT || `AroliMonoNF-${style}.otf`;
 type Pt = [number, number];
 type Stroke = Pt[];
 const P = () => new opentype.Path();
@@ -230,7 +232,7 @@ for (let i=0;i<symbols.glyphs.length;i++) {
   add(`nf${cp.toString(16).toUpperCase()}`,cp,p);
   iconCount++;
 }
-const font=new opentype.Font({familyName:'Aroli Mono NF',styleName:'Regular',unitsPerEm:2048,ascender:1884,descender:-512,glyphs});
+const font=new opentype.Font({familyName:'Aroli Mono NF',styleName:style,unitsPerEm:2048,ascender:1884,descender:-512,glyphs});
 for (const platform of ['windows','macintosh','unicode']) {
   if (font.names[platform]) {
     font.names[platform].copyright={en:'Aroli text outlines © 2026 Aroli contributors. Nerd Font symbols © their respective authors.'};
@@ -238,7 +240,7 @@ for (const platform of ['windows','macintosh','unicode']) {
   }
 }
 const base=join(out,'AroliMonoNF-base.otf');
-const final=join(out,'AroliMonoNF-Regular.otf');
+const final=join(out,outputName);
 writeFileSync(base,Buffer.from(font.toArrayBuffer()));
 const feature=join(root,'features.fea');
 const result=spawnSync('fonttools',['feaLib','-o',final,feature,base],{encoding:'utf8'});

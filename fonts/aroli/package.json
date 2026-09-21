@@ -3,7 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "bun build.ts"
+    "build": "bun build.ts",
+    "build:medium": "AROLI_WEIGHT=82 AROLI_STYLE=Medium AROLI_OUTPUT=AroliMonoNF-Medium.otf bun build.ts",
+    "build:semibold": "AROLI_WEIGHT=100 AROLI_STYLE=SemiBold AROLI_OUTPUT=AroliMonoNF-SemiBold.otf bun build.ts",
+    "build:all": "bun run build && bun run build:medium && bun run build:semibold"
   },
   "dependencies": {
     "opentype.js": "^1.3.4"
