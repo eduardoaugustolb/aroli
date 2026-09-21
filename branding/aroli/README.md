@@ -20,6 +20,6 @@ cd ../../web && bun run setup:fonts
 cd .. && bun branding/aroli/build.ts
 ```
 
-O comando baixa Switzer oficial e verifica a licença contra SWITZER-LICENSE.txt; os arquivos locais são ignorados pelo Git. O gerador usa opentype.js do módulo Mono. Textos finais em curvas não exigem fontes do leitor. Switzer é de Indian Type Foundry; o símbolo Encaixe é específico da Aroli.
+O comando copia os WOFF2 autorais versionados de `fonts/aroli-sans/dist/`, sem downloads. O gerador usa opentype.js do módulo Mono. Textos finais em curvas não exigem fontes do leitor. A assinatura usa Aroli Sans Medium; desenho e reconstrução estão no [guia da fonte](../../fonts/aroli-sans/README.md).
 
 geometry.ts define as duas massas usadas pelo gerador e pela Mono. O build sincroniza favicon, avatar do site, ícones VS Code/JetBrains/Chrome, promos Chrome e wallpaper. Após mudanças, regenerar e inspecionar PNGs. [Guia completo](../../DESIGN.md).

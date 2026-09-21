@@ -35,7 +35,7 @@ Abra [Aroli.code-workspace](Aroli.code-workspace) para exibir o workspace como *
 - [Guia de identidade](DESIGN.md): símbolo Encaixe, cores, tipografia e aplicações.
 - [Assets e reprodução](branding/aroli/README.md): mestres SVG, exports e comandos.
 - [Registro da migração](docs/migrations/2026-09-20-aroli.md): decisões, compatibilidade, verificações e reversão.
-- [Site](web/README.md): preparação da Switzer local, build e laboratórios.
+- [Site](web/README.md): preparação da Aroli Sans local, build e laboratórios.
 - [Instruções para agentes](LLMS.md): navegação e limites por módulo.
 
 ## De Umbra para Aroli
@@ -46,4 +46,4 @@ Os IDs publicados de VS Code, Zed e JetBrains continuam estáveis. As duas pasta
 
 ## Licença
 
-O projeto mantém sua [licença proprietária](LICENSE). Switzer é de Indian Type Foundry, obtida diretamente pelo comando de preparação e não redistribuída no Git. Aroli Mono preserva os créditos e a licença dos ícones Nerd Fonts; consulte o [guia da fonte](fonts/aroli/README.md). O arquivo histórico em `branding/archive/` não representa a identidade atual.
+O projeto mantém sua [licença proprietária](LICENSE). [Aroli Sans](fonts/aroli-sans/README.md) é a fonte proporcional autoral, com binários locais versionados. Aroli Mono preserva os créditos e a licença dos ícones Nerd Fonts; consulte o [guia da fonte](fonts/aroli/README.md). O arquivo histórico em `branding/archive/` não representa a identidade atual.

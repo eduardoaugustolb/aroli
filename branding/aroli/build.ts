@@ -16,7 +16,7 @@ const svg = (
   title = "Aroli — Encaixe",
 ) =>
   `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img"><title>${title}</title>${content}</svg>\n`;
-const bytes = readFileSync(resolve(root, "web/app/fonts/Switzer-Medium.ttf"));
+const bytes = readFileSync(resolve(root, "fonts/aroli-sans/dist/AroliSans-Medium.otf"));
 const font = opentype.parse(
   bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength),
 );
@@ -122,7 +122,7 @@ write(
   "themes/jetbrains/aroli/src/main/resources/META-INF/pluginIcon.svg",
   svg(40, 40, `<g transform="scale(.2083333)">${mark()}</g>`),
 );
-// Human-readable review board, all lettering outlined using unmodified Switzer.
+// Human-readable review board, lettering outlined using original Aroli Sans.
 const panel = (x: number, y: number, label: string, content: string) =>
   `<g transform="translate(${x} ${y})"><rect width="480" height="400" rx="16" fill="#101111"/>${text(label, 24, 38, 18, "#858A89")}${content}</g>`;
 const frames = [0, 1, 2]
@@ -156,7 +156,7 @@ const tiles = [
     24,
     516,
     "04 / Tipografia",
-    text("Switzer", 28, 112, 54) +
+    text("Aroli Sans", 28, 112, 54) +
       text("Aa Bb Cc 0123456789", 28, 177, 34) +
       text("Precisão em cada detalhe.", 28, 232, 29) +
       text("Aroli Mono / código", 28, 324, 27) +

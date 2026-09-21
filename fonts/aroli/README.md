@@ -1,6 +1,6 @@
 # Aroli Mono NF
 
-Protótipo autoral de fonte monoespaçada para programação. O alfabeto latino básico, algarismos, pontuação, símbolo do Encaixe e ligaduras são desenhados em [`build.ts`](build.ts). A construção combina segmentos retos e curvas discretas, com terminais abertos, largura fixa e a marca Encaixe em U+100000, derivada do mestre vetorial. O desenho dos caracteres de código foi preservado nesta migração; Switzer é a nova fonte de comunicação, não a fonte monoespaçada.
+Protótipo autoral de fonte monoespaçada para programação. O alfabeto latino básico, algarismos, pontuação, símbolo do Encaixe e ligaduras são desenhados em [`build.ts`](build.ts). A construção combina segmentos retos e curvas discretas, com terminais abertos, largura fixa e a marca Encaixe em U+100000, derivada do mestre vetorial. O desenho dos caracteres de código foi preservado nesta migração; Aroli Sans é a fonte proporcional de comunicação, não a fonte monoespaçada.
 
 Os ícones vêm de **Symbols Nerd Font** e mantêm seus pontos de código. São um conjunto externo à autoria dos caracteres de texto. A fonte gera um único OTF com ambos; `dist/NERD-FONTS-LICENSE.txt` acompanha a compilação. Os nomes e o desenho do texto Aroli não são derivados de JetBrains Mono, Fira Code ou outra fonte de texto.
 
