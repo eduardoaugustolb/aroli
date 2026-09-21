@@ -1,6 +1,6 @@
 # Cursor Linux
 
-Este módulo entrega temas XCursor. Leia `umbra/LLMS.md` para qualquer mudança
-no Umbra Cursor. Instalação e configuração por ambiente ficam em
-`umbra/docs/installation.md`; não replique comandos de desktop em arquivos
+Este módulo entrega temas XCursor. Leia `aroli/LLMS.md` para qualquer mudança
+no Aroli Pointer. Instalação e configuração por ambiente ficam em
+`aroli/docs/installation.md`; não replique comandos de desktop em arquivos
 globais.

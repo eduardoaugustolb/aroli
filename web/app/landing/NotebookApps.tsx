@@ -6,7 +6,7 @@ export function NotebookApps() {
     <div className="notebook-apps">
       {NOTEBOOK_APPS.map((app) => (
         <div className={`notebook-app app-${app.id}`} key={app.id}>
-          <h2 className="app-reveal">Tema Umbra para {app.name}</h2>
+          <h2 className="app-reveal">Tema Aroli para {app.name}</h2>
           <a
             href={themeGuideUrl(app.id)}
             target="_blank"

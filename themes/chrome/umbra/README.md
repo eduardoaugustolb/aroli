@@ -1,10 +1,10 @@
-# Umbra para Chrome
+# Aroli para Chrome
 
-Tema dark charcoal para o Chrome, alinhado ao Umbra do VS Code e do Zed. Superfícies escuras e consistentes, texto Bone e um único acento sage-blue em links da New Tab — sem imagens chamativas no frame.
+Tema dark charcoal para o Chrome, alinhado ao Aroli do VS Code e do Zed. Superfícies escuras e consistentes, texto Bone e um único acento sage-blue em links da New Tab — sem imagens chamativas no frame.
 
-Variante Ink disponível em [`../umbra-ink/`](../umbra-ink/): mesma linguagem, com omnibox e New Tab em Ink `#050505`.
+Variante Black disponível em [`../umbra-ink/`](../umbra-ink/): mesma linguagem, com omnibox e New Tab em Ink `#050505`.
 
-## Paleta (Umbra)
+## Paleta (Aroli)
 
 | Função | Cor | Uso no Chrome |
 | --- | --- | --- |
@@ -33,7 +33,7 @@ Temas de Chrome são instalados em modo desenvolvedor a partir da pasta. Você n
 1. Abra `chrome://extensions` e ative o **Modo do desenvolvedor** (canto superior direito).
 2. Clique em **Carregar sem compactação** e selecione esta pasta:
    `themes/chrome/umbra`
-3. O tema é aplicado na hora. Para trocar para a variante Ink, desative este e carregue `themes/chrome/umbra-ink`.
+3. O tema é aplicado na hora. Para trocar para a variante Black, desative este e carregue `themes/chrome/umbra-ink`.
 
 ### Atualizar
 
@@ -41,26 +41,21 @@ Atualize o repositório e clique em **Recarregar** no cartão do tema em `chrome
 
 ### Remover
 
-Em `chrome://extensions`, clique em **Remover** no cartão Umbra. Isso volta ao tema padrão sem tocar em outros dados do navegador.
+Em `chrome://extensions`, clique em **Remover** no cartão Aroli. Isso volta ao tema padrão sem tocar em outros dados do navegador.
 
 ### Empacotar para a Chrome Web Store
 
-O `umbra-0.1.0.zip` ao lado do README contém só `manifest.json` e a
+O `aroli-dark-0.2.0.zip` ao lado do README contém só `manifest.json` e a
 imagem da NTP, pronto para upload. O ícone `store/icon-128.png` (gerado de
-`store/icon.svg`, limiar em Bone sobre Charcoal) vai separado, nos
+`store/icon.svg`, Encaixe em Bone sobre a superfície escura) vai separado, nos
 campos da ficha da loja. Para regenerar o zip após mudar o tema:
 
 ```sh
-python3 -c "
-import zipfile
-with zipfile.ZipFile('themes/chrome/umbra/umbra-0.1.0.zip', 'w', zipfile.ZIP_DEFLATED) as z:
-  z.write('themes/chrome/umbra/manifest.json', 'manifest.json')
-  z.write('themes/chrome/umbra/images/theme_ntp_background.png', 'images/theme_ntp_background.png')
-"
+bun scripts/package-chrome.ts
 ```
 
 A cada nova versão, suba `version` no `manifest.json` e gere um zip novo
-com o número correspondente. A variante Ink segue o mesmo processo em
+com o número correspondente. A variante Black segue o mesmo processo em
 `../umbra-ink/`.
 
 ## Compatibilidade
@@ -69,7 +64,7 @@ com o número correspondente. A variante Ink segue o mesmo processo em
 - cores como arrays RGB, conforme `kOverwritableColorTable`;
 - imagem: só `theme_ntp_background` (PNG 1920×1080, SVG de origem ao lado para regenerar);
 - sem `tints`: o tema não altera matiz/saturação da UI;
-- variante Ink: `../umbra-ink/manifest.json`, com frame/omnibox/NTP em `#050505`.
+- variante Black: `../umbra-ink/manifest.json`, com frame/omnibox/NTP em `#050505`.
 
 ## Solução de problemas
 
@@ -88,11 +83,11 @@ Para liberar o tema, adicione o ID da pasta a uma allowlist gerenciada:
 python3 -c "import hashlib;print(''.join(chr(ord('a')+((b>>4)&15))+chr(ord('a')+(b&15)) for b in hashlib.sha256(b'/caminho/absoluto/para/themes/chrome/umbra').digest()[:16]))"
 ```
 
-2. Crie `/etc/brave/policies/managed/umbra-allow.json` (com `sudo`) no formato:
+2. Crie `/etc/brave/policies/managed/aroli-allow.json` (com `sudo`) no formato:
 
 ```json
 {
-  "ExtensionInstallAllowlist": ["<id-umbra>", "<id-ink>"]
+  "ExtensionInstallAllowlist": ["<id-aroli>", "<id-ink>"]
 }
 ```
 
@@ -121,4 +116,8 @@ segue o próprio tema escuro).
 
 ---
 
-Umbra no GitHub: https://github.com/eduardoaugustolb/umbra
+Aroli no GitHub: https://github.com/eduardoaugustolb/umbra
+
+## Migração Aroli
+
+A pasta conserva o nome antigo para manter o ID da instalação unpacked. Não renomeie nem mova o checkout se depender desse ID. Os nomes públicos são Aroli Dark e Aroli Black; pacotes 0.2.0 são locais, não publicados. Paleta preservada; imagens e ícones atualizados.

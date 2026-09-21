@@ -38,7 +38,7 @@ export function Notebook() {
             <Image
               className="capture-vscode"
               src="/examples/vscode.png"
-              alt="Tema Umbra no VS Code, na tela do notebook"
+              alt="Tema Aroli no VS Code, na tela do notebook"
               fill
               sizes="(max-width: 760px) 88vw, 72vw"
               priority
@@ -46,14 +46,14 @@ export function Notebook() {
             <Image
               className="capture-zed"
               src="/examples/zed.png"
-              alt="Tema Umbra no Zed, na tela do notebook"
+              alt="Tema Aroli no Zed, na tela do notebook"
               fill
               sizes="(max-width: 760px) 88vw, 72vw"
             />
             <Image
               className="capture-kitty"
               src="/examples/kitty.png"
-              alt="Tema Umbra no Kitty, na tela do notebook"
+              alt="Tema Aroli no Kitty, na tela do notebook"
               fill
               sizes="(max-width: 760px) 88vw, 72vw"
             />

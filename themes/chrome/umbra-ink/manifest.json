@@ -1,32 +1,104 @@
 {
   "manifest_version": 3,
-  "version": "0.1.0",
-  "name": "Umbra Ink",
-  "description": "Ambientes digitais com menos ruído e mais presença. Variante Ink: fundo quase preto na omnibox e na new tab.",
+  "version": "0.2.0",
+  "name": "Aroli Black",
+  "description": "Aroli Black. Tudo encontra seu lugar. Mesma paleta, nova identidade.",
   "homepage_url": "https://github.com/eduardoaugustolb/umbra",
   "theme": {
     "images": {
       "theme_ntp_background": "images/theme_ntp_background.png"
     },
     "colors": {
-      "frame": [5, 5, 5],
-      "frame_inactive": [5, 5, 5],
-      "toolbar": [16, 17, 17],
-      "tab_text": [197, 199, 197],
-      "tab_background_text": [133, 138, 137],
-      "tab_background_text_inactive": [105, 114, 113],
-      "bookmark_text": [197, 199, 197],
-      "toolbar_text": [197, 199, 197],
-      "toolbar_button_icon": [174, 185, 188],
-      "button_background": [32, 36, 36],
-      "background_tab": [5, 5, 5],
-      "background_tab_inactive": [5, 5, 5],
-      "omnibox_background": [5, 5, 5],
-      "omnibox_text": [197, 199, 197],
-      "ntp_background": [5, 5, 5],
-      "ntp_text": [197, 199, 197],
-      "ntp_link": [154, 183, 176],
-      "ntp_header": [16, 17, 17]
+      "frame": [
+        5,
+        5,
+        5
+      ],
+      "frame_inactive": [
+        5,
+        5,
+        5
+      ],
+      "toolbar": [
+        16,
+        17,
+        17
+      ],
+      "tab_text": [
+        197,
+        199,
+        197
+      ],
+      "tab_background_text": [
+        133,
+        138,
+        137
+      ],
+      "tab_background_text_inactive": [
+        105,
+        114,
+        113
+      ],
+      "bookmark_text": [
+        197,
+        199,
+        197
+      ],
+      "toolbar_text": [
+        197,
+        199,
+        197
+      ],
+      "toolbar_button_icon": [
+        174,
+        185,
+        188
+      ],
+      "button_background": [
+        32,
+        36,
+        36
+      ],
+      "background_tab": [
+        5,
+        5,
+        5
+      ],
+      "background_tab_inactive": [
+        5,
+        5,
+        5
+      ],
+      "omnibox_background": [
+        5,
+        5,
+        5
+      ],
+      "omnibox_text": [
+        197,
+        199,
+        197
+      ],
+      "ntp_background": [
+        5,
+        5,
+        5
+      ],
+      "ntp_text": [
+        197,
+        199,
+        197
+      ],
+      "ntp_link": [
+        154,
+        183,
+        176
+      ],
+      "ntp_header": [
+        16,
+        17,
+        17
+      ]
     },
     "properties": {
       "ntp_background_alignment": "center",
