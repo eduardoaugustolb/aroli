@@ -3,5 +3,5 @@ name = "Aroli Themes"
 version = "0.8.0"
 schema_version = 1
 authors = ["Eduardo Augusto Lima Bueno"]
-description = "Dark charcoal theme with semantic accents and controlled color"
-repository = "https://github.com/eduardoaugustolb/umbra"
+description = "Aroli Dark with semantic accents and controlled color"
+repository = "https://github.com/eduardoaugustolb/aroli"

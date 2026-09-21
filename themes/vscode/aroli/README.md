@@ -110,4 +110,4 @@ Isso não altera `settings.json` nem outras extensões. Se o tema ainda aparecer
 
 ---
 
-Aroli no GitHub: https://github.com/eduardoaugustolb/umbra
+Aroli no GitHub: https://github.com/eduardoaugustolb/aroli

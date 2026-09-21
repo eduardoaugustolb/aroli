@@ -54,4 +54,4 @@ Apague ou comente a linha `include` adicionada ao seu `kitty.conf` e recarregue 
 
 ---
 
-Aroli no GitHub: https://github.com/eduardoaugustolb/umbra
+Aroli no GitHub: https://github.com/eduardoaugustolb/aroli

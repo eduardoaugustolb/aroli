@@ -12,7 +12,7 @@
 
 | Produto | Conteúdo |
 | --- | --- |
-| Aroli Themes | Aroli Dark e Aroli Black, com as mesmas cores da geração Umbra |
+| Aroli Themes | Aroli Dark e Aroli Black, com as mesmas cores da geração anterior |
 | [Aroli Mono](fonts/aroli/README.md) | Fonte autoral para código, ligaduras e variante NF; protótipo |
 | [Aroli Pointer](themes/cursor/aroli/README.md) | Cursores Linux com 32 estados e aliases |
 | [Aroli Backdrops](wallpapers/README.md) | Fundos e composições do ambiente |
@@ -42,7 +42,7 @@ Abra [Aroli.code-workspace](Aroli.code-workspace) para exibir o workspace como *
 
 A identidade e os nomes públicos passam a ser Aroli. A paleta permanece; Dark e Black são os novos nomes das variantes.
 
-Os IDs publicados de VS Code, Zed e JetBrains continuam estáveis. As duas pastas Chrome mantêm o caminho antigo porque extensões unpacked derivam sua identidade do caminho absoluto. O endereço remoto permanece [eduardoaugustolb/umbra](https://github.com/eduardoaugustolb/umbra) até migração externa explícita. Esta branch não publica extensões nem modifica configurações pessoais.
+Os IDs publicados de VS Code, Zed e JetBrains continuam estáveis. As duas pastas Chrome mantêm o caminho antigo porque extensões unpacked derivam sua identidade do caminho absoluto. O repositório agora é [eduardoaugustolb/aroli](https://github.com/eduardoaugustolb/aroli), com redirecionamento do endereço antigo.
 
 ## Licença
 

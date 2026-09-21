@@ -72,4 +72,4 @@ Isso não altera as configurações gerais do Zed nem outros temas instalados.
 
 ---
 
-Aroli no GitHub: https://github.com/eduardoaugustolb/umbra
+Aroli no GitHub: https://github.com/eduardoaugustolb/aroli
