@@ -1,11 +1,13 @@
-# Wallpapers gerados para Umbra
+# Aroli Backdrops — registro da coleção anterior
+
+Estes prompts e descrições foram usados na geração Umbra e permanecem históricos. Apenas os links dos arquivos acompanham os novos caminhos. A identidade atual Encaixe está em [README.md](README.md).
 
 ## Segunda coleção — natureza e matéria
 
 Gerados com imagegen integrado. Ambos em 1672 × 941 px, preservados sem redimensionamento. Inspeção visual realizada: imagens panorâmicas escuras, sem texto ou elementos de interface.
 
-- [Obsidian Dunes](umbra-obsidian-dunes.png): estética de fotografia aérea de dunas vulcânicas, luz suave nas cristas.
-- [Ink Mountains](umbra-ink-mountains.png): montanhas em nanquim sobre papel carvão, com névoa em camadas.
+- [Obsidian Dunes](aroli-obsidian-dunes.png): estética de fotografia aérea de dunas vulcânicas, luz suave nas cristas.
+- [Ink Mountains](aroli-black-mountains.png): montanhas em nanquim sobre papel carvão, com névoa em camadas.
 
 ### Obsidian Dunes — prompt
 
@@ -26,8 +28,8 @@ Primary request: A contemporary dark ink-wash mountain landscape, exquisite sumi
 
 Gerados com a ferramenta integrada imagegen em 2026-09-16. Imagens raster originais, independentes dos assets vetoriais da marca. Inspeção visual realizada: composição panorâmica, ausência de texto e UI, contraste escuro adequado à proposta.
 
-- [Ember Coast](umbra-ember-coast.png): paisagem vulcânica com tratamento pictórico, inspirada na referência fornecida pelo usuário.
-- [Silent Threshold](umbra-silent-threshold.png): arquitetura futurista minimalista em carvão, inspirada no limiar do Umbra.
+- [Ember Coast](aroli-ember-coast.png): paisagem vulcânica com tratamento pictórico, inspirada na referência fornecida pelo usuário.
+- [Silent Threshold](aroli-silent-threshold.png): arquitetura futurista minimalista em carvão, inspirada no limiar do Umbra.
 
 Resolução entregue pela ferramenta: 1672 × 941 px em ambos. O pedido de 3840 × 2160 no prompt não foi atendido; arquivos preservados sem ampliação artificial.
 

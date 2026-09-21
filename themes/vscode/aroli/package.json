@@ -1,0 +1,42 @@
+{
+  "name": "umbra-charcoal-theme",
+  "displayName": "Aroli Themes",
+  "description": "Tudo encontra seu lugar. Aroli Dark e Aroli Black para VS Code.",
+  "version": "0.4.0",
+  "publisher": "DevEduardo",
+  "license": "SEE LICENSE IN LICENSE",
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eduardoaugustolb/umbra"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "aroli",
+    "dark",
+    "black",
+    "theme",
+    "semantic color"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "id": "Umbra",
+        "label": "Aroli Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/aroli-color-theme.json"
+      },
+      {
+        "id": "Umbra Ink",
+        "label": "Aroli Black",
+        "uiTheme": "vs-dark",
+        "path": "./themes/aroli-black-color-theme.json"
+      }
+    ]
+  }
+}

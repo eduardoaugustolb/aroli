@@ -10,8 +10,8 @@ type SiteHeaderProps = {
 export function SiteHeader({ onExplore }: SiteHeaderProps) {
   return (
     <header>
-      <a className="wordmark" href="#inicio" aria-label="Umbra, início">
-        umbra
+      <a className="wordmark" href="#inicio" aria-label="Aroli, início">
+        <img src="/aroli-lockup.svg" width="140" height="40" alt="Aroli" />
       </a>
       <button type="button" className="header-link" onClick={onExplore}>
         Explore o ambiente{" "}

@@ -1,6 +1,6 @@
-# Umbra Ink para Chrome
+# Aroli Black para Chrome
 
-Variante Ink do Umbra para Chrome. Mesma linguagem da variante padrão ([`../umbra/`](../umbra/)), com omnibox, frame e New Tab em Ink `#050505` e toolbar em Charcoal `#101111` — espelha a relação editor/painéis do Umbra Ink no VS Code.
+Variante Black do Aroli para Chrome. Mesma linguagem da variante padrão ([`../umbra/`](../umbra/)), com omnibox, frame e New Tab em Ink `#050505` e toolbar em Charcoal `#101111` — espelha a relação editor/painéis do Aroli Black no VS Code.
 
 ## Paleta (Ink)
 
@@ -35,20 +35,15 @@ Atualize o repositório e clique em **Recarregar** no cartão do tema em `chrome
 
 ### Remover
 
-Em `chrome://extensions`, clique em **Remover** no cartão Umbra Ink.
+Em `chrome://extensions`, clique em **Remover** no cartão Aroli Black.
 
 ### Empacotar para a Chrome Web Store
 
-O `umbra-ink-0.1.0.zip` ao lado do README contém só `manifest.json` e a
+O `aroli-black-0.2.0.zip` ao lado do README contém só `manifest.json` e a
 imagem da NTP, pronto para upload. Para regenerar após mudar o tema:
 
 ```sh
-python3 -c "
-import zipfile
-with zipfile.ZipFile('themes/chrome/umbra-ink/umbra-ink-0.1.0.zip', 'w', zipfile.ZIP_DEFLATED) as z:
-  z.write('themes/chrome/umbra-ink/manifest.json', 'manifest.json')
-  z.write('themes/chrome/umbra-ink/images/theme_ntp_background.png', 'images/theme_ntp_background.png')
-"
+bun scripts/package-chrome.ts
 ```
 
 A cada nova versão, suba `version` no `manifest.json` e gere um zip novo
@@ -57,15 +52,19 @@ com o número correspondente.
 ## Compatibilidade
 
 - formato: tema Chrome `manifest_version: 3`;
-- diferenças em relação ao Umbra padrão: `frame`, `background_tab`, `omnibox_background` e `ntp_background` em `[5, 5, 5]`, `toolbar` em `[16, 17, 17]`;
-- imagem: `images/theme_ntp_background.png` (1920×1080, fundo `#050505` com limiar `#151515`).
+- diferenças em relação ao Aroli padrão: `frame`, `background_tab`, `omnibox_background` e `ntp_background` em `[5, 5, 5]`, `toolbar` em `[16, 17, 17]`;
+- imagem: `images/theme_ntp_background.png` (1920×1080, planos Encaixe com a paleta neutra existente).
 
 ## Limitações conhecidas
 
 - Mesmas da variante padrão: só frame, toolbar, abas, omnibox e NTP são estilizáveis;
-- Ink puro pode reduzir a separação entre frame e área de conteúdo em monitores com preto esmagado — prefira o Umbra padrão nesse caso;
+- Ink puro pode reduzir a separação entre frame e área de conteúdo em monitores com preto esmagado — prefira o Aroli padrão nesse caso;
 - “Blocked by the administrator” ao carregar: veja a seção de solução de problemas no [`../umbra/README.md`](../umbra/README.md#blocked-by-the-administrator-ao-carregar-sem-compactação).
 
 ---
 
-Umbra no GitHub: https://github.com/eduardoaugustolb/umbra
+Aroli no GitHub: https://github.com/eduardoaugustolb/umbra
+
+## Migração Aroli
+
+A pasta conserva o nome antigo para manter o ID da instalação unpacked. Não renomeie nem mova o checkout se depender desse ID. Os nomes públicos são Aroli Dark e Aroli Black; pacotes 0.2.0 são locais, não publicados. Paleta preservada; imagens e ícones atualizados.

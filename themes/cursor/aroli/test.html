@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aroli Pointer — laboratório</title>
+  <link rel="stylesheet" href="test.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="masthead">
+      <p class="eyebrow">AROLI / CURSOR LAB</p>
+      <h1>Teste cada gesto.</h1>
+      <p class="intro">Passe o mouse nos cartões e use o playground para conferir os estados em contexto.</p>
+      <label class="search">Filtrar cursores
+        <input id="filter" type="search" placeholder="ex.: resize, hand, zoom" autocomplete="off">
+      </label>
+    </header>
+    <section class="playground" aria-labelledby="playground-title">
+      <div class="section-heading"><p class="eyebrow">INTERAÇÃO</p><h2 id="playground-title">Playground</h2></div>
+      <div class="play-grid">
+        <label class="demo-card text-demo">Texto e seleção
+          <textarea aria-label="Área para testar o cursor de texto">Selecione este texto e escreva algo.</textarea>
+        </label>
+        <div class="demo-card link-demo"><span>Links e ações</span><a href="#playground-title">Passe sobre este link</a><button type="button">Botão</button></div>
+        <div class="demo-card drag-demo"><span>Arraste o bloco</span><div id="drag-source" draggable="true">GRAB → GRABBING</div><div id="drop-zone">DROP / NO-DROP</div></div>
+        <div class="demo-card resize-demo"><span>Redimensione as bordas</span><div class="resize-box" aria-label="Alças de redimensionamento"><i class="handle n"></i><i class="handle e"></i><i class="handle s"></i><i class="handle w"></i><i class="handle ne"></i><i class="handle se"></i><i class="handle sw"></i><i class="handle nw"></i></div></div>
+      </div>
+    </section>
+    <section aria-labelledby="loading-title">
+      <div class="section-heading"><p class="eyebrow">ATIVIDADE</p><h2 id="loading-title">Carregamento animado</h2></div>
+      <p>Espera e progresso · ciclo de 1,2 s. Prévia visual; os cartões abaixo usam SVGs estáticos.</p>
+      <div class="play-grid">
+        <div class="demo-card"><span>Espera</span><img src="src/animated/wait.svg" width="96" height="96" alt="Ampulheta girando"></div>
+        <div class="demo-card"><span>Progresso</span><img src="src/animated/progress.svg" width="96" height="96" alt="Seta imóvel com indicador girando"></div>
+      </div>
+    </section>
+    <section aria-labelledby="catalog-title">
+      <div class="section-heading"><p class="eyebrow">CATÁLOGO</p><h2 id="catalog-title">Todos os cursores <output id="count"></output></h2></div>
+      <div id="catalog" class="catalog" aria-live="polite"></div>
+    </section>
+    <footer><span>SVGs de teste · 24 / 32 / 48 px</span><a href="README.md">Documentação</a></footer>
+  </main>
+  <script src="test.js" defer></script>
+</body>
+</html>

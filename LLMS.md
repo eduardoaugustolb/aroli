@@ -1,4 +1,4 @@
-# Umbra — guia de navegação para agentes
+# Aroli — guia de navegação para agentes
 
 ## Leitura mínima
 
@@ -8,14 +8,14 @@ temas, do site ou da identidade sem necessidade.
 
 | Escopo | Instrução |
 | --- | --- |
-| Marca e assets | `branding/LLMS.md`, depois `branding/umbra/LLMS.md` |
+| Marca e assets | `branding/LLMS.md`, depois `branding/aroli/LLMS.md` |
 | Qualquer tema | `themes/LLMS.md` |
-| Cursor Linux | `themes/cursor/LLMS.md` e, para Umbra, `themes/cursor/umbra/LLMS.md` |
+| Cursor Linux | `themes/cursor/LLMS.md` e, para Aroli, `themes/cursor/aroli/LLMS.md` |
 | Chrome | `themes/chrome/LLMS.md`, depois a variante |
-| Kitty | `themes/kitty/LLMS.md`, depois `umbra/LLMS.md` |
-| Starship | `themes/starship/LLMS.md`, depois `umbra/LLMS.md` |
-| VS Code | `themes/vscode/LLMS.md`, depois `umbra/LLMS.md` |
-| Zed | `themes/zed/LLMS.md`, depois `umbra/LLMS.md` |
+| Kitty | `themes/kitty/LLMS.md`, depois `aroli/LLMS.md` |
+| Starship | `themes/starship/LLMS.md`, depois `aroli/LLMS.md` |
+| VS Code | `themes/vscode/LLMS.md`, depois `aroli/LLMS.md` |
+| Zed | `themes/zed/LLMS.md`, depois `aroli/LLMS.md` |
 | Site | `web/LLMS.md`, depois `web/AGENTS.md` |
 
 ## Segurança e privacidade

@@ -1,118 +1,49 @@
 <div align="center">
-  <img src="branding/umbra/logo/umbra-symbol.svg" alt="Símbolo limiar da Umbra" width="172" />
+  <img src="branding/aroli/logo/aroli-lockup.svg" alt="Aroli" width="280" />
 
-  # Umbra
+  **Tudo encontra seu lugar.**
 
-  **Ambientes digitais com menos ruído e mais presença.**
-
-  <p>
-    <a href="https://github.com/eduardoaugustolb/umbra/stargazers"><img src="https://img.shields.io/github/stars/eduardoaugustolb/umbra?style=flat-square&color=9AB7B0&labelColor=101111" alt="GitHub stars"></a>
-    <a href="https://github.com/eduardoaugustolb/umbra/commits/main"><img src="https://img.shields.io/github/last-commit/eduardoaugustolb/umbra?style=flat-square&color=B79BDD&labelColor=101111" alt="Último commit"></a>
-    <a href="LICENSE"><img src="https://img.shields.io/badge/license-proprietary-C78995?style=flat-square&labelColor=101111" alt="Licença proprietária"></a>
-  </p>
-
-  <p>
-    <code>themes</code> <code>wallpapers</code> <code>branding</code> <code>dark-ui</code> <code>charcoal</code>
-  </p>
+  Temas, tipografia, ponteiros e fundos para um ambiente que se adapta a você.
 </div>
 
-## ✦ O que é Umbra?
+![Sistema visual Aroli](branding/aroli/exports/aroli-system.png)
 
-Umbra é um sistema visual para transformar ferramentas digitais em um ambiente coerente, calmo e reconhecível.
+## Uma família, um ambiente
 
-Começamos com temas para desenvolvimento e terminal, mas a identidade foi pensada para crescer com wallpapers, ícones, ambientes gráficos e aplicações externas.
+| Produto | Conteúdo |
+| --- | --- |
+| Aroli Themes | Aroli Dark e Aroli Black, com as mesmas cores da geração Umbra |
+| [Aroli Mono](fonts/aroli/README.md) | Fonte autoral para código, ligaduras e variante NF; protótipo |
+| [Aroli Pointer](themes/cursor/aroli/README.md) | Cursores Linux com 32 estados e aliases |
+| [Aroli Backdrops](wallpapers/README.md) | Fundos e composições do ambiente |
 
-> Escuro sem ser vazio. Colorido sem ser barulhento.
+## Temas disponíveis
 
-## ◼ Temas disponíveis
-
-| Aplicação | Tema | Experiência |
+| Aplicação | Variantes | Guia |
 | --- | --- | --- |
-| [Zed](themes/zed/umbra/README.md) | Umbra | Editor dark charcoal com sintaxe semântica e acentos controlados |
-| [VS Code](themes/vscode/umbra/README.md) | Umbra / Umbra Ink | Extensão dark charcoal (ou Ink no editor) com a mesma sintaxe do Zed |
-| [Kitty](themes/kitty/umbra/README.md) | Umbra | Terminal com ANSI coerente e superfícies unificadas |
-| [Starship](themes/starship/umbra/README.md) | Umbra | Prompt compacto com contexto Git e runtimes discretos |
-| [Chrome](themes/chrome/umbra/README.md) | Umbra / Umbra Ink | Tema charcoal (ou Ink na omnibox e NTP) com a mesma base do VS Code |
-| [Cursor](themes/cursor/umbra/README.md) | Umbra Cursor | Cursor para Linux: hover de mão e drag-and-drop com indicadores claros |
-| [IDEs JetBrains](themes/jetbrains/umbra/README.md) | Umbra | Tema charcoal para WebStorm, GoLand, IntelliJ IDEA e outras IDEs da plataforma |
+| VS Code | Dark / Black | [Instalação](themes/vscode/aroli/README.md) |
+| Zed | Dark | [Instalação](themes/zed/aroli/README.md) |
+| JetBrains | Dark | [Instalação](themes/jetbrains/aroli/README.md) |
+| Chrome | Dark / Black | [Dark](themes/chrome/umbra/README.md) · [Black](themes/chrome/umbra-ink/README.md) |
+| Kitty | Dark | [Instalação](themes/kitty/aroli/README.md) |
+| Starship | Prompt | [Instalação](themes/starship/aroli/README.md) |
 
-Cada tema possui tutorial individual de instalação, changelog e arquivo de configuração próprio.
+## Identidade e desenvolvimento
 
-## ◇ Fonte em desenvolvimento
+Abra [Aroli.code-workspace](Aroli.code-workspace) para exibir o workspace como **Aroli**, mesmo quando a pasta do checkout ainda se chama `umbra`.
 
-[Umbra Limiar Mono NF](fonts/umbra/README.md) é um protótipo de fonte para código com letras autorais, ligaduras e ícones Nerd Font creditados separadamente. O [espécime](fonts/umbra/dist/specimen.png) mostra o desenho atual. A fonte é opcional e ainda está em avaliação de legibilidade e cobertura.
+- [Guia de identidade](DESIGN.md): símbolo Encaixe, cores, tipografia e aplicações.
+- [Assets e reprodução](branding/aroli/README.md): mestres SVG, exports e comandos.
+- [Registro da migração](docs/migrations/2026-09-20-aroli.md): decisões, compatibilidade, verificações e reversão.
+- [Site](web/README.md): preparação da Aroli Sans local, build e laboratórios.
+- [Instruções para agentes](LLMS.md): navegação e limites por módulo.
 
-## Instruções para agentes
+## De Umbra para Aroli
 
-[LLMS.md](LLMS.md) contém somente navegação, segurança e privacidade. Cada
-módulo possui um `LLMS.md` próprio para evitar carregar instruções de temas
-ou aplicações fora do escopo da tarefa.
+A identidade e os nomes públicos passam a ser Aroli. A paleta permanece; Dark e Black são os novos nomes das variantes.
 
-## ◌ Direção visual
+Os IDs publicados de VS Code, Zed e JetBrains continuam estáveis. As duas pastas Chrome mantêm o caminho antigo porque extensões unpacked derivam sua identidade do caminho absoluto. O endereço remoto permanece [eduardoaugustolb/umbra](https://github.com/eduardoaugustolb/umbra) até migração externa explícita. Esta branch não publica extensões nem modifica configurações pessoais.
 
-- **Charcoal primeiro:** superfícies escuras, consistentes e confortáveis para uso prolongado.
-- **Neutros como base:** branco, cinza e preto formam o ambiente.
-- **Cor com função:** os acentos comunicam sintaxe, estado, diagnóstico ou ação.
-- **Memória visual:** o limiar e sua linguagem de formas acompanham todos os produtos.
-- **Escala controlada:** cada integração preserva os mesmos tokens, relações e intenções.
+## Licença
 
-## ▣ Wallpapers
-
-Os wallpapers ficam em [`wallpapers/`](wallpapers/), separados dos temas de software. A coleção atual inclui composições escuras, ficção científica, anime e atmosferas noturnas.
-
-## ◎ Branding
-
-O sistema de identidade da Umbra está em [`branding/umbra/`](branding/umbra/README.md). Ele inclui:
-
-- símbolo UM em versões clara e escura;
-- avatar e exports rasterizados;
-- prancha de sistema visual;
-- provas de reprodução e reconhecimento;
-- assets para wallpapers e aplicações.
-
-Leia o [guia de identidade](DESIGN.md) antes de criar novos temas, ícones ou peças da marca.
-
-Agentes de IA devem ler o [LLMS.md](LLMS.md) antes de instalar qualquer tema.
-Ele encaminha ao módulo correto e define regras de segurança, privacidade,
-backup e validação.
-
-## ⌘ Organização
-
-```text
-themes/
-├── zed/umbra/       # tema para o Zed
-├── vscode/umbra/    # extensão para o VS Code (Umbra + Umbra Ink)
-├── kitty/umbra/     # tema para o Kitty
-├── starship/umbra/  # prompt para o Starship
-├── chrome/umbra/      # tema Umbra para o Chrome
-├── chrome/umbra-ink/  # variante Ink para o Chrome
-├── cursor/umbra/      # tema de cursor XCursor para Linux
-├── jetbrains/umbra/   # plugin de tema para IDEs JetBrains
-└── desktop/         # ambientes gráficos futuros
-wallpapers/
-├── static/          # wallpapers estáticos futuros
-└── animated/        # wallpapers animados futuros
-branding/umbra/      # logo, exports e sistema visual
-fonts/umbra/         # fonte autoral para código (protótipo)
-```
-
-Cada família deve manter seu próprio `README.md`, `CHANGELOG.md` e arquivos de configuração. O tutorial individual precisa explicar requisitos, instalação, atualização e remoção ou reversão.
-
-## ↗ Comece aqui
-
-1. Escolha uma integração na tabela acima.
-2. Abra o README do tema.
-3. Siga o tutorial sem sobrescrever suas configurações pessoais.
-4. Compartilhe feedback sobre contraste, legibilidade e consistência visual.
-
-## ⚖ Licença
-
-Umbra é um projeto proprietário. O uso pessoal local dos temas e wallpapers é permitido conforme os termos de [`LICENSE`](LICENSE). Cópia, redistribuição, modificação, incorporação em outros projetos e uso comercial exigem autorização prévia. O OTF protótipo da fonte incorpora ícones Nerd Fonts de terceiros; consulte as [notas de licenciamento da fonte](fonts/umbra/README.md#licenciamento) antes de redistribuí-lo.
-
-## #umbra
-
-`quiet surfaces` · `semantic color` · `night workflows` · `focused tools`
-
----
-
-Umbra no GitHub: https://github.com/eduardoaugustolb/umbra
+O projeto mantém sua [licença proprietária](LICENSE). [Aroli Sans](fonts/aroli-sans/README.md) é a fonte proporcional autoral, com binários locais versionados. Aroli Mono preserva os créditos e a licença dos ícones Nerd Fonts; consulte o [guia da fonte](fonts/aroli/README.md). O arquivo histórico em `branding/archive/` não representa a identidade atual.

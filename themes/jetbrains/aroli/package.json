@@ -1,0 +1,9 @@
+{
+  "name": "aroli-jetbrains-theme",
+  "version": "0.2.0",
+  "private": true,
+  "scripts": {
+    "verify": "bun scripts/verify.ts",
+    "package": "bun scripts/package.ts"
+  }
+}

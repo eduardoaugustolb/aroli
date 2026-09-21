@@ -3,11 +3,11 @@ name: Cursor preview
 on:
   push:
     paths:
-      - "themes/cursor/umbra/**"
+      - "themes/cursor/aroli/**"
       - ".github/workflows/cursor-preview.yml"
   pull_request:
     paths:
-      - "themes/cursor/umbra/**"
+      - "themes/cursor/aroli/**"
       - ".github/workflows/cursor-preview.yml"
   workflow_dispatch:
 
@@ -24,26 +24,26 @@ jobs:
       - name: Install cursor build dependencies
         run: sudo apt-get update && sudo apt-get install -y librsvg2-bin imagemagick libxcursor-dev build-essential pkg-config
       - name: Verify generated anatomy and compiled cursors
-        run: make -C themes/cursor/umbra check
+        run: make -C themes/cursor/aroli check
       - name: Generate SVG preview
-        run: bun themes/cursor/umbra/scripts/generate-preview.ts
+        run: bun themes/cursor/aroli/scripts/generate-preview.ts
       - name: Render visual review
         run: |
-          bun themes/cursor/umbra/scripts/verify-cursors.ts /tmp/umbra-cursor-sheet.svg
-          rsvg-convert /tmp/umbra-cursor-sheet.svg -o /tmp/umbra-cursor-sheet.png
-          rsvg-convert themes/cursor/umbra/preview.svg -o /tmp/umbra-cursor-preview.png
-          rsvg-convert themes/cursor/umbra/silhouettes.svg -o /tmp/umbra-silhouettes.png
+          bun themes/cursor/aroli/scripts/verify-cursors.ts /tmp/aroli-cursor-sheet.svg
+          rsvg-convert /tmp/aroli-cursor-sheet.svg -o /tmp/aroli-cursor-sheet.png
+          rsvg-convert themes/cursor/aroli/preview.svg -o /tmp/aroli-cursor-preview.png
+          rsvg-convert themes/cursor/aroli/silhouettes.svg -o /tmp/aroli-silhouettes.png
       - name: Verify generated file is committed
-        run: git diff --exit-code -- themes/cursor/umbra/preview.svg
+        run: git diff --exit-code -- themes/cursor/aroli/preview.svg
       - name: Publish preview artifact
         uses: actions/upload-artifact@v4
         with:
-          name: umbra-cursor-preview
+          name: aroli-cursor-preview
           path: |
-            themes/cursor/umbra/preview.svg
-            /tmp/umbra-cursor-sheet.svg
-            /tmp/umbra-cursor-sheet.png
-            /tmp/umbra-cursor-preview.png
-            themes/cursor/umbra/silhouettes.svg
-            /tmp/umbra-silhouettes.png
+            themes/cursor/aroli/preview.svg
+            /tmp/aroli-cursor-sheet.svg
+            /tmp/aroli-cursor-sheet.png
+            /tmp/aroli-cursor-preview.png
+            themes/cursor/aroli/silhouettes.svg
+            /tmp/aroli-silhouettes.png
           if-no-files-found: error
