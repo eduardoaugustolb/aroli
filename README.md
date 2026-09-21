@@ -16,6 +16,7 @@
 | [Aroli Mono](fonts/aroli/README.md) | Fonte autoral para código, ligaduras e variante NF; protótipo |
 | [Aroli Pointer](themes/cursor/aroli/README.md) | Cursores Linux com 32 estados e aliases |
 | [Aroli Backdrops](wallpapers/README.md) | Fundos e composições do ambiente |
+| [Aroli Desktop](https://github.com/eduardoaugustolb/aroli-desktop) | Ambiente pronto (Hyprland + Quickshell + instalador); repo independente em `desktop/` |
 
 ## Temas disponíveis
 

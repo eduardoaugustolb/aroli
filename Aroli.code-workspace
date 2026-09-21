@@ -1,3 +1,3 @@
 {
-  "folders": [{ "name": "Aroli", "path": "." }]
+  "folders": [{ "name": "Aroli", "path": "." }, { "name": "Aroli Desktop", "path": "desktop" }]
 }
