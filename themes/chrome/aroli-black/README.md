@@ -1,6 +1,6 @@
 # Aroli Black para Chrome
 
-Variante Black do Aroli para Chrome. Mesma linguagem da variante padrão ([`../umbra/`](../umbra/)), com omnibox, frame e New Tab em Ink `#050505` e toolbar em Charcoal `#101111` — espelha a relação editor/painéis do Aroli Black no VS Code.
+Variante Black do Aroli para Chrome. Mesma linguagem da variante padrão ([`../aroli-dark/`](../aroli-dark/)), com omnibox, frame e New Tab em Ink `#050505` e toolbar em Charcoal `#101111` — espelha a relação editor/painéis do Aroli Black no VS Code.
 
 ## Paleta (Ink)
 
@@ -26,8 +26,8 @@ Variante Black do Aroli para Chrome. Mesma linguagem da variante padrão ([`../u
 
 1. Abra `chrome://extensions` e ative o **Modo do desenvolvedor**.
 2. Clique em **Carregar sem compactação** e selecione esta pasta:
-   `themes/chrome/umbra-ink`
-3. Para voltar à variante padrão, desative este e carregue `themes/chrome/umbra`.
+   `themes/chrome/aroli-black`
+3. Para voltar à variante padrão, desative este e carregue `themes/chrome/aroli-dark`.
 
 ### Atualizar
 
@@ -59,7 +59,7 @@ com o número correspondente.
 
 - Mesmas da variante padrão: só frame, toolbar, abas, omnibox e NTP são estilizáveis;
 - Ink puro pode reduzir a separação entre frame e área de conteúdo em monitores com preto esmagado — prefira o Aroli padrão nesse caso;
-- “Blocked by the administrator” ao carregar: veja a seção de solução de problemas no [`../umbra/README.md`](../umbra/README.md#blocked-by-the-administrator-ao-carregar-sem-compactação).
+- “Blocked by the administrator” ao carregar: veja a seção de solução de problemas no [`../aroli-dark/README.md`](../aroli-dark/README.md#blocked-by-the-administrator-ao-carregar-sem-compactação).
 
 ---
 
@@ -67,4 +67,4 @@ Aroli no GitHub: https://github.com/eduardoaugustolb/aroli
 
 ## Migração Aroli
 
-A pasta conserva o nome antigo para manter o ID da instalação unpacked. Não renomeie nem mova o checkout se depender desse ID. Os nomes públicos são Aroli Dark e Aroli Black; pacotes 0.2.0 são locais, não publicados. Paleta preservada; imagens e ícones atualizados.
+As pastas foram renomeadas para `aroli-dark`/`aroli-black` no rebrand total; instalações unpacked carregadas do caminho antigo ganham um ID novo e precisam ser recarregadas. Os nomes públicos são Aroli Dark e Aroli Black; pacotes 0.2.0 são locais, não publicados. Paleta preservada; imagens e ícones atualizados.

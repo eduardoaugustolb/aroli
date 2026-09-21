@@ -3,8 +3,8 @@ import { existsSync, unlinkSync } from "node:fs";
 
 const root = resolve(import.meta.dir, "..");
 for (const [folder, product] of [
-  ["umbra", "aroli-dark"],
-  ["umbra-ink", "aroli-black"],
+  ["aroli-dark", "aroli-dark"],
+  ["aroli-black", "aroli-black"],
 ]) {
   const cwd = join(root, "themes/chrome", folder);
   const manifest = await Bun.file(join(cwd, "manifest.json")).json();

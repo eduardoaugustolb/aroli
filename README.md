@@ -24,13 +24,13 @@
 | VS Code | Dark / Black | [Instalação](themes/vscode/aroli/README.md) |
 | Zed | Dark | [Instalação](themes/zed/aroli/README.md) |
 | JetBrains | Dark | [Instalação](themes/jetbrains/aroli/README.md) |
-| Chrome | Dark / Black | [Dark](themes/chrome/umbra/README.md) · [Black](themes/chrome/umbra-ink/README.md) |
+| Chrome | Dark / Black | [Dark](themes/chrome/aroli-dark/README.md) · [Black](themes/chrome/aroli-black/README.md) |
 | Kitty | Dark | [Instalação](themes/kitty/aroli/README.md) |
 | Starship | Prompt | [Instalação](themes/starship/aroli/README.md) |
 
 ## Identidade e desenvolvimento
 
-Abra [Aroli.code-workspace](Aroli.code-workspace) para exibir o workspace como **Aroli**, mesmo quando a pasta do checkout ainda se chama `umbra`.
+Abra [Aroli.code-workspace](Aroli.code-workspace) para exibir o workspace como **Aroli**. Se a sua pasta de checkout ainda se chama `umbra`, pode renomeá-la para `aroli` — o Git acompanha o conteúdo, sem efeito no histórico.
 
 - [Guia de identidade](DESIGN.md): símbolo Encaixe, cores, tipografia e aplicações.
 - [Assets e reprodução](branding/aroli/README.md): mestres SVG, exports e comandos.
@@ -40,9 +40,9 @@ Abra [Aroli.code-workspace](Aroli.code-workspace) para exibir o workspace como *
 
 ## De Umbra para Aroli
 
-A identidade e os nomes públicos passam a ser Aroli. A paleta permanece; Dark e Black são os novos nomes das variantes.
+A migração está concluída: identidade, nomes públicos, repositório, pastas e IDs de extensão são Aroli. A paleta permanece; Dark e Black são os nomes das variantes.
 
-Os IDs publicados de VS Code, Zed e JetBrains continuam estáveis. As duas pastas Chrome mantêm o caminho antigo porque extensões unpacked derivam sua identidade do caminho absoluto. O repositório agora é [eduardoaugustolb/aroli](https://github.com/eduardoaugustolb/aroli), com redirecionamento do endereço antigo.
+Os IDs de VS Code (`Aroli Dark`/`Aroli Black`), Zed (`aroli-themes`) e JetBrains (`aroli.jetbrains.theme`) mudaram — selecione os temas de novo após atualizar. As pastas Chrome agora são `aroli-dark`/`aroli-black`; recarregue as instalações unpacked. O repositório é [eduardoaugustolb/aroli](https://github.com/eduardoaugustolb/aroli), com redirecionamento do endereço antigo. Histórico em [docs/migrations/2026-09-20-aroli.md](docs/migrations/2026-09-20-aroli.md).
 
 ## Licença
 

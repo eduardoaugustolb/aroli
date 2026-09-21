@@ -32,7 +32,7 @@ for (const [name, content] of [["plugin.xml", plugin], ["Aroli.xml", scheme]] as
 
 if (scheme.includes("FOREGGROUND")) throw new Error("Aroli.xml contains an invalid FOREGROUND attribute key");
 
-const requiredPluginEntries = ["<id>umbra.jetbrains.theme</id>", "<themeProvider", 'path="/Aroli.theme.json"', "<bundledColorScheme", 'path="/Aroli.xml"'];
+const requiredPluginEntries = ["<id>aroli.jetbrains.theme</id>", "<themeProvider", 'path="/Aroli.theme.json"', "<bundledColorScheme", 'path="/Aroli.xml"'];
 for (const entry of requiredPluginEntries) {
   if (!plugin.includes(entry)) throw new Error(`plugin.xml is missing ${entry}`);
 }
