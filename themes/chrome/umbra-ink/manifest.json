@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "name": "Aroli Black",
   "description": "Aroli Black. Tudo encontra seu lugar. Mesma paleta, nova identidade.",
-  "homepage_url": "https://github.com/eduardoaugustolb/umbra",
+  "homepage_url": "https://github.com/eduardoaugustolb/aroli",
   "theme": {
     "images": {
       "theme_ntp_background": "images/theme_ntp_background.png"

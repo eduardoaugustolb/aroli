@@ -116,7 +116,7 @@ segue o próprio tema escuro).
 
 ---
 
-Aroli no GitHub: https://github.com/eduardoaugustolb/umbra
+Aroli no GitHub: https://github.com/eduardoaugustolb/aroli
 
 ## Migração Aroli
 

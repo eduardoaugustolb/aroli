@@ -2,9 +2,9 @@
   <id>umbra.jetbrains.theme</id>
   <name>Aroli Themes</name>
   <version>0.2.0</version>
-  <vendor url="https://github.com/eduardoaugustolb/umbra">Aroli</vendor>
+  <vendor url="https://github.com/eduardoaugustolb/aroli">Aroli</vendor>
   <description><![CDATA[
-    <p>A dark charcoal theme for JetBrains IDEs.</p>
+    <p>Aroli Dark for JetBrains IDEs.</p>
     <p>Quiet surfaces and controlled semantic color for focused work.</p>
   ]]></description>
 
