@@ -1,1 +1,7 @@
 Cached Theme.pak
+
+# Aroli Desktop: repo independente aninhado (remote próprio, não versionado aqui)
+/desktop/
+
+# Outputs locais (imagegen, estudos) — nunca versionar
+/output/
