@@ -144,8 +144,10 @@ const add = (name:string, unicode:number|undefined, path:any, width=cell) => gly
 for (let cp=32;cp<=126;cp++) {
   const ch=String.fromCharCode(cp), path=pathOf(G[ch] || []);
   if ('!.:;?ij'.includes(ch)) {
-    if ('!.:;?'.includes(ch)) circle(path,[300,55],40);
-    if (':;'.includes(ch)) circle(path,[300,375],40);
+    // Optical punctuation correction: a larger dot prevents the fixed mono
+    // cell from reading as an accidental side-bearing gap at UI sizes.
+    if ('!.?'.includes(ch)) circle(path,[300,55],52);
+    if (':;'.includes(ch)) circle(path,[300,375],48);
     if ('ij'.includes(ch)) circle(path,[ch==='j'?350:300,625],42);
   }
   if (ch==='%') { circle(path,[155,575],80);circle(path,[425,125],80); }
