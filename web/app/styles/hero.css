@@ -73,47 +73,37 @@
 }
 @media (prefers-reduced-motion: no-preference) {
   .hero-bg {
-    animation: aroli-background-breathe 18s ease-in-out infinite alternate;
+    animation: aroli-background-breathe 16s ease-in-out infinite;
     transform-origin: 68% 50%;
   }
   .encaixe-plane--upper {
-    animation:
-      aroli-settle 900ms cubic-bezier(0.2, 0, 0, 1) both,
-      aroli-upper-drift 22s ease-in-out 900ms infinite alternate;
+    animation: aroli-upper-drift 14s ease-in-out infinite;
   }
   .encaixe-plane--lower {
-    animation: aroli-lower-drift 26s ease-in-out infinite alternate;
+    animation: aroli-lower-drift 19s ease-in-out infinite;
   }
   @keyframes aroli-background-breathe {
-    from {
+    0%, 100% {
       transform: scale(1) translate3d(0, 0, 0);
     }
-    to {
-      transform: scale(1.035) translate3d(-1.2%, 1%, 0);
-    }
-  }
-  @keyframes aroli-settle {
-    from {
-      transform: translate(10px, -10px) rotate(24deg);
-    }
-    to {
-      transform: translate(0, 0) rotate(24deg);
+    50% {
+      transform: scale(1.045) translate3d(-1.4%, 1.2%, 0);
     }
   }
   @keyframes aroli-upper-drift {
-    from {
+    0%, 100% {
       transform: translate3d(0, 0, 0) rotate(24deg);
     }
-    to {
-      transform: translate3d(-2.5%, 2%, 0) rotate(26deg);
+    50% {
+      transform: translate3d(-3.5%, 2.5%, 0) rotate(28deg) scale(1.025);
     }
   }
   @keyframes aroli-lower-drift {
-    from {
+    0%, 100% {
       transform: translate3d(0, 0, 0) rotate(24deg);
     }
-    to {
-      transform: translate3d(2%, -1.5%, 0) rotate(22deg);
+    50% {
+      transform: translate3d(3%, -2%, 0) rotate(20deg) scale(1.03);
     }
   }
 }
