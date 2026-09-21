@@ -4,7 +4,7 @@ Tema dark para o VS Code inspirado em ambientes noturnos de baixo brilho. Usa ch
 
 Duas variantes incluídas:
 
-Os rótulos do seletor são Aroli Dark e Aroli Black. Os IDs de configuração continuam `Umbra` e `Umbra Ink`, respectivamente, para preservar `workbench.colorTheme` e personalizações já salvas. O identificador da extensão também permanece `DevEduardo.umbra-charcoal-theme`.
+Os rótulos do seletor são Aroli Dark e Aroli Black, e os IDs de configuração são os mesmos nomes — quem usava `Umbra`/`Umbra Ink` precisa selecionar o tema de novo em `workbench.colorTheme`. O identificador da extensão é `DevEduardo.aroli-themes`.
 
 | Tema | Fundo do editor | Painéis |
 | --- | --- | --- |
@@ -37,16 +37,16 @@ A regra é conter, não eliminar, a cor: cerca de 85–90% da experiência perma
 
 ## Instalação
 
-### Identificador existente no Marketplace
+### Marketplace
 
-A publicação desta migração é uma etapa externa ainda não executada. O Marketplace pode continuar exibindo Umbra até a atualização. O identificador estável é:
+A publicação com o nome novo é uma etapa externa ainda não executada. O Marketplace pode continuar exibindo a extensão antiga até a atualização. O identificador novo é:
 
-- [Extensão no Marketplace](https://marketplace.visualstudio.com/items?itemName=DevEduardo.umbra-charcoal-theme), ou:
-- `Ctrl/Cmd+Shift+X`, busque `DevEduardo.umbra-charcoal-theme`, instale, depois `Ctrl-K Ctrl-T` e escolha `Aroli Dark` ou `Aroli Black`;
+- [Extensão no Marketplace](https://marketplace.visualstudio.com/items?itemName=DevEduardo.aroli-themes), ou:
+- `Ctrl/Cmd+Shift+X`, busque `DevEduardo.aroli-themes`, instale, depois `Ctrl-K Ctrl-T` e escolha `Aroli Dark` ou `Aroli Black`;
 - ou via CLI:
 
 ```sh
-code --install-extension DevEduardo.umbra-charcoal-theme
+code --install-extension DevEduardo.aroli-themes
 ```
 
 ### Desenvolvimento local
@@ -61,15 +61,15 @@ code --install-extension DevEduardo.umbra-charcoal-theme
 A partir da raiz do repositório, execute:
 
 ```sh
-cp -r themes/vscode/aroli "$HOME/.vscode/extensions/DevEduardo.umbra-charcoal-theme-0.4.0"
+cp -r themes/vscode/aroli "$HOME/.vscode/extensions/DevEduardo.aroli-themes-0.4.0"
 ```
 
 Reinicie o VS Code, abra a paleta de comandos (`Ctrl-K Ctrl-T` / `Cmd-K Ctrl-T`) e escolha `Aroli Dark` ou `Aroli Black`.
 
 Para o VS Code Insiders ou VSCodium, o diretório de extensões muda:
 
-- Insiders: `$HOME/.vscode-insiders/extensions/DevEduardo.umbra-charcoal-theme-0.4.0`
-- VSCodium: `$HOME/.vscode-oss/extensions/DevEduardo.umbra-charcoal-theme-0.4.0`
+- Insiders: `$HOME/.vscode-insiders/extensions/DevEduardo.aroli-themes-0.4.0`
+- VSCodium: `$HOME/.vscode-oss/extensions/DevEduardo.aroli-themes-0.4.0`
 
 ### Empacotar como .vsix (opcional)
 
@@ -78,7 +78,7 @@ Com Bun disponível:
 ```sh
 cd themes/vscode/aroli
 bunx --bun @vscode/vsce package --no-dependencies
-code --install-extension umbra-charcoal-theme-0.4.0.vsix
+code --install-extension aroli-themes-0.4.0.vsix
 ```
 
 ### Atualizar
@@ -90,7 +90,7 @@ Repita o comando `cp -r` (ou reinstale o `.vsix`) sempre que baixar uma nova ver
 Remova somente a pasta instalada:
 
 ```sh
-rm -rf "$HOME/.vscode/extensions/DevEduardo.umbra-charcoal-theme-0.4.0"
+rm -rf "$HOME/.vscode/extensions/DevEduardo.aroli-themes-0.4.0"
 ```
 
 Isso não altera `settings.json` nem outras extensões. Se o tema ainda aparecer na lista, recarregue a janela.
@@ -100,7 +100,7 @@ Isso não altera `settings.json` nem outras extensões. Se o tema ainda aparecer
 - formato: TextMate `tokenColors` + `semanticTokenColors` com `semanticHighlighting`;
 - variantes: `Aroli Dark` (vs-dark) e `Aroli Black` (vs-dark);
 - requer: VS Code `^1.80.0` (conforme `engines` do `package.json`);
-- versão local preparada: `0.4.0` como `DevEduardo.umbra-charcoal-theme`;
+- versão local preparada: `0.4.0` como `DevEduardo.aroli-themes`;
 - não inclui: fonte, ícones de arquivo/produto, ligaduras ou comportamento — o tema mexe só com cores.
 
 ## Limitações conhecidas

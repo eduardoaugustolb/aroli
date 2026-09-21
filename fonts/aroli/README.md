@@ -6,7 +6,7 @@ Os ícones vêm de **Symbols Nerd Font** e mantêm seus pontos de código. São 
 
 ## Construção
 
-Use `AROLI_NERD_SYMBOLS` e `AROLI_NERD_LICENSE` para caminhos personalizados. `UMBRA_NERD_SYMBOLS` e `UMBRA_NERD_LICENSE` continuam aceitos como aliases de compatibilidade, com prioridade para os nomes novos.
+Use `AROLI_NERD_SYMBOLS` e `AROLI_NERD_LICENSE` para caminhos personalizados.
 
 Requisitos: Bun, `opentype.js` (instalado pelo Bun), `fonttools`, `pango-view`, Fontconfig e o arquivo `SymbolsNerdFont-Regular.ttf`. O script procura este último em `/usr/share/fonts/TTF/` ou no caminho indicado por `AROLI_NERD_SYMBOLS`.
 

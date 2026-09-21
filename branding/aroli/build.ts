@@ -103,10 +103,10 @@ const wallpaper = (background = "#050505") =>
 write("branding/aroli/applications/wallpaper.svg", wallpaper());
 write("wallpapers/aroli-encaixe.svg", wallpaper());
 write("web/public/aroli-backdrop.svg", wallpaper());
-for (const variant of ["umbra", "umbra-ink"]) {
+for (const variant of ["aroli-dark", "aroli-black"]) {
   write(
     `themes/chrome/${variant}/images/theme_ntp_background.svg`,
-    wallpaper(variant === "umbra" ? "#101111" : "#050505"),
+    wallpaper(variant === "aroli-dark" ? "#101111" : "#050505"),
   );
   write(`themes/chrome/${variant}/store/icon.svg`, avatar);
   write(
@@ -114,7 +114,7 @@ for (const variant of ["umbra", "umbra-ink"]) {
     svg(
       440,
       280,
-      `<rect width="440" height="280" fill="#101111"/><g transform="translate(164 20) scale(.6)">${mark()}</g>${text("Aroli", 143, 207, 60)}${text(variant === "umbra" ? "Dark for Chrome" : "Black for Chrome", 133, 246, 22)}`,
+      `<rect width="440" height="280" fill="#101111"/><g transform="translate(164 20) scale(.6)">${mark()}</g>${text("Aroli", 143, 207, 60)}${text(variant === "aroli-dark" ? "Dark for Chrome" : "Black for Chrome", 133, 246, 22)}`,
     ),
   );
 }
@@ -247,7 +247,7 @@ render(
   "wallpapers/aroli-encaixe.png",
   3840,
 );
-for (const variant of ["umbra", "umbra-ink"]) {
+for (const variant of ["aroli-dark", "aroli-black"]) {
   render(
     `themes/chrome/${variant}/images/theme_ntp_background.svg`,
     `themes/chrome/${variant}/images/theme_ntp_background.png`,
