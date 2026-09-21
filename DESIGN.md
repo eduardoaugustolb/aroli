@@ -1,6 +1,6 @@
 # Aroli — identidade visual
 
-Versão 1.0 · 2026-09-20. Direção aprovada no storyboard; vetores de produção redesenhados a partir dele. Método: skill memorable-visual-identity. [Prancha aprovada](output/imagegen/aroli-study-01/storyboard.png) · [Sistema vetorial](branding/aroli/system.svg) · [Migração](docs/migrations/2026-09-20-aroli.md).
+Versão 1.1 · 2026-09-21. Direção aprovada no storyboard; vetores de produção redesenhados a partir dele. Método: skill memorable-visual-identity. [Prancha aprovada](output/imagegen/aroli-study-01/storyboard.png) · [Sistema vetorial](branding/aroli/system.svg) · [Migração](docs/migrations/2026-09-20-aroli.md).
 
 ## Conceito e posicionamento
 
@@ -16,7 +16,8 @@ Apple Friendly orienta proporções, legibilidade e cuidado tipográfico. Não c
 | Temas | Aroli Themes |
 | Variante padrão | Aroli Dark |
 | Variante mais profunda | Aroli Black |
-| Fonte | Aroli Mono; NF identifica o pacote com Nerd Fonts |
+| Fonte de comunicação | Aroli Sans |
+| Fonte de código | Aroli Mono; NF identifica o pacote com Nerd Fonts |
 | Cursores | Aroli Pointer |
 | Wallpapers | Aroli Backdrops |
 
@@ -28,7 +29,7 @@ Usar “Aroli for Zed” ou “Aroli para Zed” conforme o idioma. Não criar l
 2. **Intervalo:** superfícies com curvas complementares mantêm espaço negativo legível. Aparece em fundos sem repetir literalmente o logo.
 3. **Acomodação:** deslocamento curto da peça até seu alinhamento, seguido de repouso.
 
-Apoios: assinatura proporcional Switzer, hierarquia por tamanho/peso, margens constantes e neutros dominantes. Associação espontânea ainda não foi medida.
+Apoios: assinatura proporcional Aroli Sans, hierarquia por tamanho/peso, margens constantes e neutros dominantes. Associação espontânea ainda não foi medida.
 
 ## Construção e reprodução
 
@@ -41,11 +42,11 @@ Apoios: assinatura proporcional Switzer, hierarquia por tamanho/peso, margens co
 - Avatar utiliza área livre própria. Símbolo transparente não recebe fundo automático.
 - Monocromia em `#C5C7C5` sobre escuro ou `#050505` sobre claro. Sem metal, brilho, textura, perspectiva ou degradê no logo.
 
-A assinatura usa Switzer Medium convertida em curvas. Não é uma fonte exclusiva da Aroli. A autoria específica está no símbolo, na composição e no sistema.
+A assinatura usa Aroli Sans Medium convertida em curvas. Os glifos são desenhos próprios do projeto, com curvas suaves e espaços internos abertos que acompanham o Encaixe.
 
 ## Tipografia
 
-Switzer variável para comunicação/interface: 400 para texto, 500–600 para títulos e 700 para ênfase. Arquivos oficiais não modificados, servidos localmente. O Git inclui instruções e a licença FFL recebida, não os binários. Preparar com `cd web && bun run setup:fonts`.
+Aroli Sans para comunicação/interface: 400 para texto, 500–600 para títulos e 700 para ênfase. Quatro pesos estáticos autorais em OTF/WOFF2, versionados e servidos localmente. Preparar com `cd web && bun run setup:fonts`. Desenho, prova e limitações no [guia da fonte](fonts/aroli-sans/README.md). Versão 0.1: baixo contraste, curvas levemente ovais, `a` de dois andares, `g` de um andar e kerning GPOS. A referência Switzer orienta o território visual, sem reutilização de contornos.
 
 Títulos em caixa normal, até duas linhas, entrelinha 1,08–1,15 e tracking de -0,025 a -0,035 em em tamanhos grandes. Corpo 16–18 px, entrelinha 1,5–1,65, 45–70 caracteres por linha. Rótulos 13–16 px, sem tracking extremo.
 
@@ -82,11 +83,11 @@ Movimento reduzido mostra estado final. Texto, foco e controles ficam disponíve
 
 `system.svg` inclui uma aplicação sem logo, nome ou slogan no painel 05; o rótulo é editorial. `stress.svg` mostra 16/24/32/64/128 px, inversão e desfoque. `applications/competitor-swap.svg` testa Nord e não representa colaboração.
 
-Inspeção interna avalia silhueta/parentesco, não exclusividade. A troca de nome ainda pode parecer plausível sem exposição anterior: paleta e Switzer não são exclusivas. Repetir intervalo e acomodação para construir associação.
+Inspeção interna avalia silhueta/parentesco, não exclusividade. A troca de nome ainda pode parecer plausível sem exposição anterior: a paleta é compartilhada com outros sistemas e a Aroli Sans ainda não tem associação medida. Repetir intervalo e acomodação para construir associação.
 
 Teste humano a executar: mostrar por cinco segundos a 5–8 pessoas, ocultar, pedir desenho/descrição e depois associação de peça sem assinatura. Não realizado nesta migração.
 
-Notas internas de potencial (0–10): distintividade 6; reconhecimento 7; coerência 8; forma 7; propriedade tipográfica 4; composição 6; movimento 6; flexibilidade 8; consistência 8; acessibilidade 7; longevidade 7. Não são métricas de público.
+Notas internas de potencial (0–10): distintividade 6; reconhecimento 7; coerência 8; forma 7; propriedade tipográfica 7; composição 6; movimento 6; flexibilidade 8; consistência 8; acessibilidade 7; longevidade 7. Não são métricas de público.
 
 ## Antipadrões
 

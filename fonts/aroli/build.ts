@@ -146,7 +146,11 @@ for (let cp=32;cp<=126;cp++) {
   if ('!.:;?ij'.includes(ch)) {
     // Optical punctuation correction: a larger dot prevents the fixed mono
     // cell from reading as an accidental side-bearing gap at UI sizes.
-    if ('!.?'.includes(ch)) circle(path,[300,55],52);
+    if (ch === '.') {
+      const radius = Math.max(70, weight * .85);
+      circle(path,[300,radius],radius);
+    }
+    if ('!?'.includes(ch)) circle(path,[300,55],52);
     if (':;'.includes(ch)) circle(path,[300,375],48);
     if ('ij'.includes(ch)) circle(path,[ch==='j'?350:300,625],42);
   }

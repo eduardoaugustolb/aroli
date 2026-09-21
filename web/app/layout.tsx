@@ -8,9 +8,13 @@ import "./styles/sections.css";
 import "./styles/cursor.css";
 import "./styles/experience.css";
 
-const switzer = localFont({
-  src: "./fonts/Switzer-Variable.woff2",
-  weight: "100 900",
+const aroliSans = localFont({
+  src: [
+    { path: "./fonts/AroliSans-Regular.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/AroliSans-Medium.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/AroliSans-SemiBold.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/AroliSans-Bold.woff2", weight: "700", style: "normal" },
+  ],
   display: "swap",
   variable: "--font-brand",
 });
@@ -58,7 +62,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className={switzer.variable}>
+    <html lang="pt-BR" className={aroliSans.variable}>
       <body>
         {children}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
