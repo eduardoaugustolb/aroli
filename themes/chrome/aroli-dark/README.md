@@ -2,7 +2,7 @@
 
 Tema dark charcoal para o Chrome, alinhado ao Aroli do VS Code e do Zed. Superfícies escuras e consistentes, texto Bone e um único acento sage-blue em links da New Tab — sem imagens chamativas no frame.
 
-Variante Black disponível em [`../umbra-ink/`](../umbra-ink/): mesma linguagem, com omnibox e New Tab em Ink `#050505`.
+Variante Black disponível em [`../aroli-black/`](../aroli-black/): mesma linguagem, com omnibox e New Tab em Ink `#050505`.
 
 ## Paleta (Aroli)
 
@@ -32,8 +32,8 @@ Temas de Chrome são instalados em modo desenvolvedor a partir da pasta. Você n
 
 1. Abra `chrome://extensions` e ative o **Modo do desenvolvedor** (canto superior direito).
 2. Clique em **Carregar sem compactação** e selecione esta pasta:
-   `themes/chrome/umbra`
-3. O tema é aplicado na hora. Para trocar para a variante Black, desative este e carregue `themes/chrome/umbra-ink`.
+   `themes/chrome/aroli-dark`
+3. O tema é aplicado na hora. Para trocar para a variante Black, desative este e carregue `themes/chrome/aroli-black`.
 
 ### Atualizar
 
@@ -56,7 +56,7 @@ bun scripts/package-chrome.ts
 
 A cada nova versão, suba `version` no `manifest.json` e gere um zip novo
 com o número correspondente. A variante Black segue o mesmo processo em
-`../umbra-ink/`.
+`../aroli-black/`.
 
 ## Compatibilidade
 
@@ -64,7 +64,7 @@ com o número correspondente. A variante Black segue o mesmo processo em
 - cores como arrays RGB, conforme `kOverwritableColorTable`;
 - imagem: só `theme_ntp_background` (PNG 1920×1080, SVG de origem ao lado para regenerar);
 - sem `tints`: o tema não altera matiz/saturação da UI;
-- variante Black: `../umbra-ink/manifest.json`, com frame/omnibox/NTP em `#050505`.
+- variante Black: `../aroli-black/manifest.json`, com frame/omnibox/NTP em `#050505`.
 
 ## Solução de problemas
 
@@ -80,7 +80,7 @@ Para liberar o tema, adicione o ID da pasta a uma allowlist gerenciada:
 1. Descubra o ID da variante (ele é derivado do caminho absoluto da pasta):
 
 ```sh
-python3 -c "import hashlib;print(''.join(chr(ord('a')+((b>>4)&15))+chr(ord('a')+(b&15)) for b in hashlib.sha256(b'/caminho/absoluto/para/themes/chrome/umbra').digest()[:16]))"
+python3 -c "import hashlib;print(''.join(chr(ord('a')+((b>>4)&15))+chr(ord('a')+(b&15)) for b in hashlib.sha256(b'/caminho/absoluto/para/themes/chrome/aroli-dark').digest()[:16]))"
 ```
 
 2. Crie `/etc/brave/policies/managed/aroli-allow.json` (com `sudo`) no formato:
@@ -120,4 +120,4 @@ Aroli no GitHub: https://github.com/eduardoaugustolb/aroli
 
 ## Migração Aroli
 
-A pasta conserva o nome antigo para manter o ID da instalação unpacked. Não renomeie nem mova o checkout se depender desse ID. Os nomes públicos são Aroli Dark e Aroli Black; pacotes 0.2.0 são locais, não publicados. Paleta preservada; imagens e ícones atualizados.
+As pastas foram renomeadas para `aroli-dark`/`aroli-black` no rebrand total; instalações unpacked carregadas do caminho antigo ganham um ID novo e precisam ser recarregadas. Os nomes públicos são Aroli Dark e Aroli Black; pacotes 0.2.0 são locais, não publicados. Paleta preservada; imagens e ícones atualizados.

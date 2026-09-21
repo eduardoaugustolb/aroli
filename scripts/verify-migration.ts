@@ -34,10 +34,13 @@ assert.deepEqual(
   JSON.parse(before("themes/zed/umbra/themes/umbra.json")).themes[0].style,
   "Zed style changed",
 );
-for (const dir of ["umbra", "umbra-ink"])
+for (const [oldDir, newDir] of [
+  ["umbra", "aroli-dark"],
+  ["umbra-ink", "aroli-black"],
+])
   assert.deepEqual(
-    json(`themes/chrome/${dir}/manifest.json`).theme,
-    JSON.parse(before(`themes/chrome/${dir}/manifest.json`)).theme,
+    json(`themes/chrome/${newDir}/manifest.json`).theme,
+    JSON.parse(before(`themes/chrome/${oldDir}/manifest.json`)).theme,
     "Chrome color/image mapping changed",
   );
 const oldJb = JSON.parse(
@@ -66,11 +69,11 @@ for (const [dir, file] of [
     `${dir} palette changed`,
   );
 const vscode = json("themes/vscode/aroli/package.json");
-assert.equal(vscode.name, "umbra-charcoal-theme");
+assert.equal(vscode.name, "aroli-themes");
 assert.equal(vscode.publisher, "DevEduardo");
 assert.deepEqual(
   vscode.contributes.themes.map((t: { id: string }) => t.id),
-  ["Umbra", "Umbra Ink"],
+  ["Aroli Dark", "Aroli Black"],
 );
 for (const theme of vscode.contributes.themes)
   assert.ok(
@@ -79,11 +82,11 @@ for (const theme of vscode.contributes.themes)
   );
 assert.match(
   after("themes/zed/aroli/extension.toml"),
-  /id = "umbra-charcoal-theme"/,
+  /id = "aroli-themes"/,
 );
 assert.match(
   after("themes/jetbrains/aroli/src/main/resources/META-INF/plugin.xml"),
-  /<id>umbra.jetbrains.theme<\/id>/,
+  /<id>aroli.jetbrains.theme<\/id>/,
 );
 const list = Bun.spawnSync(
   [
@@ -143,5 +146,5 @@ assert.ok(
   "Switzer binaries must not be versioned",
 );
 console.log(
-  `Palette invariant across 8 integrations/variants; stable IDs; ${links} local links; ${svgs} SVGs; no Switzer redistribution.`,
+  `Palette invariant across 8 integrations/variants; Aroli IDs; ${links} local links; ${svgs} SVGs; no Switzer redistribution.`,
 );

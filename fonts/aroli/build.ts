@@ -210,7 +210,7 @@ for (const [sequence,name,parts] of ligatures) add(name,undefined,pathOf(parts),
 
 // Nerd Font symbols are a separately credited icon set. Text glyphs above
 // never inherit outlines from the symbol font.
-const symbolSource=process.env.AROLI_NERD_SYMBOLS || process.env.UMBRA_NERD_SYMBOLS || '/usr/share/fonts/TTF/SymbolsNerdFont-Regular.ttf';
+const symbolSource=process.env.AROLI_NERD_SYMBOLS || '/usr/share/fonts/TTF/SymbolsNerdFont-Regular.ttf';
 const symbolBytes=readFileSync(symbolSource);
 const symbols=opentype.parse(symbolBytes.buffer.slice(symbolBytes.byteOffset,symbolBytes.byteOffset+symbolBytes.byteLength));
 let iconCount=0;
@@ -251,7 +251,7 @@ writeFileSync(base,Buffer.from(font.toArrayBuffer()));
 const feature=join(root,'features.fea');
 const result=spawnSync('fonttools',['feaLib','-o',final,feature,base],{encoding:'utf8'});
 if(result.status!==0) throw new Error(`fonttools feaLib failed: ${result.stderr}`);
-const licenseSource=process.env.AROLI_NERD_LICENSE || process.env.UMBRA_NERD_LICENSE || '/usr/share/licenses/ttf-nerd-fonts-symbols-common/LICENSE';
+const licenseSource=process.env.AROLI_NERD_LICENSE || '/usr/share/licenses/ttf-nerd-fonts-symbols-common/LICENSE';
 writeFileSync(join(out,'NERD-FONTS-LICENSE.txt'),readFileSync(licenseSource));
 const proof=spawnSync(process.execPath,[join(root,'proof.ts')],{stdio:'inherit'});
 if(proof.status!==0) throw new Error('Visual proof generation failed');
