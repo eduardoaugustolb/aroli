@@ -1,0 +1,4 @@
+[submodule "desktop"]
+	path = desktop
+	url = https://github.com/eduardoaugustolb/aroli-desktop.git
+	branch = main
