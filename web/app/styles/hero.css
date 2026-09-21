@@ -72,8 +72,25 @@
   border-top: 1px solid #252727;
 }
 @media (prefers-reduced-motion: no-preference) {
+  .hero-bg {
+    animation: aroli-background-breathe 18s ease-in-out infinite alternate;
+    transform-origin: 68% 50%;
+  }
   .encaixe-plane--upper {
-    animation: aroli-settle 280ms cubic-bezier(0.2, 0, 0, 1) both;
+    animation:
+      aroli-settle 900ms cubic-bezier(0.2, 0, 0, 1) both,
+      aroli-upper-drift 22s ease-in-out 900ms infinite alternate;
+  }
+  .encaixe-plane--lower {
+    animation: aroli-lower-drift 26s ease-in-out infinite alternate;
+  }
+  @keyframes aroli-background-breathe {
+    from {
+      transform: scale(1) translate3d(0, 0, 0);
+    }
+    to {
+      transform: scale(1.035) translate3d(-1.2%, 1%, 0);
+    }
   }
   @keyframes aroli-settle {
     from {
@@ -81,6 +98,22 @@
     }
     to {
       transform: translate(0, 0) rotate(24deg);
+    }
+  }
+  @keyframes aroli-upper-drift {
+    from {
+      transform: translate3d(0, 0, 0) rotate(24deg);
+    }
+    to {
+      transform: translate3d(-2.5%, 2%, 0) rotate(26deg);
+    }
+  }
+  @keyframes aroli-lower-drift {
+    from {
+      transform: translate3d(0, 0, 0) rotate(24deg);
+    }
+    to {
+      transform: translate3d(2%, -1.5%, 0) rotate(22deg);
     }
   }
 }
