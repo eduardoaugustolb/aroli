@@ -54,4 +54,4 @@ O tema reutiliza os mesmos tokens do Zed e do Kitty: `bone` para conteúdo princ
 
 ---
 
-Aroli no GitHub: https://github.com/eduardoaugustolb/umbra
+Aroli no GitHub: https://github.com/eduardoaugustolb/aroli

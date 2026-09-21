@@ -63,7 +63,7 @@ com o número correspondente.
 
 ---
 
-Aroli no GitHub: https://github.com/eduardoaugustolb/umbra
+Aroli no GitHub: https://github.com/eduardoaugustolb/aroli
 
 ## Migração Aroli
 
