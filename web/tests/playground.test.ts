@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { CursorShake } from "../app/umbra-cursor";
+import { CursorShake } from "../app/aroli-cursor";
 import {
   INITIAL_WORKSPACE,
   execute,
@@ -35,22 +35,22 @@ test("terminal files persist, paths normalize, and source state is immutable", (
     INITIAL_WORKSPACE,
   ).workspace;
   assert.deepEqual(execute("cat note.txt", state).output, ["ação e espaço\n"]);
-  assert.equal(INITIAL_WORKSPACE.files["/umbra/note.txt"], undefined);
+  assert.equal(INITIAL_WORKSPACE.files["/aroli/note.txt"], undefined);
   state = execute("cd docs", state).workspace;
-  assert.equal(state.cwd, "/umbra/docs");
+  assert.equal(state.cwd, "/aroli/docs");
   assert.match(execute("cat ../note.txt", state).output[0], /ação/);
-  assert.equal(resolvePath("/umbra", "../../../../"), "/");
+  assert.equal(resolvePath("/aroli", "../../../../"), "/");
   assert.match(execute("cat missing.txt", state).output[0], /Erro/);
 });
 test("mock runner prints edited literals, reports unsupported code, never evaluates JS", () => {
   assert.deepEqual(
-    runDemo('const nome = "Umbra";\nconsole.log("Olá, " + nome);'),
-    ["Olá, Umbra"],
+    runDemo('const nome = "Aroli";\nconsole.log("Olá, " + nome);'),
+    ["Olá, Aroli"],
   );
   assert.match(runDemo('fetch("https://example.com")')[0], /Erro/);
   assert.match(runDemo("console.log(missing);")[0], /desconhecida/);
   assert.deepEqual(execute("bun hello.js", INITIAL_WORKSPACE).output, [
-    "Olá, Umbra",
+    "Olá, Aroli",
     "Menos ruído. Mais espaço.",
   ]);
 });

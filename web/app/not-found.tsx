@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Página não encontrada | Umbra",
-  description: "A página que você procurou não existe. Volte para a Umbra.",
+  title: "Página não encontrada | Aroli",
+  description: "A página que você procurou não existe. Volte para a Aroli.",
 };
 
 export default function NotFound() {
@@ -13,7 +13,7 @@ export default function NotFound() {
       <h1>Essa página não existe.</h1>
       <p>O endereço pode ter mudado ou nunca ter existido.</p>
       <Link className="cta" href="/">
-        Voltar para a Umbra
+        Voltar para a Aroli
       </Link>
     </main>
   );

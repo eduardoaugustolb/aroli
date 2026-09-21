@@ -1,0 +1,21 @@
+<span size="18432" font_features="calt=1">AROLI MONO NF / PROVA 03</span>
+<span size="53248" font_features="calt=1">Aroli Mono</span>
+<span size="30720" font_features="calt=1">ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+<span size="30720" font_features="calt=1">abcdefghijklmnopqrstuvwxyz</span>
+<span size="30720" font_features="calt=1">0123456789  i j ij ji jj  1Il  0Oo</span>
+<span size="16384" font_features="calt=1">ACENTOS / caracteres presentes no OTF</span>
+<span size="30720" font_features="calt=1">àáâãä èéêë ìíîï òóôõö ùúûü çñ</span>
+<span size="30720" font_features="calt=1">ÀÁÂÃ ÉÊ Í ÓÔÕ Ú ÇÑ</span>
+<span size="26624" font_features="calt=1">ação, coração, funções, útil, variável, ÍNDICE</span>
+<span size="16384" font_features="calt=1">LIGADURAS / calt=0</span>
+<span size="38912" font_features="calt=0">-&gt;  =&gt;  !=  &lt;=  &gt;=  ==</span>
+<span size="16384" font_features="calt=1">LIGADURAS / calt=1 / mesma largura</span>
+<span size="38912" font_features="calt=1">-&gt;  =&gt;  !=  &lt;=  &gt;=  ==</span>
+<span size="26624" font_features="calt=1">const encaixe = (shadow) =&gt; light;</span>
+<span size="26624" font_features="calt=1">if (j != i &amp;&amp; valor &lt;= limite) return ação;</span>
+<span size="12288" font_features="calt=1">12 px / i j ij ji ação -&gt; =&gt; != &lt;= &gt;= ==</span>
+<span size="14336" font_features="calt=1">14 px / i j ij ji ação -&gt; =&gt; != &lt;= &gt;= ==</span>
+<span size="16384" font_features="calt=1">16 px / i j ij ji ação -&gt; =&gt; != &lt;= &gt;= ==</span>
+<span size="24576" font_features="calt=1">24 px / i j ij ji ação -&gt; =&gt; != &lt;= &gt;= ==</span>
+<span size="16384" font_features="calt=1">NERD FONT / Git, pasta, terminal, Powerline, Aroli</span>
+<span size="36864" font_features="calt=1">        􀀀</span>

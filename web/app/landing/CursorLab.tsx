@@ -7,8 +7,8 @@ export function CursorLab({
   mode,
   onMode,
 }: {
-  mode: "circle" | "umbra";
-  onMode: (mode: "circle" | "umbra") => void;
+  mode: "circle" | "aroli";
+  onMode: (mode: "circle" | "aroli") => void;
 }) {
   const [clicks, setClicks] = useState(0);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -76,21 +76,21 @@ export function CursorLab({
         </h2>
         <p>
           O mesmo silêncio. Uma nova presença. O círculo dá lugar ao conjunto
-          Umbra. Descubra como cada gesto muda de forma.
+          Aroli Pointer. Descubra como cada gesto muda de forma.
         </p>
       </div>
       <div className="experience-panel cursor-panel">
         <div className="lab-toolbar">
           <span className="lab-caption">UM PONTEIRO. VÁRIAS INTENÇÕES.</span>
           <div className="segmented" aria-label="Estilo do cursor">
-            {(["circle", "umbra"] as const).map((value) => (
+            {(["circle", "aroli"] as const).map((value) => (
               <button
                 type="button"
                 key={value}
                 aria-pressed={mode === value}
                 onClick={() => onMode(value)}
               >
-                {value === "circle" ? "Círculo" : "Umbra"}
+                {value === "circle" ? "Círculo" : "Aroli Pointer"}
               </button>
             ))}
           </div>
@@ -130,7 +130,7 @@ export function CursorLab({
               <button
                 type="button"
                 className="drag-token"
-                data-umbra-cursor={dragging ? "grabbing" : "grab"}
+                data-aroli-cursor={dragging ? "grabbing" : "grab"}
                 style={{
                   transform: `translate(${position.x}px,${position.y}px)`,
                 }}
@@ -178,7 +178,7 @@ export function CursorLab({
             <div
               className="resize-demo"
               style={{ width: `${width}%` }}
-              data-umbra-cursor="ew-resize"
+              data-aroli-cursor="ew-resize"
             >
               <span>{width}%</span>
             </div>
@@ -189,7 +189,7 @@ export function CursorLab({
               min="35"
               max="100"
               value={width}
-              data-umbra-cursor="ew-resize"
+              data-aroli-cursor="ew-resize"
               onChange={(event) => setWidth(Number(event.target.value))}
             />
           </div>
@@ -197,7 +197,7 @@ export function CursorLab({
         <div className="cursor-extra">
           <button
             type="button"
-            data-umbra-cursor={busy ? "wait" : "hover"}
+            data-aroli-cursor={busy ? "wait" : "hover"}
             onClick={() => {
               if (busy) return;
               setBusy(true);
@@ -208,7 +208,7 @@ export function CursorLab({
           </button>
           <button
             type="button"
-            data-umbra-cursor="help"
+            data-aroli-cursor="help"
             aria-expanded={help}
             onClick={() => setHelp((v) => !v)}
           >
@@ -219,7 +219,7 @@ export function CursorLab({
           </button>
           <span role="status">
             {help
-              ? "Cada contexto usa o SVG original do tema Umbra."
+              ? "Cada contexto usa o SVG original do tema Aroli."
               : "Passe sobre os controles para descobrir outras formas."}
           </span>
         </div>
@@ -230,7 +230,7 @@ export function CursorLab({
           <div>
             <strong>Perdeu o cursor? Chame por ele.</strong>
             <p>
-              Com Umbra ativo, sacuda o mouse rapidamente. O ponteiro cresce por
+              Com Aroli ativo, sacuda o mouse rapidamente. O ponteiro cresce por
               um instante e volta ao tamanho original.
             </p>
             <small>
@@ -238,8 +238,8 @@ export function CursorLab({
               desativa o efeito de busca.
             </small>
           </div>
-          <span className={`mode-indicator ${mode === "umbra" ? "is-on" : ""}`}>
-            {mode === "umbra" ? "Umbra ativo" : "Ative Umbra acima"}
+          <span className={`mode-indicator ${mode === "aroli" ? "is-on" : ""}`}>
+            {mode === "aroli" ? "Aroli ativo" : "Ative Aroli acima"}
           </span>
         </div>
       </div>

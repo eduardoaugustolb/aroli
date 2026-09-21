@@ -1,0 +1,7 @@
+[Icon Theme]
+Name=Aroli Pointer
+Comment=Cursores Aroli — neutros, definidos e discretos
+Inherits=Adwaita
+
+[XCursor]
+Size=32

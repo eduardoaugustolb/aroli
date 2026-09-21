@@ -1,3 +1,7 @@
+# Migração Aroli — 2026-09-20
+
+Nova identidade Encaixe, nomes públicos e documentação Aroli. Paleta preservada. Consulte o registro em docs/migrations/2026-09-20-aroli.md na raiz. Releases anteriores abaixo são históricas.
+
 # Changelog — Umbra para Chrome
 
 ## [0.1.0] — 2026-09-14
