@@ -122,8 +122,10 @@ function outline(data: string, weight: number, constantJoins = false, alignBasel
       const dx = b[0] - a[0], dy = b[1] - a[1], len = Math.hypot(dx, dy) || 1;
       return [-dy / len, dx / len];
     };
-    // Clamping a miter at acute diagonal reversals tapers the entire segment.
-    // Construct these capitals from constant-width strokes with round joins.
+    // Clamping a miter at acute diagonal reversals distorts the whole joint
+    // (pinched inner valley, spiked outer edge), starving V/Y/v/w of ink.
+    // Construct these diagonal letters from constant-width strokes with round
+    // joins, like the wide capitals below.
     if (constantJoins) {
       for (let j = 0; j < points.length - 1; j++) {
         const a = points[j], b = points[j + 1], n = normal(a, b);
@@ -199,8 +201,10 @@ for (const [style, weightClass, stroke] of [['Regular', 400, 65], ['Medium', 500
   glyphs.push(new opentype.Glyph({ name: '.notdef', advanceWidth: 600, path: outline('M100 0 L100 680 L500 680 L500 0 L100 0 Z M100 0 L500 680', stroke) }));
   add(' ', 260, new opentype.Path());
   for (const [ch, [width, data]] of Object.entries(drawings)) {
-    // Wide diagonal capitals need more ink to match the perceived weight of H/O.
-    const path = outline(data, stroke * ('MNW'.includes(ch) ? 1.06 : 1), 'MNW'.includes(ch), /^[A-Za-z0-9]$/.test(ch));
+    // Acute valley reversals (V/Y/v/w, like M/N/W) need more ink to match the
+    // perceived weight of H/O: round joins avoid the miter distortion.
+    const diagonals = 'MNWVYvw';
+    const path = outline(data, stroke * (diagonals.includes(ch) ? 1.06 : 1), diagonals.includes(ch), /^[A-Za-z0-9]$/.test(ch));
     if ('ij'.includes(ch)) dot(path, ch === 'i' ? 122 : 139, 646, stroke * .62);
     if ('.:;!?'.includes(ch)) dot(path, ch === '?' ? 258 : width / 2, 31, stroke * .65);
     if (':;'.includes(ch)) dot(path, width / 2, 369, stroke * .65);
