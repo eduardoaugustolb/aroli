@@ -153,6 +153,23 @@ function outline(data: string, weight: number, constantJoins = false, alignBasel
   function flush(closed = false) {
     const start = path.commands.length;
     const skeletonBottom = Math.min(...points.map(p => p[1]));
+    // Cap tops: a centerline at y=680 is not a cap line. Horizontal bars land
+    // their edge at 680 + hw*.94, but vertical stems end in butt caps at 680
+    // and diagonal caps land short by |dx|/len*hw*.94 (H/I/L/U/J sit a full
+    // half-stroke low). Lift open-contour endpoints to the bar edge of THIS
+    // weight so every cap shares one line; the target must stay
+    // weight-relative (a fixed target would pin Bold stems below Bold bars).
+    // Round bowls keep their ~11 overshoot above the line; closed loops stay.
+    if (alignBaseline && !closed && points.length >= 2) {
+      const capEdge = 680 + weight / 2 * .94;
+      for (const [idx, other] of [[0, 1], [points.length - 1, points.length - 2]] as const) {
+        const [x, y] = points[idx];
+        if (y !== 680) continue;
+        const [ox, oy] = points[other];
+        const len = Math.hypot(ox - x, oy - y) || 1;
+        points[idx] = [x, capEdge - (Math.abs(ox - x) / len) * weight / 2 * .94];
+      }
+    }
     flushRaw(closed);
     // A centerline at y=0 is not a baseline: expanding a horizontal stroke
     // pushes its bottom below zero, unlike a vertical stem. Anchor each
@@ -201,10 +218,13 @@ for (const [style, weightClass, stroke] of [['Regular', 400, 65], ['Medium', 500
   glyphs.push(new opentype.Glyph({ name: '.notdef', advanceWidth: 600, path: outline('M100 0 L100 680 L500 680 L500 0 L100 0 Z M100 0 L500 680', stroke) }));
   add(' ', 260, new opentype.Path());
   for (const [ch, [width, data]] of Object.entries(drawings)) {
-    // Acute valley reversals (V/Y/v/w, like M/N/W) need more ink to match the
-    // perceived weight of H/O: round joins avoid the miter distortion.
-    const diagonals = 'MNWVYvw';
-    const path = outline(data, stroke * (diagonals.includes(ch) ? 1.06 : 1), diagonals.includes(ch), /^[A-Za-z0-9]$/.test(ch));
+    // Acute diagonal joints (A/M/N/W/V/Y/v/w) need more ink + round joins to
+    // match H/O: miters spike the A apex (+33) and starve V of ink. Sharp
+    // single corners spike too (1 flag +30, 4 corner +15), so 1/4 get round
+    // joins at base weight to keep digits optically even.
+    const BUMP = 'AMNWVYvw';
+    const ROUND = BUMP + '14';
+    const path = outline(data, stroke * (BUMP.includes(ch) ? 1.06 : 1), ROUND.includes(ch), /^[A-Za-z0-9]$/.test(ch));
     if ('ij'.includes(ch)) dot(path, ch === 'i' ? 122 : 139, 646, stroke * .62);
     if ('.:;!?'.includes(ch)) dot(path, ch === '?' ? 258 : width / 2, 31, stroke * .65);
     if (':;'.includes(ch)) dot(path, width / 2, 369, stroke * .65);
