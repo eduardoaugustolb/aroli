@@ -13,7 +13,7 @@ mkdirSync(out, { recursive: true });
 const S = 2.048;
 const cell = 600;
 const advance = Math.round(cell*S);
-const weight = Number(process.env.AROLI_WEIGHT || 67);
+const weight = Number(process.env.AROLI_WEIGHT || 78);
 const style = process.env.AROLI_STYLE || 'Regular';
 const outputName = process.env.AROLI_OUTPUT || `AroliMonoNF-${style}.otf`;
 type Pt = [number, number];
@@ -21,6 +21,11 @@ type Stroke = Pt[];
 const P = () => new opentype.Path();
 
 function polygon(path: any, points: Pt[]) {
+  const area=points.reduce((sum,p,i)=>{
+    const next=points[(i+1)%points.length];
+    return sum+p[0]*next[1]-next[0]*p[1];
+  },0);
+  if (area>0) points=[...points].reverse();
   path.moveTo(points[0][0] * S, points[0][1] * S);
   for (const [x, y] of points.slice(1)) path.lineTo(x * S, y * S);
   path.close();
@@ -43,7 +48,18 @@ function circle(path: any, p: Pt, r = weight / 2) {
 }
 function stroke(path: any, pts: Stroke, w = weight, round = true) {
   for (let i=0;i<pts.length-1;i++) line(path,pts[i],pts[i+1],w);
-  if (round) for (const pt of pts.slice(1,-1)) circle(path,pt,w/2);
+  // Bevel joins avoid tiny overlapping circular arcs after OTF quantization.
+  if (round) for (let i=1;i<pts.length-1;i++) {
+    const pt=pts[i], before=pts[i-1], after=pts[i+1];
+    const normal=(a:Pt,b:Pt):Pt=>{
+      const length=Math.hypot(b[0]-a[0],b[1]-a[1]) || 1;
+      return [-(b[1]-a[1])*w/(2*length),(b[0]-a[0])*w/(2*length)];
+    };
+    const a=normal(before,pt), b=normal(pt,after);
+    for (const side of [-1,1]) polygon(path,[pt,
+      [pt[0]+side*a[0],pt[1]+side*a[1]],
+      [pt[0]+side*b[0],pt[1]+side*b[1]]]);
+  }
 }
 function pathOf(strokes: Stroke[], w = weight) {
   const p = P();
@@ -59,7 +75,7 @@ const G: Record<string, Stroke[]> = {
   F: [[[105,0],[105,700],[470,700]],[[105,355],[410,355]]],
   G: [[[470,610],[380,700],[190,700],[100,600],[100,100],[190,0],[385,0],[470,90],[470,330],[320,330]]],
   H: [[[105,0],[105,700]],[[475,0],[475,700]],[[105,355],[475,355]]],
-  I: [[[100,700],[500,700]],[[300,700],[300,0]],[[100,0],[500,0]]],
+  I: [[[115,700],[485,700]],[[300,700],[300,0]],[[115,0],[485,0]]],
   J: [[[110,90],[185,0],[375,0],[460,100],[460,700]]],
   K: [[[105,0],[105,700]],[[470,700],[105,330],[475,0]]],
   L: [[[105,700],[105,0],[470,0]]],
@@ -85,10 +101,10 @@ const G: Record<string, Stroke[]> = {
   f: [[[160,0],[160,600],[245,700],[470,700]],[[70,475],[460,475]]],
   g: [[[455,475],[455,-110],[365,-205],[185,-205],[105,-135]],[[455,375],[365,475],[190,475],[105,380],[105,95],[190,0],[365,0],[455,95]]],
   h: [[[105,700],[105,0]],[[105,375],[200,475],[365,475],[460,375],[460,0]]],
-  i: [[[300,475],[300,0]],[[210,475],[390,475]],[[210,0],[420,0]]],
-  j: [[[350,475],[350,-105],[220,-205],[90,-205]]],
+  i: [[[155,475],[300,475],[300,0]],[[125,0],[475,0]]],
+  j: [[[170,475],[350,475],[350,-105],[250,-205],[115,-205]]],
   k: [[[105,700],[105,0]],[[455,475],[105,205],[460,0]]],
-  l: [[[285,700],[285,85],[350,0],[490,0]]],
+  l: [[[145,700],[285,700],[285,85],[350,0],[470,0]]],
   m: [[[75,0],[75,475]],[[75,375],[155,475],[245,475],[305,375],[305,0]],[[305,375],[385,475],[465,475],[525,375],[525,0]]],
   n: [[[105,0],[105,475]],[[105,375],[200,475],[365,475],[460,375],[460,0]]],
   o: [[[190,0],[105,95],[105,380],[190,475],[380,475],[475,380],[475,95],[380,0],[190,0]]],
@@ -139,20 +155,80 @@ const G: Record<string, Stroke[]> = {
   '"': [[[210,700],[210,480]],[[390,700],[390,480]]],
 };
 
+// Larger lowercase bodies improve reading at 14–16 px, retaining the cap line.
+for (const char of 'abcdefghijklmnopqrstuvwxyz') {
+  G[char] = G[char].map(s => s.map(([x,y]): Pt => [x,
+    y <= 0 ? y : y <= 475 ? y * 520 / 475 : 520 + (y - 475) * 180 / 225]));
+}
+// Baseline floor: horizontal bars would otherwise extend half a stroke below
+// vertical terminals. Shift non-vertical joints up by |dx|/len*hw so the outer
+// edge lands at 0 (flat) with pointed apexes keeping only a tiny overshoot.
+// Tops mirror at 520/700, descenders at -205.
+function fixStrokes(strokes: Stroke[]): Stroke[] {
+  const hw = weight / 2;
+  const shiftFor = (x: number, y: number, p: Pt | undefined): number => {
+    if (!p) return 0;
+    const dx = p[0] - x, dy = p[1] - y;
+    const len = Math.hypot(dx, dy) || 1;
+    return Math.abs(dx) / len * hw;
+  };
+  const shiftedY = (y: number, shift: number): number => {
+    if (y === 0) return shift;
+    if (y === -205) return -205 + shift;
+    if (y === 520) return 520 - shift;
+    return 700 - shift;
+  };
+  return strokes.map(orig => {
+    const s: Stroke = orig.map(([x, y]): Pt => [x, y]);
+    // Closed loops (O, o, 0, D…) start and end at the same joint: use both
+    // incident segments so the loop stays closed after the shift.
+    const closed = s.length > 1 && s[0][0] === s[s.length - 1][0] && s[0][1] === s[s.length - 1][1];
+    if (closed && (s[0][1] === 0 || s[0][1] === -205 || s[0][1] === 520 || s[0][1] === 700)) {
+      const y = s[0][1];
+      const shift = Math.max(shiftFor(s[0][0], y, s[1]), shiftFor(s[0][0], y, s[s.length - 2]));
+      if (shift !== 0) {
+        const ny = shiftedY(y, shift);
+        s[0][1] = ny;
+        s[s.length - 1][1] = ny;
+      }
+    }
+    return s.map(([x, y], i): Pt => {
+      if (closed && (i === 0 || i === s.length - 1)) return [x, y];
+      const isBottom = y === 0 || y === -205;
+      const isTop = y === 520 || y === 700;
+      if (!isBottom && !isTop) return [x, y];
+      const prev = orig[i - 1], next = orig[i + 1];
+      // Vertical-only terminals stay; anything with a non-vertical incident
+      // segment shifts so its outer edge aligns instead of floating or sinking.
+      const sPrev = shiftFor(x, y, prev), sNext = shiftFor(x, y, next);
+      if (sPrev === 0 && sNext === 0) return [x, y];
+      // Endpoints use their single segment; corners use the worst case so both
+      // incident edges land at or above the floor (tiny overshoot allowed).
+      const shift = Math.max(sPrev, sNext);
+      if (shift === 0) return [x, y];
+      return [x, shiftedY(y, shift)];
+    });
+  });
+}
+function glyphPath(ch: string) {
+  const strokes = /^[A-Za-z0-9]$/.test(ch) ? fixStrokes(G[ch] || []) : (G[ch] || []);
+  return pathOf(strokes);
+}
 const glyphs: any[] = [new opentype.Glyph({name:'.notdef',advanceWidth:advance,path:pathOf([[[100,0],[100,700],[500,700],[500,0],[100,0]],[[100,0],[500,700]]])})];
 const add = (name:string, unicode:number|undefined, path:any, width=cell) => glyphs.push(new opentype.Glyph({name,unicode,advanceWidth:advance*width/cell,path}));
 for (let cp=32;cp<=126;cp++) {
-  const ch=String.fromCharCode(cp), path=pathOf(G[ch] || []);
+  const ch=String.fromCharCode(cp), path=glyphPath(ch);
   if ('!.:;?ij'.includes(ch)) {
     // Optical punctuation correction: a larger dot prevents the fixed mono
     // cell from reading as an accidental side-bearing gap at UI sizes.
     if (ch === '.') {
-      const radius = Math.max(70, weight * .85);
+      const radius = Math.round(Math.max(70, weight * .85));
       circle(path,[300,radius],radius);
     }
     if ('!?'.includes(ch)) circle(path,[300,55],52);
     if (':;'.includes(ch)) circle(path,[300,375],48);
-    if ('ij'.includes(ch)) circle(path,[ch==='j'?350:300,625],42);
+    if (ch===':') circle(path,[300,55],48);
+    if ('ij'.includes(ch)) circle(path,[ch==='j'?350:300,650],Math.max(46,weight/2));
   }
   if (ch==='%') { circle(path,[155,575],80);circle(path,[425,125],80); }
   if (ch==='&') stroke(path,[[325,365],[490,0]]);
@@ -171,8 +247,8 @@ const accents: Record<string,[string,string]> = {
   'Ú':['U','acute'],'Ç':['C','cedilla'],'Ñ':['N','tilde'],
 };
 for (const [character,[base,accent]] of Object.entries(accents)) {
-  const upper=base===base.toUpperCase(), top=upper?845:605;
-  const path=pathOf(G[base]);
+  const upper=base===base.toUpperCase(), top=upper?845:650;
+  const path=glyphPath(base);
   if (accent==='acute') stroke(path,[[225,top-70],[365,top+30]],70);
   if (accent==='grave') stroke(path,[[225,top+30],[365,top-70]],70);
   if (accent==='circumflex') {stroke(path,[[185,top-65],[300,top+35],[415,top-65]],65);}
@@ -241,8 +317,9 @@ for (let i=0;i<symbols.glyphs.length;i++) {
 const font=new opentype.Font({familyName:'Aroli Mono NF',styleName:style,unitsPerEm:2048,ascender:1884,descender:-512,glyphs});
 for (const platform of ['windows','macintosh','unicode']) {
   if (font.names[platform]) {
-    font.names[platform].copyright={en:'Aroli text outlines © 2026 Aroli contributors. Nerd Font symbols © their respective authors.'};
+    font.names[platform].copyright={en:'Aroli text outlines © 2026 Eduardo Augusto Lima Bueno. All rights reserved. Nerd Font symbols © their respective authors.'};
     font.names[platform].description={en:'Original Aroli monospaced letterforms with programming ligatures and Nerd Font symbols.'};
+    font.names[platform].license={en:'Original Aroli font software: proprietary, all rights reserved. Distribution restricted to the copyright holder. Third-party Nerd Font symbols retain their own licenses; see LICENSE.txt and NERD-FONTS-LICENSE.txt.'};
   }
 }
 const base=join(out,'AroliMonoNF-base.otf');
@@ -251,10 +328,13 @@ writeFileSync(base,Buffer.from(font.toArrayBuffer()));
 const feature=join(root,'features.fea');
 const result=spawnSync('fonttools',['feaLib','-o',final,feature,base],{encoding:'utf8'});
 if(result.status!==0) throw new Error(`fonttools feaLib failed: ${result.stderr}`);
+const finish=spawnSync(process.env.AROLI_FONT_PYTHON || 'python3',[join(root,'finish.py'),final,style,String(weight)],{stdio:'inherit'});
+if(finish.status!==0) throw new Error('Font finishing failed (requires fonttools, skia-pathops, psautohint)');
 const licenseSource=process.env.AROLI_NERD_LICENSE || '/usr/share/licenses/ttf-nerd-fonts-symbols-common/LICENSE';
 writeFileSync(join(out,'NERD-FONTS-LICENSE.txt'),readFileSync(licenseSource));
-const proof=spawnSync(process.execPath,[join(root,'proof.ts')],{stdio:'inherit'});
+writeFileSync(join(out,'LICENSE.txt'),readFileSync(join(root,'LICENSE.txt')));
+const proof=spawnSync(process.execPath,[join(root,'proof.ts'),final,style],{stdio:'inherit'});
 if(proof.status!==0) throw new Error('Visual proof generation failed');
-const verify=spawnSync(process.execPath,[join(root,'verify.ts')],{stdio:'inherit'});
+const verify=spawnSync(process.execPath,[join(root,'verify.ts'),final,style],{stdio:'inherit'});
 if(verify.status!==0) throw new Error('Final font verification failed');
 console.log(`Built ${final}: ${glyphs.length} glyphs, ${iconCount} Nerd Font symbols, ${ligatures.length} ligatures`);

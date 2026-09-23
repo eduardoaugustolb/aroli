@@ -1,0 +1,15 @@
+AROLI MONO NF — LICENÇA AUTORAL PROPRIETÁRIA
+Copyright (c) 2026 Eduardo Augusto Lima Bueno. Todos os direitos reservados.
+
+Esta licença aplica-se ao código e aos desenhos originais da Aroli Mono NF.
+A disponibilização do código ou dos binários não concede licença pública de
+uso, modificação, sublicenciamento, venda ou redistribuição desses componentes.
+Qualquer permissão a terceiros exige autorização prévia e expressa do titular.
+A distribuição dos componentes autorais é reservada exclusivamente ao titular.
+
+COMPONENTES DE TERCEIROS
+Os ícones incorporados de Symbols Nerd Font não são de autoria do titular da
+Aroli e não são relicenciados por este documento. Permanecem sujeitos às suas
+próprias licenças e avisos, reproduzidos em NERD-FONTS-LICENSE.txt. As restrições
+acima não reduzem direitos concedidos pelos respectivos titulares sobre esses
+componentes. Preserve ambos os documentos junto ao binário combinado.
