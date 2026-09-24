@@ -20,7 +20,7 @@ const escape=(s:string)=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replac
 const row=(s:string,size=26,features='calt=1')=>`<span size="${size*1024}" font_features="${features}">${escape(s)}</span>`;
 const operators='->  =>  !=  <=  >=  ==';
 const text=[
-  row(`AROLI MONO NF / 0.903 / ${style}`,18),
+  row(`AROLI MONO NF / 0.904 / ${style}`,18),
   row('Aroli Mono',52),
   row('ABCDEFGHIJKLMNOPQRSTUVWXYZ',30),
   row('abcdefghijklmnopqrstuvwxyz',30),

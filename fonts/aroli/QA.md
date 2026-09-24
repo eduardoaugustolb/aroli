@@ -1,5 +1,13 @@
 # Validação 0.9 — 2026-09-23
 
+## Correção 0.904
+
+O 0.903 não resolveu no olho: medi o rabicho e ele tem 0.57 px a 15 px —
+some no antialiasing e sobra só o ponto. Novo rabicho com 1.3x a haste,
+curva à esquerda até -150 (borda ~-362): `,` e `;` com gancho visível a
+15 px no render FreeType, `.` inalterado. Fundo de tela escuro exige esse
+contraste extra; o Zed precisa ser reiniciado para carregar os novos OTFs.
+
 ## Correção 0.903
 
 `.` era só o ponto e `,` só o rabicho — em tamanho de código ambos liam como

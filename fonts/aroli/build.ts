@@ -131,7 +131,7 @@ const G: Record<string, Stroke[]> = {
   '9': [[[475,330],[385,420],[195,420],[105,510],[105,605],[195,700],[385,700],[475,605],[475,100],[385,0],[195,0],[120,65]]],
   '!': [[[300,700],[300,190]]],
   '?': [[[105,590],[200,700],[385,700],[475,590],[475,460],[290,300],[290,205]]],
-  '.': [], ',': [[[300,35],[250,-115]]], ':': [], ';': [[[300,35],[250,-115]]],
+  '.': [], ',': [], ':': [], ';': [],
   '-': [[[130,250],[450,250]]], '_': [[[80,-75],[500,-75]]],
   '+': [[[290,470],[290,60]],[[85,265],[495,265]]],
   '=': [[[110,355],[470,355]],[[110,140],[470,140]]],
@@ -223,9 +223,15 @@ for (let cp=32;cp<=126;cp++) {
     // cell from reading as an accidental side-bearing gap at UI sizes.
     const dotR = Math.round(Math.max(70, weight * .85));
     if (ch === '.') circle(path,[300,dotR],dotR);
-    // A comma is the period dot plus its descender tail (bare tails read as
-    // periods at code sizes); the lower half of ';' is that same comma.
-    if (',;'.includes(ch)) circle(path,[300,dotR],dotR);
+    // A comma is the period dot plus its descender tail; the lower half of
+    // ';' is that same comma. The tail is drawn 1.3x bold and hooks left to
+    // -150: at 15 px a stem-width diagonal is subpixel and its antialiasing
+    // washes out, leaving just the dot (= a period). Starts inside the dot
+    // so the union stays seamless after removeOverlaps.
+    if (',;'.includes(ch)) {
+      circle(path,[300,dotR],dotR);
+      stroke(path,[[315,80],[272,-30],[195,-150]],Math.round(weight*1.3));
+    }
     if ('!?'.includes(ch)) circle(path,[300,55],52);
     if (':;'.includes(ch)) circle(path,[300,375],48);
     if (ch===':') circle(path,[300,55],48);

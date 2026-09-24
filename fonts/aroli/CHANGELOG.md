@@ -4,6 +4,11 @@ Nova identidade Encaixe, nomes públicos e documentação Aroli. Paleta preserva
 
 # Changelog
 
+## 0.904 — 2026-09-23
+
+- Rabicho da vírgula redesenhado: 1.3x a haste, curva para a esquerda até -150. O rabicho fino (0.57 px a 15 px) sumia no antialiasing e sobrava só o ponto.
+- `;` herda o novo rabicho; ponto segue igual.
+
 ## 0.903 — 2026-09-23
 
 - Vírgula com o ponto do final mais o rabicho descendente; antes era só o rabicho e se confundia com o ponto em tamanho de código.
