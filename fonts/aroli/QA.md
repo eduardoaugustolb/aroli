@@ -1,5 +1,15 @@
 # Validação 0.9 — 2026-09-23
 
+## Correção 0.903
+
+`.` era só o ponto e `,` só o rabicho — em tamanho de código ambos liam como
+o mesmo borrão na base. Agora `,` = ponto do final + rabicho e a metade
+inferior de `;` é essa mesma vírgula. Um guarda incompleto (`!.:;?ij`, sem a
+vírgula) quase anulou a correção; a remedição confirma `comma.y2 == period.y2`
+nos três pesos (287/320/370) com rabicho até ~-265. `verify.ts` trava `.` na
+base, `,`/`;` descendentes e pares distintos; `proof.ts` ganha linha de
+pontuação, inspecionada no PNG.
+
 ## Correção 0.902
 
 Causa raiz do piso desnivelado: barras horizontais em y=0 com borda em -hw

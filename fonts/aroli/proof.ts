@@ -20,12 +20,13 @@ const escape=(s:string)=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replac
 const row=(s:string,size=26,features='calt=1')=>`<span size="${size*1024}" font_features="${features}">${escape(s)}</span>`;
 const operators='->  =>  !=  <=  >=  ==';
 const text=[
-  row(`AROLI MONO NF / 0.902 / ${style}`,18),
+  row(`AROLI MONO NF / 0.903 / ${style}`,18),
   row('Aroli Mono',52),
   row('ABCDEFGHIJKLMNOPQRSTUVWXYZ',30),
   row('abcdefghijklmnopqrstuvwxyz',30),
   row('0123456789  i j ij ji jj  1Il  0Oo',30),
   row('...  obj.name  3.14  arquivo.ts  fim.',30),
+  row('PONTUAÇÃO / ponto. vírgula, e ponto-e-vírgula; dois-pontos:',30),
   row('ACENTOS / caracteres presentes no OTF',16),
   row('àáâãä èéêë ìíîï òóôõö ùúûü çñ',30),
   row('ÀÁÂÃ ÉÊ Í ÓÔÕ Ú ÇÑ',30),

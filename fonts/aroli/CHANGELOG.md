@@ -4,6 +4,12 @@ Nova identidade Encaixe, nomes públicos e documentação Aroli. Paleta preserva
 
 # Changelog
 
+## 0.903 — 2026-09-23
+
+- Vírgula com o ponto do final mais o rabicho descendente; antes era só o rabicho e se confundia com o ponto em tamanho de código.
+- Metade inferior do `;` passa a ser a mesma vírgula, mantendo o ponto superior.
+- Verificação de regressão: `.` na base, `,`/`;` descendentes, pares `.`/`,` e `,`/`;` distintos; linha de pontuação na prova visual.
+
 ## 0.902 — 2026-09-23
 
 - Piso nivelado na construção: barras horizontais e ápices diagonais deslocados por |dx|/len*hw para a borda externa alinhar em 0, sem escala vertical por glifo.

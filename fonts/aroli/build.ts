@@ -218,13 +218,14 @@ const glyphs: any[] = [new opentype.Glyph({name:'.notdef',advanceWidth:advance,p
 const add = (name:string, unicode:number|undefined, path:any, width=cell) => glyphs.push(new opentype.Glyph({name,unicode,advanceWidth:advance*width/cell,path}));
 for (let cp=32;cp<=126;cp++) {
   const ch=String.fromCharCode(cp), path=glyphPath(ch);
-  if ('!.:;?ij'.includes(ch)) {
+  if ('!.:;,?ij'.includes(ch)) {
     // Optical punctuation correction: a larger dot prevents the fixed mono
     // cell from reading as an accidental side-bearing gap at UI sizes.
-    if (ch === '.') {
-      const radius = Math.round(Math.max(70, weight * .85));
-      circle(path,[300,radius],radius);
-    }
+    const dotR = Math.round(Math.max(70, weight * .85));
+    if (ch === '.') circle(path,[300,dotR],dotR);
+    // A comma is the period dot plus its descender tail (bare tails read as
+    // periods at code sizes); the lower half of ';' is that same comma.
+    if (',;'.includes(ch)) circle(path,[300,dotR],dotR);
     if ('!?'.includes(ch)) circle(path,[300,55],52);
     if (':;'.includes(ch)) circle(path,[300,375],48);
     if (ch===':') circle(path,[300,55],48);

@@ -28,8 +28,13 @@ assert.equal(font.tables.post.isFixedPitch,1);
 const iBounds=font.charToGlyph('i').getBoundingBox();
 assert(iBounds.x2-iBounds.x1 > width*.57,'i is too narrow for its cell');
 assert(Math.abs(iBounds.x1-(width-iBounds.x2)) < 4,'i side bearings are unbalanced');
-for(const [a,b] of [['I','l'],['I','1'],['i','l']]) {
+for(const [a,b] of [['I','l'],['I','1'],['i','l'],['.',','],[',',';']]) {
   assert.notDeepEqual(font.charToGlyph(a).path.commands,font.charToGlyph(b).path.commands,`${a}/${b} must remain distinct`);
+}
+const periodBox=font.charToGlyph('.').getBoundingBox();
+assert(periodBox.y1>=-1,'period must sit on the baseline');
+for(const char of [',',';']) {
+  assert(font.charToGlyph(char).getBoundingBox().y1<-100,`${char} must descend below the baseline`);
 }
 const dot=font.charToGlyph('j').path.commands.filter(c=>'y' in c && c.y>600*2.048);
 const xs=dot.map(c=>c.x);
