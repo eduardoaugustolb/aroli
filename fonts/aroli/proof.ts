@@ -20,7 +20,7 @@ const escape=(s:string)=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replac
 const row=(s:string,size=26,features='calt=1')=>`<span size="${size*1024}" font_features="${features}">${escape(s)}</span>`;
 const operators='->  =>  !=  <=  >=  ==';
 const text=[
-  row(`AROLI MONO NF / 0.904 / ${style}`,18),
+  row(`AROLI MONO NF / 0.905 / ${style}`,18),
   row('Aroli Mono',52),
   row('ABCDEFGHIJKLMNOPQRSTUVWXYZ',30),
   row('abcdefghijklmnopqrstuvwxyz',30),
@@ -41,6 +41,7 @@ const text=[
   row('14 px / obj.name  3.14  fim.  i j ação -> => !=',14),
   row('16 px / obj.name  3.14  fim.  i j ação -> => !=',16),
   ...[10,12,14,15,16,24].flatMap(size=>[
+    row(`${size} px / .  ,  :  ;  !  ?  ...  obj.name  3.14`,size),
     row('BASE / a e o h m n r u v w x z i I l 1 0',size),
     row(`${size} px / minimum  limit  iii  III  lll  111  Il1i  índice`,size),
     row('func RegisterRoutes(router routing.Router, deps Dependencies) {',size),

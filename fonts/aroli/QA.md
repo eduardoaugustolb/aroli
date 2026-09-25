@@ -1,5 +1,13 @@
 # Validação 0.9 — 2026-09-23
 
+## Correção 0.905
+
+Em 15 px, `:` usava círculos de raio 48 contra mínimo 70 em `.`; cada ponto
+ficava 31% menor no diâmetro e podia rasterizar como um risco fino. `;`, `!`
+e `?` herdavam a mesma inconsistência. A família de pontos agora compartilha
+o raio óptico mínimo, e o rabicho de `,`/`;` usa 1.6x a haste até y=-170.
+O specimen e a regressão raster cobrem `.,:;!?` em 10, 12, 14, 15, 16 e 24 px.
+
 ## Correção 0.904
 
 O 0.903 não resolveu no olho: medi o rabicho e ele tem 0.57 px a 15 px —

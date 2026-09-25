@@ -219,22 +219,23 @@ const add = (name:string, unicode:number|undefined, path:any, width=cell) => gly
 for (let cp=32;cp<=126;cp++) {
   const ch=String.fromCharCode(cp), path=glyphPath(ch);
   if ('!.:;,?ij'.includes(ch)) {
-    // Optical punctuation correction: a larger dot prevents the fixed mono
-    // cell from reading as an accidental side-bearing gap at UI sizes.
+    // One optical dot family: at 14–16 px, smaller punctuation dots collapse
+    // to a faint single pixel and make :, ;, ! and ? look underdrawn beside
+    // a period. Keep the dot diameter consistent across punctuation.
     const dotR = Math.round(Math.max(70, weight * .85));
     if (ch === '.') circle(path,[300,dotR],dotR);
     // A comma is the period dot plus its descender tail; the lower half of
-    // ';' is that same comma. The tail is drawn 1.3x bold and hooks left to
-    // -150: at 15 px a stem-width diagonal is subpixel and its antialiasing
+    // ';' is that same comma. The tail is drawn 1.6x bold and hooks left to
+    // -170: at 15 px a stem-width diagonal is subpixel and its antialiasing
     // washes out, leaving just the dot (= a period). Starts inside the dot
     // so the union stays seamless after removeOverlaps.
     if (',;'.includes(ch)) {
       circle(path,[300,dotR],dotR);
-      stroke(path,[[315,80],[272,-30],[195,-150]],Math.round(weight*1.3));
+      stroke(path,[[315,80],[265,-38],[170,-170]],Math.round(weight*1.6));
     }
-    if ('!?'.includes(ch)) circle(path,[300,55],52);
-    if (':;'.includes(ch)) circle(path,[300,375],48);
-    if (ch===':') circle(path,[300,55],48);
+    if ('!?'.includes(ch)) circle(path,[300,dotR],dotR);
+    if (':;'.includes(ch)) circle(path,[300,375],dotR);
+    if (ch===':') circle(path,[300,dotR],dotR);
     if ('ij'.includes(ch)) circle(path,[ch==='j'?350:300,650],Math.max(46,weight/2));
   }
   if (ch==='%') { circle(path,[155,575],80);circle(path,[425,125],80); }

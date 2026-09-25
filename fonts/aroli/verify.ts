@@ -33,6 +33,12 @@ for(const [a,b] of [['I','l'],['I','1'],['i','l'],['.',','],[',',';']]) {
 }
 const periodBox=font.charToGlyph('.').getBoundingBox();
 assert(periodBox.y1>=-1,'period must sit on the baseline');
+for(const char of ':;!?') {
+  const box=font.charToGlyph(char).getBoundingBox();
+  assert(box.x2-box.x1>=periodBox.x2-periodBox.x1-2,`${char} dot is thinner than period`);
+}
+const colonBox=font.charToGlyph(':').getBoundingBox();
+assert(colonBox.y2-colonBox.y1>periodBox.y2-periodBox.y1*2, 'colon must retain two distinct dots');
 for(const char of [',',';']) {
   assert(font.charToGlyph(char).getBoundingBox().y1<-100,`${char} must descend below the baseline`);
 }

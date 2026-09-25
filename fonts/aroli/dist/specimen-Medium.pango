@@ -1,4 +1,4 @@
-<span size="18432" font_features="calt=1">AROLI MONO NF / 0.904 / Medium</span>
+<span size="18432" font_features="calt=1">AROLI MONO NF / 0.905 / Medium</span>
 <span size="53248" font_features="calt=1">Aroli Mono</span>
 <span size="30720" font_features="calt=1">ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
 <span size="30720" font_features="calt=1">abcdefghijklmnopqrstuvwxyz</span>
@@ -18,31 +18,37 @@
 <span size="12288" font_features="calt=1">12 px / obj.name  3.14  fim.  i j ação -&gt; =&gt; !=</span>
 <span size="14336" font_features="calt=1">14 px / obj.name  3.14  fim.  i j ação -&gt; =&gt; !=</span>
 <span size="16384" font_features="calt=1">16 px / obj.name  3.14  fim.  i j ação -&gt; =&gt; !=</span>
+<span size="10240" font_features="calt=1">10 px / .  ,  :  ;  !  ?  ...  obj.name  3.14</span>
 <span size="10240" font_features="calt=1">BASE / a e o h m n r u v w x z i I l 1 0</span>
 <span size="10240" font_features="calt=1">10 px / minimum  limit  iii  III  lll  111  Il1i  índice</span>
 <span size="10240" font_features="calt=1">func RegisterRoutes(router routing.Router, deps Dependencies) {</span>
 <span size="10240" font_features="calt=1">    if deps.Cache == nil { return ErrInvalidIdentity }</span>
 <span size="10240" font_features="calt=1">}</span>
+<span size="12288" font_features="calt=1">12 px / .  ,  :  ;  !  ?  ...  obj.name  3.14</span>
 <span size="12288" font_features="calt=1">BASE / a e o h m n r u v w x z i I l 1 0</span>
 <span size="12288" font_features="calt=1">12 px / minimum  limit  iii  III  lll  111  Il1i  índice</span>
 <span size="12288" font_features="calt=1">func RegisterRoutes(router routing.Router, deps Dependencies) {</span>
 <span size="12288" font_features="calt=1">    if deps.Cache == nil { return ErrInvalidIdentity }</span>
 <span size="12288" font_features="calt=1">}</span>
+<span size="14336" font_features="calt=1">14 px / .  ,  :  ;  !  ?  ...  obj.name  3.14</span>
 <span size="14336" font_features="calt=1">BASE / a e o h m n r u v w x z i I l 1 0</span>
 <span size="14336" font_features="calt=1">14 px / minimum  limit  iii  III  lll  111  Il1i  índice</span>
 <span size="14336" font_features="calt=1">func RegisterRoutes(router routing.Router, deps Dependencies) {</span>
 <span size="14336" font_features="calt=1">    if deps.Cache == nil { return ErrInvalidIdentity }</span>
 <span size="14336" font_features="calt=1">}</span>
+<span size="15360" font_features="calt=1">15 px / .  ,  :  ;  !  ?  ...  obj.name  3.14</span>
 <span size="15360" font_features="calt=1">BASE / a e o h m n r u v w x z i I l 1 0</span>
 <span size="15360" font_features="calt=1">15 px / minimum  limit  iii  III  lll  111  Il1i  índice</span>
 <span size="15360" font_features="calt=1">func RegisterRoutes(router routing.Router, deps Dependencies) {</span>
 <span size="15360" font_features="calt=1">    if deps.Cache == nil { return ErrInvalidIdentity }</span>
 <span size="15360" font_features="calt=1">}</span>
+<span size="16384" font_features="calt=1">16 px / .  ,  :  ;  !  ?  ...  obj.name  3.14</span>
 <span size="16384" font_features="calt=1">BASE / a e o h m n r u v w x z i I l 1 0</span>
 <span size="16384" font_features="calt=1">16 px / minimum  limit  iii  III  lll  111  Il1i  índice</span>
 <span size="16384" font_features="calt=1">func RegisterRoutes(router routing.Router, deps Dependencies) {</span>
 <span size="16384" font_features="calt=1">    if deps.Cache == nil { return ErrInvalidIdentity }</span>
 <span size="16384" font_features="calt=1">}</span>
+<span size="24576" font_features="calt=1">24 px / .  ,  :  ;  !  ?  ...  obj.name  3.14</span>
 <span size="24576" font_features="calt=1">BASE / a e o h m n r u v w x z i I l 1 0</span>
 <span size="24576" font_features="calt=1">24 px / minimum  limit  iii  III  lll  111  Il1i  índice</span>
 <span size="24576" font_features="calt=1">func RegisterRoutes(router routing.Router, deps Dependencies) {</span>

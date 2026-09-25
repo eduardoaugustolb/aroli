@@ -4,6 +4,12 @@ Nova identidade Encaixe, nomes públicos e documentação Aroli. Paleta preserva
 
 # Changelog
 
+## 0.905 — 2026-09-24
+
+- Unificada a família óptica de pontos: `.`, `,`, `:`, `;`, `!` e `?` usam o mesmo diâmetro mínimo, preservando contraste em 14–16 px.
+- Rabicho de `,` e `;` ampliado e estendido para não se confundir com `.` a 15 px.
+- Specimen e regressão raster passam a cobrir pontuação em 10–24 px, inclusive no tamanho do buffer do Zed.
+
 ## 0.904 — 2026-09-23
 
 - Rabicho da vírgula redesenhado: 1.3x a haste, curva para a esquerda até -150. O rabicho fino (0.57 px a 15 px) sumia no antialiasing e sobrava só o ponto.

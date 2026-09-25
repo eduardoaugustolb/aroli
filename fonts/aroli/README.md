@@ -24,9 +24,9 @@ As provas abaixo são geradas pelo próprio build (`proof.ts`, Pango/HarfBuzz so
 ![Prova do peso Medium](dist/specimen-Medium.png)
 ![Prova do peso SemiBold](dist/specimen-SemiBold.png)
 
-## Qualidade e validação — 0.904
+## Qualidade e validação — 0.905
 
-A prova visual é produzida para cada peso com Pango/HarfBuzz a partir do respectivo OTF final, em um ambiente Fontconfig isolado sem fontes de fallback. Inclui os 37 caracteres acentuados, comparação `calt=0`/`calt=1`, distinção `i/I/l/1`, ícones e código em 10, 12, 14, 15, 16 e 24 px. É obrigatório abrir e inspecionar os PNGs após alterações; a geração do arquivo por si só não constitui aprovação visual.
+A prova visual é produzida para cada peso com Pango/HarfBuzz a partir do respectivo OTF final, em um ambiente Fontconfig isolado sem fontes de fallback. Inclui os 37 caracteres acentuados, comparação `calt=0`/`calt=1`, distinção `i/I/l/1`, pontuação e código em 10, 12, 14, 15, 16 e 24 px. É obrigatório abrir e inspecionar os PNGs após alterações; a geração do arquivo por si só não constitui aprovação visual.
 
 - Cobertura textual: ASCII 32–126 e 37 letras acentuadas comuns em português e idiomas próximos. Regular (400), Medium (500) e SemiBold (600); itálico e cobertura latina ampliada ainda não estão disponíveis.
 - Contornos textuais unidos antes do hinting CFF, com zonas de alinhamento e hastes verificadas no arquivo final. Os contornos dos ícones externos são preservados.

@@ -13,11 +13,11 @@ removeOverlaps(font, glyphNames=text)
 font["OS/2"].usWeightClass = weight
 font["OS/2"].fsSelection = 64 if weight == 400 else 0
 font["head"].macStyle = 0
-font["head"].fontRevision = 0.904
+font["head"].fontRevision = 0.905
 font["post"].isFixedPitch = 1
 family = "Aroli Mono NF"
 names = {1: family if style == "Regular" else f"{family} {style}",
-         2: "Regular", 4: f"{family} {style}", 5: "Version 0.904",
+         2: "Regular", 4: f"{family} {style}", 5: "Version 0.905",
          6: f"AroliMonoNF-{style}", 16: family, 17: style}
 for platform, encoding, language in [(3, 1, 0x409), (1, 0, 0)]:
     for key, value in names.items():
